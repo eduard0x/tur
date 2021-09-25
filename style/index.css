@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:600&display=swap');
+
+
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html{
+
+}
+
+body{
+    margin: 0px 40px;
+    background-image: url("../images/background.jpg");
+    background-size: 500px 600px;
+}
+
+span{
+    position: relative;
+    display: inline-flex;
+    width: 180px;
+    height: 55px;
+    margin: 0 auto;
+    perspective: 1000px;
+  }
+  span a{
+    font-size: 19px;
+    letter-spacing: 1px;
+    transform-style: preserve-3d;
+    transform: translateZ(-25px);
+    transition: transform .25s;
+    font-family: 'Montserrat', sans-serif;
+    
+  }
+  span a:before,
+  span a:after{
+    position: absolute;
+    content: "BUTTON";
+    height: 55px;
+    width: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 5px solid black;
+    box-sizing: border-box;
+    border-radius: 5px;
+  }
+  span a:before{
+    color: #fff;
+    background: #000;
+    transform: rotateY(0deg) translateZ(25px);
+  }
+  span a:after{
+    color: #000;
+    transform: rotateX(90deg) translateZ(25px);
+  }
+  span a:hover{
+    transform: translateZ(-25px) rotateX(-90deg);
+  }
+  
+
+header{
+    padding: 50px;
+    border-bottom: 1px solid black;
+    background-color: rgb(162, 250, 29);
+}
+main{
+    
+    color: black;
+    background-color: rgb(163, 236, 163);
+    min-height: 100px;
+    padding: 20px;
+}
+
+main ul {
+    padding: 0px;
+    margin: 0px 30px;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    
+    justify-content: space-between;
+}
+
+main ul li {
+    
+   
+    background-color: rgb(65, 207, 65);
+    text-decoration: none;
+    border-radius: 5px;
+    border: 2px solid white;
+    padding: 15px;
+    box-shadow: 0px 2px 2px rgb(17, 58, 9);
+
+    
+}
+
+.inspeccion{
+    background-color: blue;
+    cursor: pointer;
+    color: white;
+}
+
+.covid{
+    background-color: red;
+    cursor: pointer;
+    color: white;
+}
+
+.fatiga{
+    background-color: rgb(255, 115, 0);
+    cursor: pointer;
+    color: white;
+}
+footer{
+    padding: 20px;
+    
+    bottom: 0px;
+    
+    width: 100%;
+    background-color:rgb(12, 97, 12);
+    color: white;
+}
