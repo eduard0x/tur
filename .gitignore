@@ -1,3 +1,4 @@
-/icons
-/images
+icons
+images
 *.docx
+node_modules
