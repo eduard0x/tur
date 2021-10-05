@@ -1,0 +1,98 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html{
+    
+}
+
+body{
+   
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding: 20px 50px;
+    background: #eb01a5;
+    background: url("../images/background.jpg") no-repeat left top, linear-gradient(#eb01a5, #d13531);
+    
+    background-size: cover;
+    background-color: blueviolet;
+    opacity: 1;
+    
+    
+    
+}
+
+.contenedor-principal{
+    opacity: 1;
+}
+
+header{
+    padding: 30px;
+    border-bottom: 1px solid white;
+    margin: 0px -50px;
+    margin-bottom: 20px;
+    margin-top: -20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(90deg, rgba(17,14,60,1) 0%, rgba(9,121,14,1) 68%, rgba(168,255,0,1) 100%);
+
+}
+
+.logo{
+
+    width: 100px;
+    height: 100px;
+}
+
+.imagen-corporativa{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    
+}
+
+.imagen-corporativa img{
+    margin-right: 20px;
+}
+
+.btn-nuevo-usuario{
+    
+    padding: 10px;
+    border-radius: 5px; 
+    color: blueviolet;
+    box-shadow: 1px 1px 0px black;
+    border: none;
+    justify-self: center;
+    
+   
+
+}
+
+button{
+    background-color: black;
+}
+
+.botones-header{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+    
+}
+
+.formulario-nuevo{
+    margin: 0 150px;
+}
+
+.card-header{
+    background-color: rgb(9, 9, 61);
+}
+.card-body{
+    background-color: black;
+}
+
+.banner{
+    border: 10px solid rgb(9, 9, 68);
+    border-radius: 5px;
+}

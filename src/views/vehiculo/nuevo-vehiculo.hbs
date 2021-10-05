@@ -1,0 +1,64 @@
+<form action="/vehiculos/add" method="POST" class="formulario-nuevo">
+    <h1 class="card-header">Nuevo vehiculo</h1>
+    <div class="card-body">
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Placa</label>
+            <input type="text" name="placa" class="form-control">    
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Km actual</label>
+            <input type="text" name="km_a"  class="form-control">    
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Marca</label>
+            <input type="text" name="marca"  class="form-control">    
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Linea</label>
+            <input type="text" name="linea"  class="form-control">    
+        </div>
+       
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Cargo</label>
+            <select name="tipo" class="form-select" aria-label="Default select example">
+                <option selected>Elija una opción</option>
+                <option value="campero">Campero</option>
+                <option value="camioneta">Camioneta</option>
+                <option value="camion_sencillo">Camion sencillo</option>
+                <option value="moto">moto</option>
+                <option value="grua_sc_4_8">Grúa sobre camión 4x8</option>
+                <option value="excavadora">Excavadora</option>
+                
+                
+            </select>      
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Centro de costos</label>
+            <input type="text" name="centro_costos"  class="form-control">    
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Ciudad</label>
+            <input type="text" name="ciudad"  class="form-control">    
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Conductor actual</label>
+            <select name="conducto_actual" class="form-select" aria-label="Default select example">
+                <option selected>Elija una opción</option>
+                <option value="emp1">Conductor no asignado</option>
+                <option value="emp1">Juan Esteban Sepulveda(1234567890)</option>
+                <option value="emp2">Maria Alejandra Ballester(55673513)</option>
+                <option value="emp3">Francisco José Silva(545674567)</option>
+                <option value="emp4">Martha Federica Galviz(78376272386)</option>
+                <option value="emp5">Pablo Eduardo Cañizares(46751234423)</option>
+               
+                
+            </select>  
+        </div>
+   
+        
+        <center>
+            <button type="submit"  class="btn btn-primary">Registrar vehiculo</button>
+        </center>
+    </div>
+    
+</form>

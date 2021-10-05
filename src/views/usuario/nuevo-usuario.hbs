@@ -1,0 +1,77 @@
+{{#each error}}
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <strong>¡Oops!</strong> {{text}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{{/each}}
+
+{{#if mensaje}}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>{{text}} </strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{{/if}}
+
+<form action="/usuarios/add" method="POST" class="formulario-nuevo">
+    <h1 class="card-header">Nuevo usuario</h1>
+    <div class="card-body">
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Identificación</label>
+            <input type="text" name="identificacion" class="form-control">    
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Nombre(s)</label>
+            <input type="text" name="nombre"  class="form-control">    
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Apellido(s)</label>
+            <input type="text" name="apellido"  class="form-control">    
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Cargo</label>
+            <select name="cargo" class="form-select" aria-label="Default select example">
+                <option selected>Elija una opción</option>
+                <option value="gerente">Gerente</option>
+                <option value="Operador">Operador</option>
+                <option value="conductor">Conductor</option>
+                <option value="administrativo">Administrativo</option>
+                <option value="servicios-generales">Servicios generales</option>
+                <option value="guarda">Guarda de seguridad</option>
+                
+                
+            </select>      
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Email</label>
+            <input type="text" name="correo"  class="form-control">    
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Telefono</label>
+            <input type="text" name="telefono"  class="form-control">    
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">EPS</label>
+            <select name="eps" class="form-select" aria-label="Default select example">
+                <option selected>Elija una opción</option>
+                <option value="nueva-eps">Nueva eps</option>
+                <option value="medimas">Medimas</option>
+                <option value="comfaoriente">Comfaoriente</option>
+                <option value="sura">SURA</option>
+                <option value="coomeva">Coomeva</option>
+                <option value="colsanitas">Colsanitas</option>
+                <option value="comfacundi">Comfacundi</option>
+                
+            </select>  
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Fecha de ingreso</label>
+            <input type="date" name="fecha_ingreso"  class="form-control">    
+        </div>
+        
+        
+        <center>
+            <button type="submit"  class="btn btn-primary">Crear usuario</button>
+        </center>
+    </div>
+    
+</form>

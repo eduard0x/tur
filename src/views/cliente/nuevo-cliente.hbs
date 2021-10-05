@@ -1,0 +1,57 @@
+<form action="/clientes/add" method="POST" class="formulario-nuevo">
+    <h1 class="card-header">Nuevo cliente</h1>
+    <div class="card-body">
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Identificación</label>
+            <input type="text" name="identificacion" class="form-control">    
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Nombre(s)</label>
+            <input type="text" name="nombre"  class="form-control">    
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Apellido(s)</label>
+            <input type="text" name="apellido"  class="form-control">    
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Empresa</label>
+            <input type="text" name="empresa"  class="form-control">    
+        </div>
+        
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Nit</label>
+            <input type="text" name="nit"  class="form-control">    
+        </div>
+        
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Forma de contacto</label>
+            <select name="contacto" class="form-select" aria-label="Default select example">
+                <option selected>Elija una opción</option>
+                <option value="facebook">Facebook</option>
+                <option value="llamada">Llamada telefonica</option>
+                <option value="pagina">Página web</option>
+                <option value="whatsapp">WhatsApp</option>
+                <option value="correo">Correo electrónico</option>
+                <option value="recomendacion">Recomendación</option>
+                
+                
+            </select>  
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Telefono</label>
+            <input type="text" name="telefono"  class="form-control">    
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Correo electrónico</label>
+            <input type="text" name="correo"  class="form-control">    
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Dirección</label>
+            <input type="text" name="direccion"  class="form-control">    
+        </div>
+        <center>
+            <button type="submit"  class="btn btn-primary">Registrar cliente</button>
+        </center>
+    </div>
+    
+</form>

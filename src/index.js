@@ -8,6 +8,7 @@ const path = require('path');
 const methodOverride = require('method-override');
 const session = require('express-session');
 const exphbs = require('express-handlebars');
+const { on } = require('events');
 
 //********************         Inicializacioness                ********************************
 const app = express();
@@ -67,6 +68,11 @@ app.use(session({
 
 app.use(require('./routes/home'));
 app.use(require('./routes/users'));
+app.use(require('./routes/vehiculos'));
+app.use(require('./routes/clientes'))
+
+
+
 
 //************************              Static Files                  **************************
 
@@ -78,4 +84,7 @@ app.use(express.static(app.get('public')));
 app.listen(app.get('port'),()=>{
     console.log(`Escuchando en el puerto ${app.get('port')}`);
 })
+
+
+
 
