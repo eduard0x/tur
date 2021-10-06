@@ -1,18 +1,28 @@
 //Importando el modulo express 
 const express = require('express');
 
+
 //const exphbs = require('express-handlebars');
 //Se usa hbs en vez de express-handlebars por su facilidad de implementación.
 const hbs = require('hbs');
+
 const path = require('path');
 const methodOverride = require('method-override');
+
+//??
 const session = require('express-session');
+//  !!!! BUG !!!
+const flash = require('connect-flash');
 const exphbs = require('express-handlebars');
 const { on } = require('events');
+
+//??
+const passport = require('passport');
 
 //********************         Inicializacioness                ********************************
 const app = express();
 require('./database');
+require('./config/passport');
 
 
 
@@ -63,6 +73,19 @@ app.use(session({
     saveUninitialized:true
 }))
 
+
+app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
+
+//*************************              Global variables                  ***********
+app.use((req,res,next)=>{
+    res.locals.success_msg = req.flash('success_msg');
+    res.locals.error_msg = req.flash('error_msg');
+    res.locals.error = req.flash('error');
+
+    next();
+})
 //*************************              Routes            ****************************************
  //Le haremos saber al servidor donde están las rutas del servidor mismo.
 
@@ -70,6 +93,7 @@ app.use(require('./routes/home'));
 app.use(require('./routes/users'));
 app.use(require('./routes/vehiculos'));
 app.use(require('./routes/clientes'))
+
 
 
 

@@ -1,16 +1,9 @@
-{{#each error}}
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-    <strong>¡Oops!</strong> {{text}}
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-</div>
-{{/each}}
 
-{{#if mensaje}}
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
+<div class="alert alert-success alert-dismissible fade show" role="alert">
     <strong>{{text}} </strong>
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
-{{/if}}
+
 
 <form action="/usuarios/add" method="POST" class="formulario-nuevo">
     <h1 class="card-header">Nuevo usuario</h1>
@@ -67,8 +60,15 @@
             <label for="exampleInputPassword1" class="form-label">Fecha de ingreso</label>
             <input type="date" name="fecha_ingreso"  class="form-control">    
         </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+            <input type="password" name="password"  class="form-control">    
+        </div>
         
-        
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Confirmar contraseña</label>
+            <input type="password" name="confirmar_password"  class="form-control">    
+        </div>
         <center>
             <button type="submit"  class="btn btn-primary">Crear usuario</button>
         </center>

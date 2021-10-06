@@ -3,6 +3,7 @@
 const express = require('express');
 const router = express.Router();
 const usuario = require('../models/usuario');
+const passport = require('passport');
 
 //Qué hacer cuando se visite la pagina de usuarios
 router.get('/usuarios',(req, res)=>{
@@ -16,7 +17,8 @@ router.get('/usuarios/nuevo',(req,res)=>{
 })
 
 router.post('/usuarios/add', async (req,res)=>{
-    const{identificacion, nombre, apellido, cargo, correo, telefono, eps, fecha_ingreso} = req.body;
+    console.log("Log: usuarios/add");
+    const{identificacion, nombre, apellido, cargo, correo, telefono, eps, fecha_ingreso,password, confirmar_password} = req.body;
     var error = []
     if(!identificacion){
         error.push({text:"Por favor ingrese el campo identificacion"})
@@ -42,7 +44,15 @@ router.post('/usuarios/add', async (req,res)=>{
     if(!fecha_ingreso){
         error.push({text:"Por favor ingrese el campo fecha_ingreso"})
     }
-    
+    if(!password){
+        error.push({text:"Por favor ingrese el campo contraseña"})
+    }
+    if(!confirmar_password){
+        error.push({text:"Por favor ingrese el campo confirmar contraseña"})
+    }
+    if(password!=confirmar_password){
+        error.push({text:"Las contraseñas no coinciden"});
+    }
     if(error.length > 0){
         res.render('usuario/nuevo-usuario',{
             error,
@@ -53,36 +63,97 @@ router.post('/usuarios/add', async (req,res)=>{
         });
     }
     else{
-        const nuevo_usuario = new usuario({identificacion, nombre, apellido, cargo, correo, telefono, eps, fecha_ingreso});
-        await nuevo_usuario.save();
+        const existencia = await usuario.findOne({identificacion:identificacion});
+        if(existencia){
+           console.log('Hay un usuario con la misma identificación');
+            res.render('usuario/nuevo-usuario');
+        }else{
+            console.log("Log:Creando usuario");
+            const nuevo_usuario = new usuario({identificacion, nombre, apellido, cargo, correo, telefono, eps, fecha_ingreso,password});
+            console.log(nuevo_usuario.password);
+            nuevo_usuario.password =await nuevo_usuario.encryptPassword(password);
+            console.log(nuevo_usuario.password);
+            await nuevo_usuario.save();
+            
 
-        //Mandarlo como mensaje informativo en la vista !!
-        console.log("Usuario agregado");
-        //const mensaje = "Usuario creado con exito";
-        res.render('usuario/nuevo-usuario',{
-            text:"Usuario creado con exito"
-        });
-    }
-    
-    
-    
-   
-    
-})
+            //Mandarlo como mensaje informativo en la vista !!
+            console.log("Usuario agregado");
+            //const mensaje = "Usuario creado con exito";
+            res.redirect('usuario/iniciar');
 
-router.post('/usuarios/buscar',(req,res)=>{
-    const {busqueda} = req.body;
-    console.log(busqueda);
-    usuario.findOne({'telefono':busqueda}, function (err, usuario){
-    if(err) return err;
-    
-    res.render('usuario/perfil-usuario',{
+        }
         
-    })
-    const nombre = usuario.nombre;
-    console.log(nombre);
-    })
+        
+
+       
+    }
+} 
+)
+router.get('/usuarios/iniciar',(req,res)=>{
+    res.render('usuario/iniciar');
 })
+
+
+router.post('/usuarios/iniciar',passport.authenticate('local',{
+    successRedirect:'/home',
+    failureRedirect:'/usuarios/iniciar',
+    failureFlash:true
+}));
+
+// router.post('/usuarios/iniciar',async (req,res)=>{
+//     console.log("POST /usuarios/iniciar");
+//     const {correo, password} = req.body;
+//     var errors = [];
+//     if(correo.length == 0){
+//         console.log("bad correo");
+//         errors.push({text:"Campo de correo vacio"})
+//     }
+//     if(password.length == 0){
+//         console.log("bad password");
+//         errors.push({text:"Campo de password vacio"})
+//     }
+
+//     if(errors.length>0){
+//         res.render('usuario/iniciar',{errors});
+//     }else{
+//         const usuario_coincidencia = await usuario.findOne({correo:correo});
+//     if(usuario_coincidencia){
+//             console.log("Log: Hay un usuario con el correo ingresado.")
+//             const coincidencia = await usuario_coincidencia.match(password);
+//             console.log(coincidencia);
+//             if(coincidencia){
+//                 console.log("Log: Contraseña correcta");
+//                 console.log('Log: Usuario loggeado'+coincidencia);
+//                 res.render('home');
+//             }else{
+//                 console.log("Log: Contraseña invalida");
+//                 const error = {text:'Contraseña invalida'}
+//             res.render('usuario/iniciar',{correo,password,error});
+//             }
+//     }else{
+//             console.log("Log: Correo no encontrado");
+//             const error = {text:'El correo no se encuentra registrado'}
+//             res.render('usuario/iniciar',{correo,password,error});
+//         }
+   
+//     }
+    
+    
+// })
+
+// router.post('/usuarios/buscar',(req,res)=>{
+//     const {busqueda} = req.body;
+//     console.log(busqueda);
+//     usuario.findOne({'telefono':busqueda}, function (err, usuario){
+//     if(err) return err;
+    
+//     res.render('usuario/perfil-usuario',{
+        
+//     })
+//     const nombre = usuario.nombre;
+//     console.log(nombre);
+//     })
+// })
 
 
 
