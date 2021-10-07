@@ -6,7 +6,7 @@ const router = express.Router();
 //Qué hacer cuando se visite la pagina principal
 router.get('/',(req, res)=>{
     // res.send('inicio');
-     res.render('usuario/iniciar');
+     res.render('usuario/iniciar',{layout:false});
 })
 
 router.get('/home',(req, res)=>{

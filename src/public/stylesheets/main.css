@@ -1,3 +1,11 @@
+:root {
+    --main-color:#043105;
+    --verde:#3dda43;
+    --azul:rgb(9, 9, 68);
+    --amarillo : rgb(255, 255, 52);
+  }
+
+
 *{
     box-sizing: border-box;
     margin: 0;
@@ -13,7 +21,7 @@ body{
     color: white;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     padding: 20px 50px;
-    background: #eb01a5;
+    
     background: url("../images/background.jpg") no-repeat left top, linear-gradient(#eb01a5, #d13531);
     
     background-size: cover;
@@ -24,11 +32,9 @@ body{
     
 }
 
-.contenedor-principal{
-    opacity: 1;
-}
 
-header{
+
+/* header{
     padding: 30px;
     border-bottom: 1px solid white;
     margin: 0px -50px;
@@ -37,7 +43,18 @@ header{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: linear-gradient(90deg, rgba(17,14,60,1) 0%, rgba(9,121,14,1) 68%, rgba(168,255,0,1) 100%);
 
+} */
+
+header{
+    margin: 0px -50px;
+    
+    margin-top: -20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
 }
+
+
+
 
 .logo{
 
@@ -56,21 +73,13 @@ header{
     margin-right: 20px;
 }
 
-.btn-nuevo-usuario{
-    
-    padding: 10px;
-    border-radius: 5px; 
-    color: blueviolet;
-    box-shadow: 1px 1px 0px black;
-    border: none;
-    justify-self: center;
-    
-   
-
+.boton_header{
+    background-color: transparent;
+    color: var(--amarillo);
 }
 
-button{
-    background-color: black;
+.nav-item .dropdown{
+    border: 1px solid white;
 }
 
 .botones-header{
@@ -81,18 +90,126 @@ button{
     
 }
 
+
+ 
+
 .formulario-nuevo{
     margin: 0 150px;
 }
 
 .card-header{
-    background-color: rgb(9, 9, 61);
+    background-color: rgb(255, 255, 52);
+    color:var(--azul);
 }
 .card-body{
     background-color: black;
 }
 
 .banner{
-    border: 10px solid rgb(9, 9, 68);
+    border: 10px solid var(--azul);
     border-radius: 5px;
+}
+.navbar-brand{
+    margin-left: 15px;
+    
+    
+}
+
+.navbar{
+    margin-left:-30px;
+    margin-right:-30px;
+    margin-top: -30px;
+    padding-left: 50px;
+    padding-right: 50px;
+    background-color: var(--main-color);
+    margin-bottom: 0px;
+}
+
+
+
+.navbar-brand{
+    
+    background-color: rgb(255, 255, 52);
+    
+}
+
+.logo{
+    width: 100px;
+    height: 100px;
+}
+
+.botones-header{
+    display: flex;
+    justify-content: end;
+    width: 50%;
+}
+
+/* Style The Dropdown Button */
+.dropbtn {
+    background-color: transparent;
+    color: var(--verde);
+    padding: 16px;
+    font-size: 16px;
+    border: 1px solid var(--verde);
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+    margin-right: 15px;
+    border-radius: 10px;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: rgb(255, 255, 52);
+    color: #4CAF50;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    border-bottom: 1px solid #4CAF50;
+    
+}
+
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: rgba(17,14,60,1);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    border-bottom: 1px solid #ffc404;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+
+
+/* Show the dropdown menu on hover */
+.dropdown-1:hover .dropdown-content-1 {
+    display: block;
+    color: yellow;
+}
+.dropdown-2:hover .dropdown-content-2 {
+    display: block;
+    color: yellow;
+}
+.dropdown-3:hover .dropdown-content-3 {
+    display: block;
+    color: yellow;
+}
+.dropdown-4:hover .dropdown-content-4 {
+    display: block;
+    color: yellow;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+    background-color: var(--verde);
+    color: rgb(9, 9, 68);
 }

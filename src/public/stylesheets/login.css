@@ -1,0 +1,114 @@
+:root {
+    --main-color:#043105;
+    --verde:#3dda43;
+    --azul:rgb(9, 9, 68);
+    --amarillo : rgb(255, 255, 52);
+  }
+
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html{
+    
+}
+
+body{
+    
+}
+img{
+    width: 100%;
+}
+
+
+.background{
+    filter:hue-rotate(100deg);
+}
+
+.tarjeta-login{
+    position: absolute;
+    margin: 0px 100px;
+    margin-top: -850px;
+    border-radius: 5px;
+    width: 90%;
+    background-color: yellow;
+    padding: 0;
+    
+}
+
+.tarjeta-login2{
+    display: flex;
+    background-color: white;
+    width: 100%;
+    flex-direction: row;
+    
+}
+.tarjeta-imagen{
+
+    width: 60%;
+    padding: 30px;
+    background-color: #3dda43;
+}
+
+.tarjeta-imagen img{
+    width: 100%;
+    margin-top: 50px;
+}
+
+
+.row{
+    width: 40%;
+    background-color: aqua;
+    display: flex;
+    justify-content: start;
+    
+}
+.logo{
+
+    width: 200px;
+    height: 200px;
+    border: 4px solid var(--verde);
+    background-color: white;
+    
+}
+.card{
+    background: linear-gradient(90deg, rgba(17,14,60,1) 20%, rgba(9,121,14,1) 68%, rgba(168,255,0,1) 100%);
+    border: 2px solid white;
+    width: 400px;
+    position: relative;
+    margin-left: -120px;
+    
+    
+}
+.card-header{
+    padding: 15px;
+    background-color: transparent;
+    color:var(--azul);
+    border: none;
+}
+.card-body{
+    background-color: transparent;
+}
+.h4{
+    color:white;
+}
+
+
+
+
+input{
+    background: transparent;
+    color: #3dda43;
+}
+
+
+
+
+.boton{
+    background-color: transparent;
+    border: 1px solid var(--verde);
+    color: var(--verde);
+}
