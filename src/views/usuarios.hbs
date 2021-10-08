@@ -1,21 +1,58 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="stylesheets/usuarios.css">
-    <title>Document</title>
-</head>
-<style>
-    
 
-    h1{
-        color: white;
-    }
-</style>
-<body>
-    <h1>USUARIOS</h1>
-    {{{body}}}
-</body>
-</html>
+    <table class="table table-responsive">
+        <thead class="table-dark">
+            <tr id="titulo-tabla">
+                <th scope="col">
+                    Identificación
+                </td>
+                <th scope="col">
+                    Nombre(s)
+                </th>
+                <th scope="col">
+                    Apellido(s)
+                </th>
+                <th scope="col">
+                    Telefono
+                </th>
+                <th scope="col">
+                    Eps
+                </th>
+                <th scope="col">
+                    Fecha de ingreso
+                </th>
+            
+
+            </tr>
+        </thead>
+        
+        {{#each usuarios_encontrados}}
+        <a href="#">
+            <tr onclick="window.location='/usuarios/{{identificacion}}';" style="cursor: pointer;">
+            <td>
+                
+                {{identificacion}}
+                
+            </td>
+            <td>
+                {{nombre}}
+                
+            </td>
+            <td>
+                {{apellido}}
+            </td>
+            <td>
+                
+                {{telefono}}
+            </td>
+            <td>
+                {{eps}}
+            </td>
+            <td>
+                {{fecha_ingreso}}
+            </td>
+        </tr>
+        </a>
+        
+        {{/each}}
+
+    </table>

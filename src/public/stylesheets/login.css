@@ -21,70 +21,94 @@ body{
 }
 img{
     width: 100%;
+    height: 700px;
 }
+
 
 
 .background{
     filter:hue-rotate(100deg);
+    
 }
 
 .tarjeta-login{
     position: absolute;
-    margin: 0px 100px;
-    margin-top: -850px;
-    border-radius: 5px;
-    width: 90%;
+    
+    
+    
+    width: 1000px;
+    
     background-color: yellow;
     padding: 0;
+    border-radius: 10px;
+    margin: 0px auto;
+    margin-top: -600px;
+    margin-left: 170px;
+    box-shadow: 5px 5px 5px black;
+    
+    
+    
     
 }
 
 .tarjeta-login2{
     display: flex;
-    background-color: white;
-    width: 100%;
+    background-color: rgb(180, 33, 33);
+    
     flex-direction: row;
+   
     
 }
 .tarjeta-imagen{
 
-    width: 60%;
-    padding: 30px;
+    width: 72%;
+    
     background-color: #3dda43;
+    
+    border-right: none;
 }
 
 .tarjeta-imagen img{
-    width: 100%;
-    margin-top: 50px;
+    height: 450px;
+    
 }
 
 
 .row{
-    width: 40%;
+    width: 30%;
     background-color: aqua;
-    display: flex;
-    justify-content: start;
+    
+    
     
 }
+
+
 .logo{
 
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
     border: 4px solid var(--verde);
     background-color: white;
     
+    
 }
 .card{
-    background: linear-gradient(90deg, rgba(17,14,60,1) 20%, rgba(9,121,14,1) 68%, rgba(168,255,0,1) 100%);
-    border: 2px solid white;
-    width: 400px;
-    position: relative;
-    margin-left: -120px;
+    margin-top: 0px;
+    background: linear-gradient(0deg, #050f61 20%, #083306 68%);
+    
+    border-left: none;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* no-repeat left top, linear-gradient(#083306, #050f61); */
+    
+    
     
     
 }
 .card-header{
-    padding: 15px;
+    
     background-color: transparent;
     color:var(--azul);
     border: none;
@@ -94,14 +118,26 @@ img{
 }
 .h4{
     color:white;
+    padding: 10px;
+}
+
+.fondo-blanco img{
+    width: 150px;
+    height: 150px;
 }
 
 
 
 
-input{
-    background: transparent;
-    color: #3dda43;
+.form-control{
+    background-color: var(--amarillo);
+    color: var(--azul);
+    border: 1px solid var(--verde);
+}
+
+.form-control::placeholder{
+    
+    color: var(--azul);
 }
 
 
@@ -111,4 +147,11 @@ input{
     background-color: transparent;
     border: 1px solid var(--verde);
     color: var(--verde);
+}
+
+.boton:hover{
+    background-color: var(--verde);
+    color: var(--azul);
+    border: 1px solid var(--main-color);
+    
 }

@@ -7,8 +7,34 @@ const passport = require('passport');
 
 //Qué hacer cuando se visite la pagina de usuarios
 router.get('/usuarios',(req, res)=>{
-    //res.send('Usuarios');
-    res.render('usuarios.hbs');
+    
+    usuario.find({},function (err, result){
+        var usuarios_encontrados = []
+        if(err){
+            console.log(err);
+        }else{
+            console.log(result);
+            
+            for(var i in result){
+                usuarios_encontrados.push(result[i]);
+                
+            }
+            console.log(result[0]);
+            var nombre = result[0].nombre;
+            
+            res.render('usuarios',{usuarios_encontrados});
+            
+        }
+    }).lean()  //lean permite solucionar el error de la no carga de los valores
+    
+    
+})
+
+router.get('/usuarios/:id',(req,res)=>{
+    const id_usuario = req.params.id;
+    const usuario_seleccionado = usuario.findOne({identificacion:id_usuario}).lean();
+    console.log(usuario_seleccionado);
+    res.render('usuario/perfil-usuario',{usuario_seleccionado});
 })
 
 router.get('/usuarios/nuevo',(req,res)=>{
@@ -55,9 +81,9 @@ router.post('/usuarios/add', async (req,res)=>{
     }
     if(error.length > 0){
         res.render('usuario/nuevo-usuario',{
+            layout:false,
             error,
             nombre,
-            cedula,
             telefono,
             eps
         });
@@ -79,7 +105,7 @@ router.post('/usuarios/add', async (req,res)=>{
             //Mandarlo como mensaje informativo en la vista !!
             console.log("Usuario agregado");
             //const mensaje = "Usuario creado con exito";
-            res.redirect('usuario/iniciar');
+            res.render('usuario/iniciar',{layout:false});
 
         }
         
@@ -90,7 +116,7 @@ router.post('/usuarios/add', async (req,res)=>{
 } 
 )
 router.get('/usuarios/iniciar',(req,res)=>{
-    res.render('usuario/iniciar');
+    res.render('usuario/iniciar',{layout:false});
 })
 
 
