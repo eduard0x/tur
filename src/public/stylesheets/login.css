@@ -155,3 +155,23 @@ img{
     border: 1px solid var(--main-color);
     
 }
+
+.btn-icon{
+    padding: 10px;
+    
+    display: flex;
+    flex-direction: row
+    p
+}
+
+.btn-icon span{
+    margin-right: 5px;
+}
+
+span{
+    margin: 0;
+    padding: 0;
+
+}
+
+

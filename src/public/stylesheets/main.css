@@ -1,5 +1,5 @@
 :root {
-    --main-color:#043105;
+     --main-color: rgb(9, 9, 68);  /* #043105; */
     --verde:#3dda43;
     --azul:rgb(9, 9, 68);
     --amarillo : rgb(255, 255, 52);
@@ -102,9 +102,11 @@ header{
 .card-header{
     background-color: rgb(255, 255, 52);
     color:var(--azul);
+    padding: 15px;
 }
 .card-body{
-    background-color: black;
+    background-color: var(--azul);
+    color: white;
 }
 
 .banner{
@@ -244,6 +246,40 @@ tr:hover{
     color: var(--azul);
 }
 
+.btn-icon{
+    padding: 10px;
+    
+    display: flex;
+    flex-direction: row
+    p
+}
+
+.btn-icon span{
+    margin-right: 5px;
+}
+
+span{
+    margin: 0;
+    padding: 0;
+
+}
 
 
+.acordeon{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
 
+a{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 4px solid var(--verde);
+    text-decoration: none;
+    color: var(--amarillo);
+}
+
+//Deshabilitando las ediciones desde css.
+.formulario-perfil input, .formulario-perfil select {
+    pointer-events: none;
+}

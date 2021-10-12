@@ -11,6 +11,8 @@ router.get('/',(req, res)=>{
 
 router.get('/home',(req, res)=>{
     // res.send('inicio');
+
+    console.log("Log: GET /home");
      res.render('home');
 })
 

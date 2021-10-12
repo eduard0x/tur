@@ -1,5 +1,5 @@
 //Importamos express en el index para generar las rutas
-
+console.log("Log: modulo usuarios");
 const express = require('express');
 const router = express.Router();
 const usuario = require('../models/usuario');
@@ -7,7 +7,7 @@ const passport = require('passport');
 
 //Qué hacer cuando se visite la pagina de usuarios
 router.get('/usuarios',(req, res)=>{
-    
+    console.log("Log: GET /usuarios");
     usuario.find({},function (err, result){
         var usuarios_encontrados = []
         if(err){
@@ -30,21 +30,37 @@ router.get('/usuarios',(req, res)=>{
     
 })
 
-router.get('/usuarios/:id',(req,res)=>{
-    const id_usuario = req.params.id;
-    const usuario_seleccionado = usuario.findOne({identificacion:id_usuario}).lean();
-    console.log(usuario_seleccionado);
-    res.render('usuario/perfil-usuario',{usuario_seleccionado});
-})
+
 
 router.get('/usuarios/nuevo',(req,res)=>{
+    console.log("Log: GET /usuarios/nuevo");
+    console.log(req.body);
     console.log(req.body);
     res.render('usuario/nuevo-usuario');
 })
 
+
+
 router.post('/usuarios/add', async (req,res)=>{
     console.log("Log: usuarios/add");
-    const{identificacion, nombre, apellido, cargo, correo, telefono, eps, fecha_ingreso,password, confirmar_password} = req.body;
+    const{tipo, 
+        identificacion,
+        nombre, 
+        apellido, 
+        cargo, 
+        profesion, 
+        correo, 
+        telefono, 
+        direccion, 
+        eps, 
+        fecha_ingreso, 
+        numero_cuenta, 
+        banco, 
+        tipo_cuenta, 
+        pension, 
+        password, 
+        confirmar_password} = req.body;
+
     var error = []
     if(!identificacion){
         error.push({text:"Por favor ingrese el campo identificacion"})
@@ -80,8 +96,8 @@ router.post('/usuarios/add', async (req,res)=>{
         error.push({text:"Las contraseñas no coinciden"});
     }
     if(error.length > 0){
+        console.log("Log: error.length > 0")
         res.render('usuario/nuevo-usuario',{
-            layout:false,
             error,
             nombre,
             telefono,
@@ -91,11 +107,12 @@ router.post('/usuarios/add', async (req,res)=>{
     else{
         const existencia = await usuario.findOne({identificacion:identificacion});
         if(existencia){
+            error.push({text:"Hay un usuario con la misma identificación"});
            console.log('Hay un usuario con la misma identificación');
-            res.render('usuario/nuevo-usuario');
+            res.render('usuario/nuevo-usuario',{error});
         }else{
             console.log("Log:Creando usuario");
-            const nuevo_usuario = new usuario({identificacion, nombre, apellido, cargo, correo, telefono, eps, fecha_ingreso,password});
+            const nuevo_usuario = new usuario({tipo, identificacion, nombre, apellido, cargo, profesion, direccion, correo, telefono, eps, fecha_ingreso, numero_cuenta, banco, tipo_cuenta, pension, password});
             console.log(nuevo_usuario.password);
             nuevo_usuario.password =await nuevo_usuario.encryptPassword(password);
             console.log(nuevo_usuario.password);
@@ -104,8 +121,8 @@ router.post('/usuarios/add', async (req,res)=>{
 
             //Mandarlo como mensaje informativo en la vista !!
             console.log("Usuario agregado");
-            //const mensaje = "Usuario creado con exito";
-            res.render('usuario/iniciar',{layout:false});
+            const mensaje = "Usuario creado con exito";
+            res.render('usuario/nuevo-usuario',{mensaje});
 
         }
         
@@ -122,7 +139,7 @@ router.get('/usuarios/iniciar',(req,res)=>{
 
 router.post('/usuarios/iniciar',passport.authenticate('local',{
     successRedirect:'/home',
-    failureRedirect:'/usuarios/iniciar',
+    failureRedirect:'/',
     failureFlash:true
 }));
 
@@ -182,5 +199,18 @@ router.post('/usuarios/iniciar',passport.authenticate('local',{
 // })
 
 
-
+router.get('/usuarios/:id',(req,res)=>{
+    console.log("Log: GET /usuarios/id");
+    const id_usuario = req.params.id;
+    console.log(id_usuario);
+    usuario.findOne({identificacion:id_usuario},function (err,result){
+        if(err){
+            console.log(err);
+        }else{
+            console.log(result);
+            res.render('usuario/perfil-usuario',{result});
+        }
+    }).lean()
+    
+})
 module.exports = router;

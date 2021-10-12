@@ -6,17 +6,24 @@ console.log("Log: Colección usuario enlazada");
 
 //Esquema de la colección usuario
 const UsuarioSchema = new Schema({
+    tipo:{type:String, required:true},
     identificacion: {type: String, required:true},
     nombre: {type: String, required:true},
     apellido: {type: String, required:true},
     cargo: {type: String, required:true},
+    profesion: {type: String, required:true},
+    direccion: {type: String, required:true},
     correo: {type: String, required:true},
     telefono: {type: String, required:true},
     eps: {type:String, required:false},
-    fecha_ingreso: {type: String, required:true},
+    fecha_ingreso: {type: Date, required:true},
+    numero_cuenta:{type: String, required:true},
+    banco:{type:String, required:true},
+    tipo_cuenta: {type:String, required:true},
+    pension: {type:String, required:true},
     password:{type:String, required:true}
     
-
+    //ADICIONES
     //tipo de documento
     //direccion
     //datos de de emergencia

@@ -1,3 +1,4 @@
+console.log("Log: modulo passport");
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 

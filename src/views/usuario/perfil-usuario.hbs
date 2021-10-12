@@ -1,10 +1,185 @@
-<div class="card"  style="color: rgb(3, 3, 63);">
-    <div class="card-header">
-        {{nombre}}
-    </div>
-    <div class="card-body">
+<form action="/usuarios/add" method="POST" class="formulario-nuevo formulario-perfil">
+    <h2 class="card-header">
+        <span class="material-icons md-36">account_circle</span>
+        {{result.nombre}} {{result.apellido}}
         
-        INFORMACIÓN DEL USUARIO
+    </h2>
+    <div class="card-body">
 
+        
+
+        
+  
+        <a class="acordeon" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+            <h5>Perfil del empleado</h5><span class="material-icons md-24">expand_more</span>
+        </a>
+        
+        
+        <div class="row">
+            <!-- New-->
+            <div class="form-group col-md-2">
+            <label for="exampleInputPassword1" class="form-label">Tipo</label>
+            <select name="tipo" class="form-select" aria-label="Default select example">
+                
+                <option value="cc">C.C</option>
+                <option value="ce">C.E</option>
+                <option value="ti">T.I</option>
+                <option value="pep">P.E.P</option>
+                
+                
+                
+            </select>    
+            </div>
+            <!-- /New-->
+            <div class="form-group col-md-2">
+            <label for="exampleInputPassword1" class="form-label">Identificación</label>
+            <input type="text" name="identificacion" class="form-control" value="{{result.identificacion}}">    
+            </div>
+            <div class="form-group col-md-4">
+                <label for="exampleInputPassword1" class="form-label">Nombre(s)</label>
+                <input type="text" name="nombre"  class="form-control" value="{{result.nombre}}">    
+            </div>
+            <div class="form-group col-md-4">
+                <label for="exampleInputPassword1" class="form-label">Apellido(s)</label>
+                <input type="text" name="apellido"  class="form-control" value="{{result.apellido}}">    
+            </div>
+            <div class="form-group col-md-4">
+            <label for="exampleInputPassword1" class="form-label">Cargo</label>
+            <select name="cargo" class="form-select" aria-label="Default select example" >
+                <option selected>{{result.cargo}}</option>
+                <option value="gerente">Gerente</option>
+                <option value="Operador">Operador</option>
+                <option value="conductor">Conductor</option>
+                <option value="administrativo">Administrativo</option>
+                <option value="servicios-generales">Servicios generales</option>
+                <option value="guarda">Guarda de seguridad</option>
+                
+                
+            </select>      
+            </div>
+
+            <div class="form-group col-md-4">
+            <label for="exampleInputPassword1" class="form-label">Profesión</label>
+            <input type="text" name="profesion"  class="form-control" value="{{result.profesion}}"> 
+            
+            </div>
+
+            <div class="form-group col-md-4">
+            <label for="exampleInputPassword1" class="form-label">Fecha de ingreso</label>
+            <input type="date" name="fecha_ingreso"  class="form-control" value="{{result.fecha_ingreso}}"> 
+            
+            </div>
+
+        <div class="form-group col-md-4">
+            <label for="exampleInputPassword1" class="form-label">EPS</label>
+            <select name="eps" class="form-select" aria-label="Default select example">
+                <option selected>{{result.eps}}</option>
+                <option value="nueva-eps">Nueva eps</option>
+                <option value="medimas">Medimas</option>
+                <option value="comfaoriente">Comfaoriente</option>
+                <option value="sura">SURA</option>
+                <option value="coomeva">Coomeva</option>
+                <option value="colsanitas">Colsanitas</option>
+                <option value="comfacundi">Comfacundi</option>
+                
+            </select>  
+        </div>
+        </div>
+        <br>
+        <a class="acordeon" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+            <h5>Información de contacto</h5><span class="material-icons md-24">expand_more</span>
+        </a>
+            <div class="row">
+            <div class="form-group col-md-6">
+            <label for="exampleInputPassword1" class="form-label">Email</label>
+            <input type="text" name="correo"  class="form-control" value="{{result.correo}}">    
+            </div>
+            <div class="form-group col-md-6">
+                <label for="exampleInputPassword1" class="form-label">Telefono</label>
+                <input type="text" name="telefono"  class="form-control" value="{{result.telefono}}">    
+            </div>
+            <div class="form-group col-md-6">
+                <label for="example" class="form-label"> Dirección</label>
+                <input type="text" name="direccion" class="form-control" value="{{result.direccion}}">
+            </div>
+
+        </div>
+        <br>
+        
+        <a class="acordeon" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+            <h5>Contacto emergente</h5><span class="material-icons md-24">expand_more</span>
+        </a>
+        <a class="acordeon" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+            <h5>Educación</h5><span class="material-icons md-24">expand_more</span>
+        </a>
+        <a class="acordeon" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+            <h5>Pagos</h5><span class="material-icons md-24">expand_more</span>
+        </a>
+        <div class="row">
+            <div class="form-group col-md-6">
+            <label for="exampleInputPassword1" class="form-label">Número cuenta bancaria</label>
+            <input type="number" name="numero_cuenta"  class="form-control" value="{{result.numero_cuenta}}" >
+            </div>
+            <div class="form-group col-md-3">
+            <label for="exampleInputPassword1" class="form-label">Banco</label>
+            <select name="banco" class="form-select" aria-label="Default select example">
+                <option selected>{{result.banco}}</option>
+                <option value="bbogota">Banco de Bogotá</option>
+                <option value="bbancolombia">Bancolombia</option>
+                <option value="bbbva">BBVA</option>
+                <option value="bdavivienda">Davivienda</option>
+                <option value="bcolpatria">Colpatria</option>
+                <option value="bpopular">Banco popular</option>
+                <option value="bcajasocial">Banco caja social</option>
+                
+            </select>  
+            </div>
+            <div class="form-group col-md-3">
+            <label for="exampleInputPassword1" class="form-label">Tipo de cuenta</label>
+            <select name="tipo_cuenta" class="form-select" aria-label="Default select example">
+                <option selected>{{result.tipo_cuenta}}</option>
+                <option value="ccorriente">Cuenta corriente</option>
+                <option value="cahorro">Cuenta ahorros</option>
+                
+                
+            </select>  
+            </div>
+            <div class="form-group col-md-3">
+            <label for="exampleInputPassword1" class="form-label">Fondo de pensiones</label>
+            <select name="pension" class="form-select" aria-label="Default select example" >
+                <option value="selected" selected>{{result.pension}}</option>
+                <option value="porvenir">Porvenir</option>
+                <option value="colfondos">Colfondos</option>
+                <option value="proteccion">Protección</option>
+                
+                
+            </select>  
+            </div>    
+        </div>    
+        
+        
+        
+        
+        <a class="acordeon" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+            <h5>Credenciales de acceso</h5><span class="material-icons md-24">expand_more</span>
+        </a>
+        <div class="row">
+            <div class="form-group col-md-6">
+            <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+            <input type="password" name="password"  class="form-control" value="{{result.password}}">    
+        </div>
+        
+        <div class="form-group col-md-6">
+            <label for="exampleInputPassword1" class="form-label">Confirmar contraseña</label>
+            <input type="password" name="confirmar_password"  class="form-control">    
+        </div>
+        
+        </div>
+        <br>
+        
+        <center>
+            <button type="submit"  class="btn btn-primary boton">Crear usuario</button>
+        </center>
     </div>
-</div>
+    
+</form>
