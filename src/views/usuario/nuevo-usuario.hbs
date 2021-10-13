@@ -18,7 +18,7 @@
 {{/if}}
 
 
-<form action="/usuarios/add" method="POST" class="formulario-nuevo">
+<form action="/usuarios/add" method="POST" class="formulario-nuevo" enctype="multipart/form-data">
     <h2 class="card-header">
         <span class="material-icons md-36">person_add</span>
         Nuevo empleado
@@ -132,13 +132,33 @@
         <a class="acordeon" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
             <h5>Educación</h5><span class="material-icons md-24">expand_more</span>
         </a>
+        <div class="row">
+            <div class="form-group col-md-12">
+                <label for="example" class="form-label">Nombre Curso periodico</label>
+                <input type="text" name="nombre_curso" class="form-control">
+
+            </div>
+            <div class="form-group col-md-4">
+            <label for="exampleInputPassword1" class="form-label">Fecha de realización</label>
+            <input type="date" name="fecha_realizacion"  class="form-control" >
+            </div>
+            <div class="form-group col-md-4">
+            <label for="exampleInputPassword1" class="form-label">Fecha de vencimiento</label>
+            <input type="date" name="fecha_vencimiento"  class="form-control" >
+            </div>
+            <div class="form-group col-md-4">
+            <label for="exampleInputPassword1" class="form-label">Certificado adjunto</label>
+            <input type="file" name="archivo"  class="form-control" >
+            </div>
+        </div>
+      </a>
         <a class="acordeon" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
             <h5>Pagos</h5><span class="material-icons md-24">expand_more</span>
         </a>
         <div class="row">
             <div class="form-group col-md-6">
             <label for="exampleInputPassword1" class="form-label">Número cuenta bancaria</label>
-            <input type="number" name="numero_cuenta"  class="form-control" >
+            <input type="text" name="numero_cuenta"  class="form-control" >
             </div>
             <div class="form-group col-md-3">
             <label for="exampleInputPassword1" class="form-label">Banco</label>

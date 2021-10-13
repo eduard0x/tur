@@ -159,6 +159,13 @@ header{
     border-radius: 5px;
 }
 
+.boton-perfil{
+    border: 1px solid white;
+    color: white;
+    
+}
+
+
 /* The container <div> - needed to position the dropdown content */
 .dropdown {
     position: relative;
@@ -166,6 +173,9 @@ header{
     margin-right: 15px;
     border-radius: 10px;
 }
+
+
+
 
 /* Dropdown Content (Hidden by Default) */
 .dropdown-content {
@@ -216,7 +226,14 @@ header{
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {
     background-color: var(--verde);
-    color: rgb(9, 9, 68);
+    color: white;
+    border: 1px solid white;
+}
+
+.dropdown:hover .boton-perfil {
+    background-color: #043105;
+    color: white;
+    border: 1px solid white;
 }
 
 .boton{
@@ -250,13 +267,15 @@ tr:hover{
     padding: 10px;
     
     display: flex;
-    flex-direction: row
-    p
+    flex-direction: row;
+    
 }
 
 .btn-icon span{
     margin-right: 5px;
 }
+
+
 
 span{
     margin: 0;
@@ -279,7 +298,16 @@ a{
     color: var(--amarillo);
 }
 
-//Deshabilitando las ediciones desde css.
+
 .formulario-perfil input, .formulario-perfil select {
     pointer-events: none;
 }
+
+.a-icon{
+    display: flex;
+    background-color: red;
+    justify-content: space-between;
+    padding: 0;
+    margin: 0;
+}
+

@@ -1,5 +1,8 @@
 
-    <table class="table table-responsive">
+<table  class="table table-responsive" data-toggle="table"
+  data-url="data1.json"
+  data-pagination="true"
+  data-search="true">
         <thead class="table-dark">
             <tr id="titulo-tabla">
                 <th scope="col">
@@ -24,8 +27,8 @@
 
             </tr>
         </thead>
-        
-        {{#each usuarios_encontrados}}
+        <tbody>
+            {{#each usuarios_encontrados}}
         
             <tr onclick="window.location='/usuarios/{{identificacion}}';" style="cursor: pointer;">
             <td>
@@ -55,4 +58,6 @@
         
         {{/each}}
 
+        </tbody>
+        
     </table>

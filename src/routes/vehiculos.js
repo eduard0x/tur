@@ -1,18 +1,19 @@
 const express = require('express');
 const router = express.Router();
 const usuario = require('../models/usuario');
+const { isAuthenticated } = require('../helpers/auth');
 
-router.get('/vehiculos',(req, res)=>{
+router.get('/vehiculos',isAuthenticated,(req, res)=>{
     //res.send('Usuarios');
     res.render('usuarios.hbs');
 })
 
-router.get('/vehiculos/nuevo',(req,res)=>{
+router.get('/vehiculos/nuevo',isAuthenticated,(req,res)=>{
     console.log(req.body);
     res.render('vehiculo/nuevo-vehiculo');
 })
 
-router.post('/vehiculos/add',(req,res)=>{
+router.post('/vehiculos/add',isAuthenticated,(req,res)=>{
     const{identificacion, nombre, apellido, cargo, correo, telefono, eps, fecha_ingreso} = req.body;
     var error = []
     if(!identificacion){

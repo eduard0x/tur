@@ -19,6 +19,13 @@ const { on } = require('events');
 //??
 const passport = require('passport');
 
+//Permite subir archivos
+const multer = require('multer');
+
+const mimeTypes = require('mime-types');
+
+
+
 //********************         Inicializacioness                ********************************
 const app = express();
 require('./database');
@@ -58,6 +65,16 @@ app.engine('hbs',exphbs({
     layoutsDir:path.join(app.get('views'),'layouts'),
     extname: '.hbs'
 }))
+
+/**
+ * Configuración de la carga de archivos
+ */
+
+
+
+
+
+
 //*********************           Middlewares                **********************************
 
 //urlenconded sirve para que cuando un formulario quiera enviar datos se pueda entender.
@@ -74,6 +91,25 @@ app.use(session({
 }))
 
 
+const storage = multer.diskStorage({
+    destination: path.join(__dirname,'../public/uploads'),
+    filename: function(req, file, cb){
+        
+        cb(null,Date.now()+"."+mimeTypes.extension(file.mimetype));
+    }
+})
+
+
+
+app.use(
+    multer({
+        storage,
+        dest:path.join(__dirname,'../public/uploads')
+    }).single('archivo')
+);
+//Utilización del upload por la aplicación
+
+
 app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
@@ -83,6 +119,7 @@ app.use((req,res,next)=>{
     res.locals.success_msg = req.flash('success_msg');
     res.locals.error_msg = req.flash('error_msg');
     res.locals.error = req.flash('error');
+    res.locals.user = req.user || null;
 
     next();
 })

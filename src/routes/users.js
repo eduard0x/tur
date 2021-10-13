@@ -4,9 +4,28 @@ const express = require('express');
 const router = express.Router();
 const usuario = require('../models/usuario');
 const passport = require('passport');
+const { isAuthenticated } = require('../helpers/auth'); 
+const path = require('path');
+//Carga de archivos
+
+
+
+
+
+
+
+
+router.get('/home',isAuthenticated,(req, res)=>{
+    console.log("Log: GET /home");
+    
+     res.render('home');
+})
+
+
+
 
 //Qué hacer cuando se visite la pagina de usuarios
-router.get('/usuarios',(req, res)=>{
+router.get('/usuarios',isAuthenticated,(req, res)=>{
     console.log("Log: GET /usuarios");
     usuario.find({},function (err, result){
         var usuarios_encontrados = []
@@ -32,7 +51,7 @@ router.get('/usuarios',(req, res)=>{
 
 
 
-router.get('/usuarios/nuevo',(req,res)=>{
+router.get('/usuarios/nuevo',isAuthenticated,(req,res)=>{
     console.log("Log: GET /usuarios/nuevo");
     console.log(req.body);
     console.log(req.body);
@@ -41,9 +60,9 @@ router.get('/usuarios/nuevo',(req,res)=>{
 
 
 
-router.post('/usuarios/add', async (req,res)=>{
+router.post('/usuarios/add', isAuthenticated,async (req,res)=>{
     console.log("Log: usuarios/add");
-    const{tipo, 
+    const {tipo, 
         identificacion,
         nombre, 
         apellido, 
@@ -58,9 +77,10 @@ router.post('/usuarios/add', async (req,res)=>{
         banco, 
         tipo_cuenta, 
         pension, 
-        password, 
+        password,
+        archivo, 
         confirmar_password} = req.body;
-
+    console.log(req.file);
     var error = []
     if(!identificacion){
         error.push({text:"Por favor ingrese el campo identificacion"})
@@ -117,11 +137,18 @@ router.post('/usuarios/add', async (req,res)=>{
             nuevo_usuario.password =await nuevo_usuario.encryptPassword(password);
             console.log(nuevo_usuario.password);
             await nuevo_usuario.save();
+
+            
+
             
 
             //Mandarlo como mensaje informativo en la vista !!
             console.log("Usuario agregado");
             const mensaje = "Usuario creado con exito";
+            console.log("********************************");
+            console.log("Archivo adjunto: ");
+            console.log(req.file);
+            console.log("*********************************");
             res.render('usuario/nuevo-usuario',{mensaje});
 
         }
@@ -132,7 +159,7 @@ router.post('/usuarios/add', async (req,res)=>{
     }
 } 
 )
-router.get('/usuarios/iniciar',(req,res)=>{
+router.get('/',(req,res)=>{
     res.render('usuario/iniciar',{layout:false});
 })
 
@@ -199,7 +226,7 @@ router.post('/usuarios/iniciar',passport.authenticate('local',{
 // })
 
 
-router.get('/usuarios/:id',(req,res)=>{
+router.get('/usuarios/:id',isAuthenticated,(req,res)=>{
     console.log("Log: GET /usuarios/id");
     const id_usuario = req.params.id;
     console.log(id_usuario);
@@ -213,4 +240,16 @@ router.get('/usuarios/:id',(req,res)=>{
     }).lean()
     
 })
+router.get('/perfil',(req,res)=>{
+    const result = req.user;
+    res.render('usuario/perfil-usuario',{result});
+})
+
+
+
+router.get('/logout',(req,res)=>{
+    req.logout();
+    res.redirect('/');
+})
+
 module.exports = router;

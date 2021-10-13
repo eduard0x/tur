@@ -1,18 +1,19 @@
 const express = require('express');
 const router = express.Router();
 const usuario = require('../models/usuario');
+const { isAuthenticated } = require('../helpers/auth');
 
-router.get('/clientes',(req, res)=>{
+router.get('/clientes',isAuthenticated,(req, res)=>{
     //res.send('Usuarios');
     res.render('usuarios.hbs');
 })
 
-router.get('/clientes/nuevo',(req,res)=>{
+router.get('/clientes/nuevo',isAuthenticated,(req,res)=>{
     console.log(req.body);
     res.render('cliente/nuevo-cliente');
 })
 
-router.post('/cliente/add',(req,res)=>{
+router.post('/cliente/add',isAuthenticated,(req,res)=>{
     const{identificacion, nombre, apellido, cargo, correo, telefono, eps, fecha_ingreso} = req.body;
     var error = []
     if(!identificacion){
