@@ -25,7 +25,8 @@
     
     <link rel="shortcut icon" href="/images/lacoste.png">
 </head>
-<body>  
+
+ 
        
         
         
@@ -132,19 +133,34 @@
             </div>
             
         </nav>
-        <div id="container-small" style="display: none;">
+        <div id="container-small" class="container-no-visible">
             <div id="options-small" >
             
             <a href="/perfil">Mi perfil</a>
             <a href="javascript:void(0);" id="empleados-small" onclick="mostrar('empleados-small')">Empleados</a>
-            <div id="opciones-empleados-small" style="display: none;">
-                <a href="#">Nuevo empleado</a>
-                <a href="#">Lista de empleados</a>
+            <div id="opciones-empleados-small" class="opciones" style="display: none;">
+                <a href="/usuarios/nuevo">Nuevo empleado</a>
+                <a href="/usuarios">Lista de empleados</a>
                 
             </div>
-            <a href="#clientes" id="clientes-small">Clientes</a>
-            <a href="#vehiculos" id="vehiculos-small">Vehiculos</a>
-            <a href="#proveedores" id="proveedores-small">Proveedores</a>
+            <a href="javascript:void(0);" id="clientes-small" onclick="mostrar('clientes-small')">Clientes</a>
+            <div id="opciones-clientes-small" class="opciones" style="display: none;">
+                <a href="/clientes/nuevo">Nuevo cliente</a>
+                <a href="/clientes">Lista de clientes</a>
+                
+            </div>
+            <a href="javascript:void(0);" id="vehiculos-small" onclick="mostrar('vehiculos-small')">Vehiculos</a>
+            <div id="opciones-vehiculos-small" class="opciones" style="display: none;">
+                <a href="/vehiculos/nuevo">Nuevo vehiculo</a>
+                <a href="/vehiculos">Lista de vehiculos</a>
+                
+            </div>
+            <a href="javascript:void(0);" id="proveedores-small" onclick="mostrar('proveedores-small')">Proveedores</a>
+            <div id="opciones-proveedores-small" class="opciones" style="display: none;">
+                <a href="/proveedores/nuevo">Nuevo proveedor</a>
+                <a href="/proveedores">Lista de proveedores</a>
+                
+            </div>
             <a href="/logout">Salir</a>
 
         </div>
@@ -173,13 +189,13 @@
 <!--burguer menu-->
 <script>
                     function myFunction() {
-                        var display = document.getElementById('container-small').style.display;
-                        if(display === "none"){
-                            document.getElementById('container-small').style.display = "inline-block";
+                        var display = document.getElementById('container-small');
+                        if(display.className === "container-visible"){
+                            display.className = "container-no-visible";
                         }else{
-                            document.getElementById('container-small').style.display = "none";
+                            display.className = "container-visible";
                         }
-                         
+                        
                         
                     }
 
@@ -196,5 +212,6 @@
 
                     }
                 </script>
+<body> 
 </body>
 </html>
