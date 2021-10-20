@@ -21,6 +21,8 @@ const UsuarioSchema = new Schema({
     banco:{type:String, required:true},
     tipo_cuenta: {type:String, required:true},
     pension: {type:String, required:true},
+    foto_perfil:{type:String,required:true},
+    certificado:{type:String,required:true},
     password:{type:String, required:true}
     
     //ADICIONES

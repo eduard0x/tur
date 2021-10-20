@@ -6,6 +6,9 @@
         <thead class="table-dark">
             <tr id="titulo-tabla">
                 <th scope="col">
+                    Foto
+                </td>
+                <th scope="col">
                     Identificación
                 </td>
                 <th scope="col">
@@ -31,6 +34,9 @@
             {{#each usuarios_encontrados}}
         
             <tr onclick="window.location='/usuarios/{{identificacion}}';" style="cursor: pointer;">
+            <td>
+                <img class="rounded-circle" src="uploads/{{foto_perfil}}" alt="foto_perfil" style="width: 40px; height:40px" >
+            </td>
             <td>
                 
                 {{identificacion}}

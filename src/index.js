@@ -90,23 +90,46 @@ app.use(session({
     saveUninitialized:true
 }))
 
+var identificacion_usuario = "";
+
 
 const storage = multer.diskStorage({
-    destination: path.join(__dirname,'../public/uploads'),
+    destination: path.join(__dirname,'/public/uploads'),
     filename: function(req, file, cb){
-        
-        cb(null,Date.now()+"."+mimeTypes.extension(file.mimetype));
+        const {identificacion} = req.body;
+        identificacion_usuario = identificacion;
+        cb(null,identificacion+"."+mimeTypes.extension(file.mimetype));
+    }
+})
+
+const storage2 = multer.diskStorage({
+    destination: path.join(__dirname,'/public/uploads'),
+    filename: function(req, file, cb){
+        const {identificacion} = req.body;
+        identificacion_usuario = identificacion;
+        cb(null,identificacion+"."+mimeTypes.extension(file.mimetype));
     }
 })
 
 
 
+// app.use(
+//     multer({
+//         storage,
+//         dest:path.join(path.join(__dirname,'/public/uploads'+identificacion_usuario),identificacion_usuario)
+//     }).single('foto_perfil')
+// );
+
 app.use(
     multer({
-        storage,
-        dest:path.join(__dirname,'../public/uploads')
-    }).single('archivo')
+        storage2,
+        dest:path.join(path.join(__dirname,'/public/uploads'+identificacion_usuario),identificacion_usuario)
+    }).fields([
+        {name: "foto_perfil"},
+        {name: "certificado"}
+    ])
 );
+
 //Utilización del upload por la aplicación
 
 

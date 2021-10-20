@@ -1,0 +1,367 @@
+[{
+  "_id": {
+    "$oid": "61683e9dad4335c54e511c42"
+  },
+  "tipo": "cc",
+  "identificacion": "1026303001",
+  "nombre": "Miguelito ",
+  "apellido": "Fuentes Contreras",
+  "cargo": "gerente",
+  "profesion": "Ingeniero de sistemas",
+  "direccion": "Calle 10 # 2 - 78, Barrio Los Motilones",
+  "correo": "meduardofuentesc@gmail.com",
+  "telefono": "3204728847",
+  "eps": "nueva-eps",
+  "fecha_ingreso": {
+    "$date": "2021-10-06T00:00:00Z"
+  },
+  "numero_cuenta": "123123123123",
+  "banco": "bdavivienda",
+  "tipo_cuenta": "cahorro",
+  "pension": "colfondos",
+  "password": "$2a$10$.qQBcEAFo86e.pQU99byJOezCaoJv/UkXBmZ5BCHXDr/1xWJqLoeu",
+  "__v": 0,
+  "foto_perfil": "usuario.png"
+},{
+  "_id": {
+    "$oid": "61684053ad4335c54e511c6f"
+  },
+  "tipo": "cc",
+  "identificacion": "1234567",
+  "nombre": "Fernanda",
+  "apellido": "SanMiguel",
+  "cargo": "gerente",
+  "profesion": "Diseñador",
+  "direccion": "Calle del olvido",
+  "correo": "fer@g.com",
+  "telefono": "123123",
+  "eps": "nueva-eps",
+  "fecha_ingreso": {
+    "$date": "2021-10-08T00:00:00Z"
+  },
+  "numero_cuenta": "111111111",
+  "banco": "bbbva",
+  "tipo_cuenta": "cahorro",
+  "pension": "colfondos",
+  "password": "$2a$10$YTmdFh4PdCWzETkPI34O...mVmf.aQezqwuChBpZH0PsyxE3e3CSa",
+  "__v": 0,
+  "foto_perfil": "usuario.png"
+},{
+  "_id": {
+    "$oid": "61683e9dad4335c54e511c43"
+  },
+  "tipo": "cc",
+  "identificacion": "1212512",
+  "nombre": "Camilo",
+  "apellido": "Cifuentes",
+  "cargo": "gerente",
+  "profesion": "Diseñador",
+  "direccion": "Calle del olvido",
+  "correo": "cami@g.com",
+  "telefono": "123123",
+  "eps": "nueva-eps",
+  "fecha_ingreso": {
+    "$date": "2021-10-08T00:00:00Z"
+  },
+  "numero_cuenta": "111111111",
+  "banco": "bbbva",
+  "tipo_cuenta": "cahorro",
+  "pension": "colfondos",
+  "password": "$2a$10$YTmdFh4PdCWzETkPI34O...mVmf.aQezqwuChBpZH0PsyxE3e3CSa",
+  "__v": 0,
+  "foto_perfil": "usuario.png"
+},{
+  "_id": {
+    "$oid": "61684053ad4335c54e511c7f"
+  },
+  "tipo": "cc",
+  "identificacion": "9848343442376",
+  "nombre": "Yenny",
+  "apellido": "Contreras",
+  "cargo": "operador",
+  "profesion": "Administrador de empresas",
+  "direccion": "Calle 12",
+  "correo": "yenny@g.com",
+  "telefono": "1234567",
+  "eps": "nueva-eps",
+  "fecha_ingreso": {
+    "$date": "2021-10-08T00:00:00Z"
+  },
+  "numero_cuenta": "111111111",
+  "banco": "bbbva",
+  "tipo_cuenta": "cahorro",
+  "pension": "colfondos",
+  "password": "$2a$10$YTmdFh4PdCWzETkPI34O...mVmf.aQezqwuChBpZH0PsyxE3e3CSa",
+  "__v": 0,
+  "foto_perfil": "usuario.png"
+},{
+  "_id": {
+    "$oid": "61684396d08862420e4b4e60"
+  },
+  "tipo": "cc",
+  "identificacion": "27737384",
+  "nombre": "Maria Martina",
+  "apellido": "Contreras Jaimes",
+  "cargo": "guarda",
+  "profesion": "Ama de casa",
+  "direccion": "Calle 10 # 6 - 190 Motilones",
+  "correo": "maria@g.com",
+  "telefono": "3112121748",
+  "eps": "comfaoriente",
+  "fecha_ingreso": {
+    "$date": "2021-10-07T00:00:00Z"
+  },
+  "numero_cuenta": "1234 5678 8900",
+  "banco": "bdavivienda",
+  "tipo_cuenta": "cahorro",
+  "pension": "colfondos",
+  "password": "$2a$10$3mfkYmBBGlst9HAh1HWX8O3SZ5xhz.BjrGQWQ1SAGvUgLSdKc/8j6",
+  "__v": 0,
+  "foto_perfil": "usuario.png"
+},{
+  "_id": {
+    "$oid": "61684c4d770daea78617d1c1"
+  },
+  "tipo": "cc",
+  "identificacion": "777666",
+  "nombre": "dede",
+  "apellido": "fefef",
+  "cargo": "Operador",
+  "profesion": "efef",
+  "direccion": "sds32",
+  "correo": "dede@go.co",
+  "telefono": "1234",
+  "eps": "medimas",
+  "fecha_ingreso": {
+    "$date": "2021-09-30T00:00:00Z"
+  },
+  "numero_cuenta": "gaSDFGHGFDS",
+  "banco": "bbancolombia",
+  "tipo_cuenta": "cahorro",
+  "pension": "porvenir",
+  "password": "$2a$10$LCycLdpzBjXF0ZTOvsfC7OLYq6VvfFK47efw44Lb5EdLA6/4JMeoa",
+  "__v": 0,
+  "foto_perfil": "usuario.png"
+},{
+  "_id": {
+    "$oid": "61684e0985913f0ae8309c9c"
+  },
+  "tipo": "cc",
+  "identificacion": "980929",
+  "nombre": "Miguel",
+  "apellido": "Fuentes",
+  "cargo": "administrativo",
+  "profesion": "Desempleado",
+  "direccion": "Calle 10 # 6 - 190 Motilones",
+  "correo": "miguelucho@gmail.com",
+  "telefono": "123123",
+  "eps": "medimas",
+  "fecha_ingreso": {
+    "$date": "2021-05-20T00:00:00Z"
+  },
+  "numero_cuenta": "565658970",
+  "banco": "bbancolombia",
+  "tipo_cuenta": "cahorro",
+  "pension": "colfondos",
+  "password": "$2a$10$svVQRjq.hhOzjsx02jmEge2Kyq3qCawX3V1napQEkKOC5JfSkHLUS",
+  "__v": 0,
+  "foto_perfil": "usuario.png"
+},{
+  "_id": {
+    "$oid": "616851f7b97d02c01adb3c92"
+  },
+  "tipo": "cc",
+  "identificacion": "11112",
+  "nombre": "e",
+  "apellido": "e",
+  "cargo": "gerente",
+  "profesion": "e",
+  "direccion": "1",
+  "correo": "e@g.com",
+  "telefono": "1",
+  "eps": "comfaoriente",
+  "fecha_ingreso": {
+    "$date": "2021-10-26T00:00:00Z"
+  },
+  "numero_cuenta": "e",
+  "banco": "Elja uno",
+  "tipo_cuenta": "cahorro",
+  "pension": "colfondos",
+  "foto_perfil": "11112.png",
+  "password": "$2a$10$4T2J5niukkevPKtrWe2tsuHvUGFsDoaSbDbKpQZXqatCHzdKeKB/2",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61685a270ca0dee9e4bacea2"
+  },
+  "tipo": "cc",
+  "identificacion": "23232323",
+  "nombre": "Miguel Eduardo ",
+  "apellido": "Fuentes Contreras",
+  "cargo": "Operador",
+  "profesion": "Ingeniero de sistemas",
+  "direccion": "Calle 10 # 2 - 78, Barrio Los Motilones",
+  "correo": "migue@go.com",
+  "telefono": "123456789",
+  "eps": "medimas",
+  "fecha_ingreso": {
+    "$date": "2021-09-23T00:00:00Z"
+  },
+  "numero_cuenta": "12345677654321",
+  "banco": "bdavivienda",
+  "tipo_cuenta": "cahorro",
+  "pension": "colfondos",
+  "foto_perfil": "23232323.jpeg",
+  "password": "$2a$10$P1niOyBcmWf//7DMZTNMBOUkTyZ/8ut0JKamxMhCA9POYTnoN4gHS",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "616895990781a40dddeb34ee"
+  },
+  "tipo": "cc",
+  "identificacion": "121213",
+  "nombre": "a",
+  "apellido": "a",
+  "cargo": "Operador",
+  "profesion": "a",
+  "direccion": "12",
+  "correo": "aa@as.com",
+  "telefono": "131",
+  "eps": "comfaoriente",
+  "fecha_ingreso": {
+    "$date": "2021-10-15T00:00:00Z"
+  },
+  "numero_cuenta": "1212121212",
+  "banco": "bbogota",
+  "tipo_cuenta": "cahorro",
+  "pension": "porvenir",
+  "foto_perfil": "prueba_perfil.png",
+  "certificado": "prueba_certificado.pdf",
+  "password": "$2a$10$jWdltKkIAVO7V5C3JE0aQeYHEVUj52Fj07jvkfsZhKIQAfO/..r8.",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6168960ef04255f7efcba558"
+  },
+  "tipo": "cc",
+  "identificacion": "331233123",
+  "nombre": "a",
+  "apellido": "a",
+  "cargo": "gerente",
+  "profesion": "a",
+  "direccion": "123",
+  "correo": "q@q.c",
+  "telefono": "123",
+  "eps": "medimas",
+  "fecha_ingreso": {
+    "$date": "2021-10-27T00:00:00Z"
+  },
+  "numero_cuenta": "23456789",
+  "banco": "bbancolombia",
+  "tipo_cuenta": "cahorro",
+  "pension": "colfondos",
+  "foto_perfil": "prueba_perfil.png",
+  "certificado": "prueba_certificado.pdf",
+  "password": "$2a$10$Jig8uJmPMHBPLaqgFSuptu6u90WcHRc7Bs726Ag7.SHdP6Ky/mfgC",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "616896dae36d1657d7ec90d2"
+  },
+  "tipo": "cc",
+  "identificacion": "334421",
+  "nombre": "a",
+  "apellido": "a",
+  "cargo": "gerente",
+  "profesion": "a",
+  "direccion": "1212",
+  "correo": "r@f.co",
+  "telefono": "121",
+  "eps": "nueva-eps",
+  "fecha_ingreso": {
+    "$date": "2021-10-19T00:00:00Z"
+  },
+  "numero_cuenta": "21212",
+  "banco": "bbancolombia",
+  "tipo_cuenta": "cahorro",
+  "pension": "colfondos",
+  "foto_perfil": "prueba_perfil.png",
+  "certificado": "prueba_certificado.pdf",
+  "password": "$2a$10$UGVWiKDR2RnloZ02FvZ5a.MiaW0KF/.pIzR39oqONDLcN/im8Fkbm",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6168990ee36d1657d7ec90ef"
+  },
+  "tipo": "cc",
+  "identificacion": "65467634",
+  "nombre": "rererere",
+  "apellido": "ererererer",
+  "cargo": "gerente",
+  "profesion": "erererer",
+  "direccion": "2323232323",
+  "correo": "rerer@rerer.es",
+  "telefono": "3232323232323",
+  "eps": "nueva-eps",
+  "fecha_ingreso": {
+    "$date": "2021-10-06T00:00:00Z"
+  },
+  "numero_cuenta": "23232323232323232dadd",
+  "banco": "bdavivienda",
+  "tipo_cuenta": "cahorro",
+  "pension": "colfondos",
+  "foto_perfil": "prueba_perfil.png",
+  "certificado": "prueba_certificado.pdf",
+  "password": "$2a$10$KT0GLo/F2H5iUBvusqLotOAdRM4E0n9S25lxJlLp5jz7lBdZD2Gpu",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61689c7508a585cf91fbe2e6"
+  },
+  "tipo": "cc",
+  "identificacion": "1219721",
+  "nombre": "e",
+  "apellido": "e",
+  "cargo": "Operador",
+  "profesion": "e",
+  "direccion": "12121212121212",
+  "correo": "eeee@eee.e",
+  "telefono": "121212",
+  "eps": "comfaoriente",
+  "fecha_ingreso": {
+    "$date": "2021-10-01T00:00:00Z"
+  },
+  "numero_cuenta": "1211212",
+  "banco": "bpopular",
+  "tipo_cuenta": "cahorro",
+  "pension": "colfondos",
+  "foto_perfil": "prueba_perfil.png",
+  "certificado": "prueba_certificado.pdf",
+  "password": "$2a$10$Lpk.l4jtnS/cX5fIQ34eb.6QSbNIQAqKw4WTALLjIGe8Um5UWp//a",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61689d7f9a2ad001fec3d6bf"
+  },
+  "tipo": "cc",
+  "identificacion": "6767367237327237237723723232",
+  "nombre": "tttt",
+  "apellido": "ttttt",
+  "cargo": "conductor",
+  "profesion": "tttt",
+  "direccion": "21313",
+  "correo": "tttt@ttt.com",
+  "telefono": "123213123123123",
+  "eps": "comfaoriente",
+  "fecha_ingreso": {
+    "$date": "2021-10-18T00:00:00Z"
+  },
+  "numero_cuenta": "123213213123",
+  "banco": "bdavivienda",
+  "tipo_cuenta": "cahorro",
+  "pension": "colfondos",
+  "foto_perfil": "prueba_perfil.png",
+  "certificado": "prueba_certificado.pdf",
+  "password": "$2a$10$c8YUaZ49QZujs.y7e96ql.LTyBEDIP4ZFDb79ieAgDaWCqbV5OXfO",
+  "__v": 0
+}]

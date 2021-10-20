@@ -1,0 +1,22 @@
+[
+    
+        {
+            "tipo":"cc",
+            "identificacion": "1026303001",
+            "nombre": "eduardo",
+            "apellido": "fuentes",
+            "cargo": "gerente",
+            "profesion": "Ingeniero de sistemas",
+            "direccion": "Calle 10 # 2 - 78",
+            "correo": "meduardofuentesc@gmail.com",
+            "telefono": "3204728847",
+            "eps": "NUEVA EPS",
+            "fecha_ingreso": "23/09/2021",
+            "numero_cuenta":"1234567890",
+            "banco":"BBVA",
+            "tipo_cuenta": "ccorriente",
+            "pension": "positiva",
+            "password":"123"
+            
+    }
+]

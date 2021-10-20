@@ -1,0 +1,39 @@
+body{
+    
+    background-size: 950px;
+}
+
+.tarjeta-login2{
+    display: flex;
+    background-color: rgb(180, 33, 33);
+    
+    flex-direction: row;
+   
+    
+}
+
+.tarjeta-imagen{
+
+    width: 0%;
+    display: none;
+    background-color: #3dda43;
+    
+    border-right: none;
+}
+
+.tarjeta-imagen img{
+    height: 450px;
+    display: none;
+    
+}
+
+.card-body{
+    background-color: transparent;
+    margin: 0;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+.boton{
+    
+}

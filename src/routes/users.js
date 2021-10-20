@@ -35,6 +35,11 @@ router.get('/usuarios',isAuthenticated,(req, res)=>{
             console.log(result);
             
             for(var i in result){
+                const fecha = result[i].fecha_ingreso.toLocaleDateString();
+                console.log(fecha);
+
+                result[i].fecha_ingreso = fecha;
+
                 usuarios_encontrados.push(result[i]);
                 
             }
@@ -50,7 +55,7 @@ router.get('/usuarios',isAuthenticated,(req, res)=>{
 })
 
 
-
+//Ruta desprotegida temporalmente
 router.get('/usuarios/nuevo',isAuthenticated,(req,res)=>{
     console.log("Log: GET /usuarios/nuevo");
     console.log(req.body);
@@ -59,8 +64,8 @@ router.get('/usuarios/nuevo',isAuthenticated,(req,res)=>{
 })
 
 
-
-router.post('/usuarios/add', isAuthenticated,async (req,res)=>{
+//Ruta desprotegida temporalmente
+router.post('/usuarios/add',isAuthenticated,async (req,res)=>{
     console.log("Log: usuarios/add");
     const {tipo, 
         identificacion,
@@ -78,6 +83,7 @@ router.post('/usuarios/add', isAuthenticated,async (req,res)=>{
         tipo_cuenta, 
         pension, 
         password,
+        foto_perfil,
         archivo, 
         confirmar_password} = req.body;
     console.log(req.file);
@@ -132,13 +138,28 @@ router.post('/usuarios/add', isAuthenticated,async (req,res)=>{
             res.render('usuario/nuevo-usuario',{error});
         }else{
             console.log("Log:Creando usuario");
-            const nuevo_usuario = new usuario({tipo, identificacion, nombre, apellido, cargo, profesion, direccion, correo, telefono, eps, fecha_ingreso, numero_cuenta, banco, tipo_cuenta, pension, password});
+            const foto_perfil = "prueba_perfil.png";
+            const certificado = "prueba_certificado.pdf";
+            const nuevo_usuario = new usuario({tipo, identificacion, nombre, apellido, cargo, profesion, direccion, correo, telefono, eps, fecha_ingreso, numero_cuenta, banco, tipo_cuenta, pension, foto_perfil, certificado, password});
             console.log(nuevo_usuario.password);
             nuevo_usuario.password =await nuevo_usuario.encryptPassword(password);
             console.log(nuevo_usuario.password);
             await nuevo_usuario.save();
 
             
+            
+           
+            if(req.files['foto_perfil']){
+                console.log(req.files['foto_perfil']);
+                req.files['foto_perfil'][0].filename = "foto_de_perfil.jpg";
+                console.log(req.files['foto_perfil']);
+            }
+            if(req.files['certificado']){
+                console.log(req.files['certificado']);
+                req.files['certificado'][0].filename = "cErTiFicaDO.pdf";
+                console.log(req.files['certificado']);
+            }
+
 
             
 
