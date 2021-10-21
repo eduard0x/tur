@@ -24,6 +24,9 @@ const multer = require('multer');
 
 const mimeTypes = require('mime-types');
 
+//Generador de uuids
+
+const { v4: uuidv4 } = require('uuid');
 
 
 //********************         Inicializacioness                ********************************
@@ -90,7 +93,7 @@ app.use(session({
     saveUninitialized:true
 }))
 
-var identificacion_usuario = "";
+var placa_carro = "";
 
 
 const storage = multer.diskStorage({
@@ -98,16 +101,43 @@ const storage = multer.diskStorage({
     filename: function(req, file, cb){
         const {identificacion} = req.body;
         identificacion_usuario = identificacion;
-        cb(null,identificacion+"."+mimeTypes.extension(file.mimetype));
+        
     }
 })
 
+// const storage2 = multer.diskStorage({
+//     destination: path.join(__dirname,'/public/uploads'),
+//     filename: function(req, file, cb){
+//         const placa = req.body.placa;
+//         placa_carro = placa;
+//         cb(null,placa_carro+"_"+Date.now+"."+mimeTypes.extension(file.mimetype));
+//     }
+// })
+
 const storage2 = multer.diskStorage({
-    destination: path.join(__dirname,'/public/uploads'),
-    filename: function(req, file, cb){
-        const {identificacion} = req.body;
-        identificacion_usuario = identificacion;
-        cb(null,identificacion+"."+mimeTypes.extension(file.mimetype));
+    
+    destination: function(req, file, cb){
+        console.log("FIELDNAME: "+file.fieldname);
+        if(file.fieldname === "file1"){
+            
+            cb(null,path.join(__dirname,'/public/uploads/files1'))
+        }
+        else if(file.fieldname === "file2"){
+            cb(null,path.join(__dirname,'/public/uploads/files2'))
+        }
+    },
+    filename: function(req,file,cb){
+        console.log("FILENAME: "+file.originalname);
+        var placa = req.body.placa;
+        if(file.fieldname === "file1"){
+            
+            
+            cb(null,file.fieldname+"_"+placa+"_"+uuidv4()+"."+mimeTypes.extension(file.mimetype));
+        }
+        else if(file.fieldname === "file2"){
+            cb(null,file.fieldname+"_"+placa+"_"+uuidv4()+"."+mimeTypes.extension(file.mimetype));
+        }
+        // cb(null,file.originalname);
     }
 })
 
@@ -122,11 +152,11 @@ const storage2 = multer.diskStorage({
 
 app.use(
     multer({
-        storage2,
-        dest:path.join(path.join(__dirname,'/public/uploads'+identificacion_usuario),identificacion_usuario)
+        storage:storage2,
+        
     }).fields([
-        {name: "foto_perfil"},
-        {name: "certificado"}
+        {name: "file1", maxCount:1},
+        {name: "file2", maxCount:1}
     ])
 );
 
