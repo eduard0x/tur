@@ -103,10 +103,12 @@ const storage2 = multer.diskStorage({
         console.log("FIELDNAME: "+file.fieldname);
         if(file.fieldname === "soat"){
             
-            cb(null,path.join(__dirname,'/public/uploads/soat'))
+             cb(null,path.join(__dirname,'/public/uploads/soat'))
+            // cb(null,'./src/public/uploads/soat')
         }
         else if(file.fieldname === "gases"){
-            cb(null,path.join(__dirname,'/public/uploads/gases'))
+             cb(null,path.join(__dirname,'/public/uploads/gases'))
+            // cb(null,path.join('./src/public/uploads/soat'))
         }
     },
     filename: function(req,file,cb){
