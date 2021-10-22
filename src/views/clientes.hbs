@@ -1,17 +1,16 @@
-
 <table  class="tabla" data-toggle="table"
   data-url="data1.json"
   data-pagination="true"
   data-search="true">
-        <thead class="table-dark">
+        <thead>
             <tr id="titulo-tabla">
                 <th scope="col">
                     Foto
                 </td>
                 <th scope="col">
-                    Identificación
+                    identificacion
                 </td>
-                <th scope="col">
+                {{!-- <th scope="col">
                     Nombre(s)
                 </th>
                 <th scope="col">
@@ -25,24 +24,25 @@
                 </th>
                 <th scope="col">
                     Fecha de ingreso
-                </th>
+                </th> --}}
             
 
             </tr>
         </thead>
         <tbody>
-            {{#each usuarios_encontrados}}
+            {{#each clientes_encontrados}}
         
-            <tr onclick="window.location='/usuarios/{{identificacion}}';" style="cursor: pointer;">
+            <tr onclick="window.location='/clientes/{{identificacion}}';" style="cursor: pointer;">
             <td>
-                <img class="rounded-circle" src="uploads/foto_perfil/{{foto_perfil}}" alt="foto_perfil" style="width: 40px; height:40px" >
+                <img class="rounded-circle" src="uploads/foto_clientes/{{foto_cliente}}" alt="foto_perfil" style="width: 40px; height:40px" >
+                
             </td>
             <td>
                 
                 {{identificacion}}
                 
             </td>
-            <td>
+            {{!-- <td>
                 {{nombre}}
                 
             </td>
@@ -58,7 +58,7 @@
             </td>
             <td>
                 {{fecha_ingreso}}
-            </td>
+            </td> --}}
         </tr>
         
         

@@ -1,11 +1,31 @@
 const express = require('express');
 const router = express.Router();
-const usuario = require('../models/usuario');
+const cliente = require('../models/cliente');
 const { isAuthenticated } = require('../helpers/auth');
 
 router.get('/clientes',isAuthenticated,(req, res)=>{
-    //res.send('Usuarios');
-    res.render('usuarios.hbs');
+    
+    console.log("Log: GET /clientes");
+    cliente.find({},function (err, result){
+        var clientes_encontrados = []
+        if(err){
+            console.log(err);
+        }else{
+            console.log(result);
+            
+            for(var i in result){
+                
+
+                clientes_encontrados.push(result[i]);
+                
+            }
+            
+            
+            res.render('clientes',{clientes_encontrados});
+            
+        }
+    }).lean()  //lean permite solucionar el error de la no carga de los valores
+    
 })
 
 router.get('/clientes/nuevo',isAuthenticated,(req,res)=>{
@@ -13,51 +33,29 @@ router.get('/clientes/nuevo',isAuthenticated,(req,res)=>{
     res.render('cliente/nuevo-cliente');
 })
 
-router.post('/cliente/add',isAuthenticated,(req,res)=>{
-    const{identificacion, nombre, apellido, cargo, correo, telefono, eps, fecha_ingreso} = req.body;
+router.post('/clientes/add',isAuthenticated,(req,res)=>{
+    const{identificacion} = req.body;
     var error = []
-    if(!identificacion){
+    if(identificacion.length == 0){
         error.push({text:"Por favor ingrese el campo identificacion"})
-    }
-    if(!nombre){
-        error.push({text:"Por favor ingrese el campo nombre"})
-    }
-    if(!apellido){
-        error.push({text:"Por favor ingrese el campo apellido"})
-    }
-    if(!cargo){
-        error.push({text:"Por favor ingrese el campo cargo"})
-    }
-    if(!correo){
-        error.push({text:"Por favor ingrese el campo correo"})
-    }
-    if(!telefono){
-        error.push({text:"Por favor ingrese el campo telefono"})
-    }
-    if(!eps){
-        error.push({text:"Por favor ingrese el campo eps"})
-    }
-    if(!fecha_ingreso){
-        error.push({text:"Por favor ingrese el campo fecha_ingreso"})
     }
     
     if(error.length > 0){
-        res.render('usuario/nuevo-usuario',{
+        res.render('cliente/nuevo-cliente',{
             error,
-            nombre,
-            cedula,
-            telefono,
-            eps
+            identificacion
         });
     }
     else{
-        const nuevo_usuario = new usuario({identificacion, nombre, apellido, cargo, correo, telefono, eps, fecha_ingreso});
-        nuevo_usuario.save();
+        const foto_cliente = req.files.foto_cliente[0].filename;
+        const certificado = req.files.certificado[0].filename;
+        const nuevo_cliente = new cliente({identificacion,foto_cliente,certificado});
+        nuevo_cliente.save();
 
         //Mandarlo como mensaje informativo en la vista !!
-        console.log("Usuario agregado");
+        console.log("Cliente agregado");
         //const mensaje = "Usuario creado con exito";
-        res.render('usuario/nuevo-usuario',{
+        res.render('cliente/nuevo-cliente',{
             text:"Usuario creado con exito"
         });
     }
@@ -68,5 +66,15 @@ router.post('/cliente/add',isAuthenticated,(req,res)=>{
     
 })
 
+router.get('/clientes/:identificacion',isAuthenticated,(req,res)=>{
+    const identificacion = req.params.identificacion;
+    cliente.findOne({identificacion:identificacion},function(err,result){
+        if(err){
+            console.log(err);
+        }else{
+            res.render('cliente/perfil-cliente',{result});
+        }
+    }).lean()
+})
 
 module.exports = router;

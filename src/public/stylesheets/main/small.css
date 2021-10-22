@@ -18,22 +18,23 @@ html{
 
 
 
-body{
-   
-    
-    color: white;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    padding: 0px;
-    margin: 0;
-    
-    background:url("/images/descarga.png");
-    background-size: 100% 800px;
+body {
+	background: linear-gradient(-45deg, #59F00E, #66B340, #3DA30A, #89F056);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
     z-index: 1;
-    filter: blur(5%);
-    
+}
 
-    
-    
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
 }
 
 
@@ -158,13 +159,24 @@ body{
     
 }
 
-table{
-    margin-top: 50px;
+.tabla{
+    width: 85%;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
     background-color: var(--verde);
     color: var(--azul);
 }
+tr{
+    background-color: white;
+    border-bottom: 1px solid var(--azul);
+}
 
+#titulo-tabla{
 
+    color: white;
+    background-color: var(--azul);
+}
 
 
 tr:hover{

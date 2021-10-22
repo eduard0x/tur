@@ -94,33 +94,87 @@ app.use(session({
 }))
 
 
+//************ storage zone *******************/
 
 
+// // const storage2 = multer.diskStorage({
+    
+// //     destination: function(req, file, cb){
+// //         console.log("FIELDNAME: "+file.fieldname);
+// //         if(file.fieldname === "soat"){
+            
+// //              cb(null,path.join(__dirname,'/public/uploads/soat'))
+// //             // cb(null,'./src/public/uploads/soat')
+// //         }
+// //         else if(file.fieldname === "gases"){
+// //              cb(null,path.join(__dirname,'/public/uploads/gases'))
+// //             // cb(null,path.join('./src/public/uploads/soat'))
+// //         }
+// //     },
+// //     filename: function(req,file,cb){
+// //         console.log("FILENAME: "+file.originalname);
+// //         var placa = req.body.placa;
+// //         if(file.fieldname === "soat"){
+            
+            
+// //             cb(null,file.fieldname+"_"+placa+"_"+uuidv4()+"."+mimeTypes.extension(file.mimetype));
+// //         }
+// //         else if(file.fieldname === "gases"){
+// //             cb(null,file.fieldname+"_"+placa+"_"+uuidv4()+"."+mimeTypes.extension(file.mimetype));
+// //         }
+// //         // cb(null,file.originalname);
+// //     }
+// // })
 
-const storage2 = multer.diskStorage({
+const storage = multer.diskStorage({
     
     destination: function(req, file, cb){
         console.log("FIELDNAME: "+file.fieldname);
-        if(file.fieldname === "soat"){
+        if(file.fieldname === "foto_perfil"){
+            cb(null, path.join(__dirname,'/public/uploads/foto_perfil'))
+        }
+        else if(file.fieldname === "certificado"){
+            cb(null, path.join(__dirname,'/public/uploads/certificados'))
+        }
+        else if(file.fieldname === "soat"){
             
              cb(null,path.join(__dirname,'/public/uploads/soat'))
+                         // cb(null,'./src/public/uploads/soat')
+                     }
+        else if(file.fieldname === "gases"){
+                          cb(null,path.join(__dirname,'/public/uploads/gases'))
+                         // cb(null,path.join('./src/public/uploads/soat'))
+            }
+        else if(file.fieldname === "foto_cliente"){
+            
+             cb(null,path.join(__dirname,'/public/uploads/foto_clientes'))
             // cb(null,'./src/public/uploads/soat')
         }
-        else if(file.fieldname === "gases"){
-             cb(null,path.join(__dirname,'/public/uploads/gases'))
+        else if(file.fieldname === "certificado"){
+             cb(null,path.join(__dirname,'/public/uploads/certificados'))
             // cb(null,path.join('./src/public/uploads/soat'))
         }
     },
     filename: function(req,file,cb){
         console.log("FILENAME: "+file.originalname);
+        
+        var id = req.body.identificacion;
+
         var placa = req.body.placa;
-        if(file.fieldname === "soat"){
-            
-            
+        if(file.fieldname === "foto_perfil"){
+            cb(null,file.fieldname+"_"+id+"_"+uuidv4()+"."+mimeTypes.extension(file.mimetype));
+        }
+        else if(file.fieldname === "soat"){
             cb(null,file.fieldname+"_"+placa+"_"+uuidv4()+"."+mimeTypes.extension(file.mimetype));
         }
         else if(file.fieldname === "gases"){
             cb(null,file.fieldname+"_"+placa+"_"+uuidv4()+"."+mimeTypes.extension(file.mimetype));
+        }
+        else if(file.fieldname === "foto_cliente"){
+            cb(null,file.fieldname+"_"+id+"_"+uuidv4()+"."+mimeTypes.extension(file.mimetype));
+        }
+        else if(file.fieldname === "certificado"){
+            cb(null,file.fieldname+"_"+id+"_"+uuidv4()+"."+mimeTypes.extension(file.mimetype));
         }
         // cb(null,file.originalname);
     }
@@ -135,16 +189,32 @@ const storage2 = multer.diskStorage({
 //     }).single('foto_perfil')
 // );
 
+// app.use(
+//     multer({
+//         storage:storage2,
+        
+//     }).fields([
+//         {name: "soat", maxCount:1},
+//         {name: "gases", maxCount:1}
+        
+//     ])
+// );
+
 app.use(
-    multer({
-        storage:storage2,
+    multer(
+        {
+            storage:storage
+        }
+    ).fields([
+        {name:"foto_perfil"},
+        {name:"soat"},
+        {name:"gases"},
+        {name:"foto_cliente"},
+        {name:"certificado"}
+    ]
         
-    }).fields([
-        {name: "soat", maxCount:1},
-        {name: "gases", maxCount:1}
-        
-    ])
-);
+    )
+)
 
 //Utilización del upload por la aplicación
 

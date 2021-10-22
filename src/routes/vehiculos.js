@@ -3,9 +3,31 @@ const router = express.Router();
 const vehiculo = require('../models/vehiculo');
 const { isAuthenticated } = require('../helpers/auth');
 
+
 router.get('/vehiculos',isAuthenticated,(req, res)=>{
-    //res.send('Usuarios');
-    res.render('usuarios.hbs');
+    console.log("Log: GET /vehiculos");
+    vehiculo.find({},function (err, result){
+        var vehiculos_encontrados = []
+        if(err){
+            console.log(err);
+        }else{
+            console.log(result);
+            
+            for(var i in result){
+                
+
+                vehiculos_encontrados.push(result[i]);
+                
+            }
+            console.log(result[0]);
+            var nombre = result[0].nombre;
+            
+            res.render('vehiculos',{vehiculos_encontrados});
+            
+        }
+    }).lean()  //lean permite solucionar el error de la no carga de los valores
+    
+    
 })
 
 router.get('/vehiculos/nuevo',isAuthenticated,(req,res)=>{
@@ -79,8 +101,8 @@ router.post('/vehiculos/add',isAuthenticated,async (req,res)=>{
             placa
         });
     }else{
-        const soat_prueba = req.files.soat[0].path;
-        const gases_prueba = req.files.soat[0].path;
+        const soat_prueba = req.files.soat[0].filename;
+        const gases_prueba = req.files.soat[0].filename;
         console.log(placa);
         console.log(soat_prueba);
         console.log(gases_prueba);
@@ -93,7 +115,7 @@ router.post('/vehiculos/add',isAuthenticated,async (req,res)=>{
             nombre_entidad:soat_entidad,
             fecha_emision:soat_fecha_emision,
             fecha_vencimiento:soat_fecha_vencimiento,
-            path:req.files.soat[0].path};
+            path:req.files.soat[0].filename};
 
 
         const gases = {
@@ -101,7 +123,7 @@ router.post('/vehiculos/add',isAuthenticated,async (req,res)=>{
             nombre_entidad:gases_entidad,
             fecha_emision: gases_fecha_emision,
             fecha_vencimiento: gases_fecha_vencimiento, 
-            path:req.files.gases[0].path};
+            path:req.files.gases[0].filename};
         archivos.push(soat);
         archivos.push(gases);
         
@@ -127,6 +149,22 @@ router.post('/vehiculos/add',isAuthenticated,async (req,res)=>{
     
     
     
+    
+})
+
+
+router.get('/vehiculos/:placa',isAuthenticated,(req,res)=>{
+    console.log("Log: GET /vehiculos/placa");
+    const placa_vehiculo = req.params.placa;
+    console.log(placa_vehiculo);
+    vehiculo.findOne({placa:placa_vehiculo},function (err,result){
+        if(err){
+            console.log(err);
+        }else{
+            console.log(result);
+            res.render('vehiculo/perfil-vehiculo',{result});
+        }
+    }).lean()
     
 })
 
