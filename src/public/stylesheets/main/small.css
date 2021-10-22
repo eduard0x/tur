@@ -290,3 +290,8 @@ span{
     background: #3dda43 !important;
     width: 100%;
 }
+
+
+.table-responsive{
+    margin: auto 16px;
+}

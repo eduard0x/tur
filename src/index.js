@@ -93,48 +93,31 @@ app.use(session({
     saveUninitialized:true
 }))
 
-var placa_carro = "";
 
 
-const storage = multer.diskStorage({
-    destination: path.join(__dirname,'/public/uploads'),
-    filename: function(req, file, cb){
-        const {identificacion} = req.body;
-        identificacion_usuario = identificacion;
-        
-    }
-})
 
-// const storage2 = multer.diskStorage({
-//     destination: path.join(__dirname,'/public/uploads'),
-//     filename: function(req, file, cb){
-//         const placa = req.body.placa;
-//         placa_carro = placa;
-//         cb(null,placa_carro+"_"+Date.now+"."+mimeTypes.extension(file.mimetype));
-//     }
-// })
 
 const storage2 = multer.diskStorage({
     
     destination: function(req, file, cb){
         console.log("FIELDNAME: "+file.fieldname);
-        if(file.fieldname === "file1"){
+        if(file.fieldname === "soat"){
             
-            cb(null,path.join(__dirname,'/public/uploads/files1'))
+            cb(null,path.join(__dirname,'/public/uploads/soat'))
         }
-        else if(file.fieldname === "file2"){
-            cb(null,path.join(__dirname,'/public/uploads/files2'))
+        else if(file.fieldname === "gases"){
+            cb(null,path.join(__dirname,'/public/uploads/gases'))
         }
     },
     filename: function(req,file,cb){
         console.log("FILENAME: "+file.originalname);
         var placa = req.body.placa;
-        if(file.fieldname === "file1"){
+        if(file.fieldname === "soat"){
             
             
             cb(null,file.fieldname+"_"+placa+"_"+uuidv4()+"."+mimeTypes.extension(file.mimetype));
         }
-        else if(file.fieldname === "file2"){
+        else if(file.fieldname === "gases"){
             cb(null,file.fieldname+"_"+placa+"_"+uuidv4()+"."+mimeTypes.extension(file.mimetype));
         }
         // cb(null,file.originalname);
@@ -155,8 +138,9 @@ app.use(
         storage:storage2,
         
     }).fields([
-        {name: "file1", maxCount:1},
-        {name: "file2", maxCount:1}
+        {name: "soat", maxCount:1},
+        {name: "gases", maxCount:1}
+        
     ])
 );
 
