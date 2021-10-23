@@ -5,16 +5,16 @@
   data-search="true">
         <thead class="table-dark">
             <tr id="titulo-tabla">
-                <th scope="col">
+                <th scope="col" class="small_visible">
                     Foto
                 </td>
                 <th scope="col">
                     Identificación
                 </td>
-                <th scope="col">
+                <th scope="col" class="small_visible">
                     Nombre(s)
                 </th>
-                <th scope="col">
+                <th scope="col" class="small_visible">
                     Apellido(s)
                 </th>
                 <th scope="col">
@@ -34,7 +34,7 @@
             {{#each usuarios_encontrados}}
         
             <tr onclick="window.location='/usuarios/{{identificacion}}';" style="cursor: pointer;">
-            <td>
+            <td class="small_visible">
                 <img class="rounded-circle" src="uploads/foto_perfil/{{foto_perfil}}" alt="foto_perfil" style="width: 40px; height:40px" >
             </td>
             <td>
@@ -42,11 +42,11 @@
                 {{identificacion}}
                 
             </td>
-            <td>
+            <td class="small_visible">
                 {{nombre}}
                 
             </td>
-            <td>
+            <td class="small_visible">
                 {{apellido}}
             </td>
             <td>

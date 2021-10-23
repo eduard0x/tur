@@ -4,10 +4,10 @@
   data-search="true">
         <thead>
             <tr id="titulo-tabla">
-                <th scope="col">
+                <th scope="col" class="small_visible">
                     Foto
                 </td>
-                <th scope="col">
+                <th scope="col" class="small_visible">
                     identificacion
                 </td>
                 {{!-- <th scope="col">
@@ -33,11 +33,11 @@
             {{#each clientes_encontrados}}
         
             <tr onclick="window.location='/clientes/{{identificacion}}';" style="cursor: pointer;">
-            <td>
+            <td class="small_visible">
                 <img class="rounded-circle" src="uploads/foto_clientes/{{foto_cliente}}" alt="foto_perfil" style="width: 40px; height:40px" >
                 
             </td>
-            <td>
+            <td class="small_visible">
                 
                 {{identificacion}}
                 

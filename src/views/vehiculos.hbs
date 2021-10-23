@@ -4,10 +4,10 @@
   data-search="true">
         <thead class="table-dark">
             <tr id="titulo-tabla">
-                <th scope="col">
+                <th scope="col" class="small_visible">
                     Foto
                 </td>
-                <th scope="col">
+                <th scope="col" class="small_visible">
                     Placa
                 </td>
                 {{!-- <th scope="col">
@@ -33,11 +33,11 @@
             {{#each vehiculos_encontrados}}
         
             <tr onclick="window.location='/vehiculos/{{placa}}';" style="cursor: pointer;">
-            <td>
+            <td class="small_visible">
                 <p>imagen</p>
                 {{!-- <img class="rounded-circle" src="uploads/{{foto_perfil}}" alt="foto_perfil" style="width: 40px; height:40px" > --}}
             </td>
-            <td>
+            <td class="small_visible">
                 
                 {{placa}}
                 
