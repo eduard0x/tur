@@ -24,6 +24,10 @@
     
     
     <link rel="shortcut icon" href="/images/lacoste.png">
+
+    <!--Alertas-->
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
  
@@ -136,42 +140,68 @@
         <div id="container-small" class="container-no-visible">
             <div id="options-small" >
             
-            <a href="/perfil">Mi perfil</a>
-            <a href="javascript:void(0);" id="empleados-small" onclick="mostrar('empleados-small')">Empleados</a>
+            <a href="/perfil">
+                <span class="material-icons md-24">person</span> 
+                <span>Mi perfil</span>
+            
+            </a>
+            <a href="javascript:void(0);" id="empleados-small" onclick="mostrar('empleados-small')">
+                <span class="material-icons md-24">group_work</span> 
+                <span>Empleados</span>
+                </a>
             <div id="opciones-empleados-small" class="opciones" style="display: none;">
                 <a href="/usuarios/nuevo">Nuevo empleado</a>
                 <a href="/usuarios">Lista de empleados</a>
                 
             </div>
-            <a href="javascript:void(0);" id="clientes-small" onclick="mostrar('clientes-small')">Clientes</a>
+            <a href="javascript:void(0);" id="clientes-small" onclick="mostrar('clientes-small')">
+                <span class="material-icons md-24">people</span> 
+                <span>Clientes</span>
+                </a>
             <div id="opciones-clientes-small" class="opciones" style="display: none;">
                 <a href="/clientes/nuevo">Nuevo cliente</a>
                 <a href="/clientes">Lista de clientes</a>
                 
             </div>
-            <a href="javascript:void(0);" id="vehiculos-small" onclick="mostrar('vehiculos-small')">Vehiculos</a>
+            <a href="javascript:void(0);" id="vehiculos-small" onclick="mostrar('vehiculos-small')">
+                <span class="material-icons md-24">commute</span> 
+                <span>Vehiculos</span>
+                </a>
             <div id="opciones-vehiculos-small" class="opciones" style="display: none;">
                 <a href="/vehiculos/nuevo">Nuevo vehiculo</a>
                 <a href="/vehiculos">Lista de vehiculos</a>
                 
             </div>
-            <a href="javascript:void(0);" id="proveedores-small" onclick="mostrar('proveedores-small')">Proveedores</a>
+            <a href="javascript:void(0);" id="proveedores-small" onclick="mostrar('proveedores-small')">
+                <span class="material-icons md-24">local_shipping</span> 
+                <span>Proveedores</span> 
+                </a>
             <div id="opciones-proveedores-small" class="opciones" style="display: none;">
                 <a href="/proveedores/nuevo">Nuevo proveedor</a>
                 <a href="/proveedores">Lista de proveedores</a>
                 
             </div>
-            <a href="/logout">Salir</a>
+            <a href="/logout">
+            <span class="material-icons md-24">
+                        logout
+                        </span>
+            Salir</a>
 
         </div>
         <div></div>
         </div>
         
-        <br>
-        <main class="main-container">
-            
-            {{{body}}}
-        </main>
+        <div class="bg"></div>
+        <div class="bg bg2"></div>
+        <div class="bg bg3"></div>
+        <div class="content">
+            <br>
+            <main class="main-container">
+                    
+                    {{{body}}}
+            </main>
+        </div>
+        
             
        
      
@@ -184,10 +214,13 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
-
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <!--burguer menu-->
 <script>
+                
+          
+                    
                     function myFunction() {
                         var display = document.getElementById('container-small');
                         if(display.className === "container-visible"){
@@ -213,6 +246,7 @@
                     }
                 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" integrity="sha256-qM7QTJSlvtPSxVRjVWNM2OfTAz/3k5ovHOKmKXuYMO4=" crossorigin="anonymous"></script>
+<script src="js/alert.js"></script>
 <body> 
 </body>
 </html>

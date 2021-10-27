@@ -3,9 +3,19 @@ console.log("Log: modulo usuarios");
 const express = require('express');
 const router = express.Router();
 const usuario = require('../models/usuario');
+const vehiculo = require('../models/vehiculo');
 const passport = require('passport');
 const { isAuthenticated } = require('../helpers/auth'); 
 const path = require('path');
+
+//Emails
+var nodemailer = require('nodemailer');
+
+
+
+  
+
+
 //Carga de archivos
 
 
@@ -15,12 +25,70 @@ const path = require('path');
 
 
 
-router.get('/home',isAuthenticated,(req, res)=>{
-    console.log("Log: GET /home");
+router.get('/home',isAuthenticated,function(req, res){
     
-     res.render('home');
-})
+    vehiculo.find({},function(err,result){
+        var vehiculos_vencidos = []
+        result.forEach(v => {
+            var estaVencido = false;
+            v.archivos.forEach(archivo=>{
+                var fecha_vencimiento = archivo.fecha_vencimiento;
+                
+                
 
+                const fecha = new Date(fecha_vencimiento).setHours(0,0,0,0);
+                const hoy = new Date(Date.now()).setHours(0,0,0,0);
+                
+                if(hoy>=fecha && estaVencido==false){
+                    
+                    vehiculos_vencidos.push(v);
+                    console.log("Hay un papel vencido");
+                    estaVencido = true;
+                    
+                }
+                
+            });
+           
+        });
+        var transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+              user: 'ingenieromiguelfuentes@gmail.com',
+              pass: 'Kqxa8SL4eizl'
+            }
+          });
+        var mensaje = `<b><h1>Existen papeles vencidos que requieren tu atención.</h1></b>`;
+
+        vehiculos_vencidos.forEach(v=>{
+            var minimensaje1 = `<h2>Vehiculo con placas ${v.placa}</h2>`;
+            v.archivos.forEach(a=>{
+                const minimensaje2 = `<h3>Fecha vencimiento de ${a.nombre}: ${a.fecha_vencimiento}</h3>`;
+                minimensaje1 += minimensaje2;
+                
+            })
+            mensaje += minimensaje1;
+        })
+                                   
+          
+          
+        
+          var mailOptions = {
+            from: 'ingenieromiguelfuentes@gmail.com',
+            to: 'meduardofuentesc@gmail.com',
+            subject: 'Tur Colombia',
+            html: mensaje
+          };
+        
+        transporter.sendMail(mailOptions, function(error, info){
+            if (error) {
+              console.log(error);
+            } else {
+              console.log('Email enviado: ' + info.response);
+            }
+          });
+     res.render('home',{vehiculos_vencidos});
+})
+})
 
 
 
@@ -138,8 +206,8 @@ router.post('/usuarios/add',isAuthenticated,async (req,res)=>{
             res.render('usuario/nuevo-usuario',{error});
         }else{
             console.log("Log:Creando usuario");
-            const foto_perfil = "prueba_perfil.png";
-            const certificado = "prueba_certificado.pdf";
+            const foto_perfil = req.files.foto_perfil[0].filename;
+            const certificado = req.files.certificado[0].filename;
             const nuevo_usuario = new usuario({tipo, identificacion, nombre, apellido, cargo, profesion, direccion, correo, telefono, eps, fecha_ingreso, numero_cuenta, banco, tipo_cuenta, pension, foto_perfil, certificado, password});
             console.log(nuevo_usuario.password);
             nuevo_usuario.password =await nuevo_usuario.encryptPassword(password);

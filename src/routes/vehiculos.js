@@ -7,6 +7,7 @@ const { isAuthenticated } = require('../helpers/auth');
 router.get('/vehiculos',isAuthenticated,(req, res)=>{
     console.log("Log: GET /vehiculos");
     vehiculo.find({},function (err, result){
+        const titulo_tabla = "Vehiculos";
         var vehiculos_encontrados = []
         if(err){
             console.log(err);
@@ -22,13 +23,53 @@ router.get('/vehiculos',isAuthenticated,(req, res)=>{
             console.log(result[0]);
             var nombre = result[0].nombre;
             
-            res.render('vehiculos',{vehiculos_encontrados});
+            res.render('vehiculos',{vehiculos_encontrados,titulo_tabla});
             
         }
     }).lean()  //lean permite solucionar el error de la no carga de los valores
     
     
 })
+
+
+router.get('/vehiculos/vencidos',isAuthenticated,(req, res)=>{
+    vehiculo.find({},function (err, result){
+        const titulo_tabla = "Vehiculos vencidos";
+        console.log(result);
+        var vehiculos_encontrados = []
+        if(err){
+            console.log(err);
+        }else{
+            result.forEach(v => {
+                var estaVencido = false;
+                v.archivos.forEach(archivo=>{
+                    var fecha_vencimiento = archivo.fecha_vencimiento;
+                    
+                    
+    
+                    const fecha = new Date(fecha_vencimiento).setHours(0,0,0,0);
+                    const hoy = new Date(Date.now()).setHours(0,0,0,0);
+                    
+                    if(hoy>=fecha && estaVencido==false){
+                        
+                        vehiculos_encontrados.push(v);
+                        console.log("Hay un papel vencido");
+                        estaVencido = true;
+                        
+                    }
+                    
+                });
+               
+            });
+           
+            
+            res.render('vehiculos',{vehiculos_encontrados,titulo_tabla});
+            
+        }
+    }).lean()
+})
+
+
 
 router.get('/vehiculos/nuevo',isAuthenticated,(req,res)=>{
     console.log(req.body);
