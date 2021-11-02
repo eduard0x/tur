@@ -1,0 +1,32 @@
+<form action="/vehiculos/verificar" method="POST" class="formulario-nuevo" >
+            <div class="row">
+            <div class="form-group col-md-4">
+            <label for="exampleInputPassword1" class="form-label">*Placa</label>
+            <div style="display: flex; flex-direction:row;">
+                <input type="text" name="placa" class="form-control">
+                 <button class="btn btn-primary boton" type="submit" >Verificar</button>  
+            </div>
+            
+            </div>
+            <div class="form-group col-md-4">
+                
+               
+            </div>
+            
+            </div>
+            {{#if existencia}}
+                <script>
+                    Swal.fire({
+                                    
+                        title: 'La placa ya está registrada',
+                                        
+                        icon: 'error',
+                        confirmButtonText: 'OK'
+                                        
+                                        
+                                        
+                                    })
+                </script>
+            {{/if}}
+            
+</form>

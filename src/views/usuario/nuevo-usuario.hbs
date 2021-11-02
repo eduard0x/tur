@@ -110,33 +110,30 @@
         </div>
         </div>
         <br>
-        <a class="acordeon" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-            <h5>Información de contacto</h5><span class="material-icons md-24">expand_more</span>
-        </a>
-            <div class="row">
-            <div class="form-group col-md-6">
+        <button type="button" class="accordion">Información de contacto<span class="material-icons md-24">expand_more</span></button>
+        <div class="row panel" style="display: none;">
+            <div class="form-group col-md-4">
             <label for="exampleInputPassword1" class="form-label">Email</label>
             <input type="text" name="correo"  class="form-control">    
             </div>
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-4">
                 <label for="exampleInputPassword1" class="form-label">Telefono</label>
                 <input type="text" name="telefono"  class="form-control">    
             </div>
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-4">
                 <label for="example" class="form-label"> Dirección</label>
                 <input type="text" name="direccion" class="form-control">
             </div>
-
-        </div>
         <br>
+        </div>
+        <button type="button" class="accordion">Contacto emergente<span class="material-icons md-24">expand_more</span></button>
+        <div></div>
+        <button type="button" class="accordion">Educación<span class="material-icons md-24">expand_more</span></button>
         
-        <a class="acordeon" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-            <h5>Contacto emergente</h5><span class="material-icons md-24">expand_more</span>
-        </a>
-        <a class="acordeon" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-            <h5>Educación</h5><span class="material-icons md-24">expand_more</span>
-        </a>
-        <div class="row">
+        
+        
+        
+        <div class="row panel">
             <div class="form-group col-md-12">
                 <label for="example" class="form-label">Nombre Curso periodico</label>
                 <input type="text" name="nombre_curso" class="form-control">
@@ -156,10 +153,9 @@
             </div>
         </div>
       </a>
-        <a class="acordeon" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-            <h5>Pagos</h5><span class="material-icons md-24">expand_more</span>
-        </a>
-        <div class="row">
+        <button type="button" class="accordion">Pagos<span class="material-icons md-24">expand_more</span></button>
+        
+        <div class="row panel">
             <div class="form-group col-md-6">
             <label for="exampleInputPassword1" class="form-label">Número cuenta bancaria</label>
             <input type="text" name="numero_cuenta"  class="form-control" >
@@ -200,10 +196,9 @@
             </select>  
             </div>
         </div>
-        <a class="acordeon" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-            <h5>Credenciales de acceso</h5><span class="material-icons md-24">expand_more</span>
-        </a>
-        <div class="row">
+        <button type="button" class="accordion">Credenciales de acceso<span class="material-icons md-24">expand_more</span></button>
+        
+        <div class="row panel">
             <div class="form-group col-md-6">
             <label for="exampleInputPassword1" class="form-label">Contraseña</label>
             <input type="password" name="password"  class="form-control">    
@@ -223,3 +218,41 @@
     </div>
     
 </form>
+<script>
+var acc = document.getElementsByClassName("accordion");
+
+
+
+
+
+
+
+
+var i;
+
+for (i = 0; i < acc.length; i++) {
+    console.log(i);
+  acc[i].addEventListener("click", function() {
+    /* Toggle between adding and removing the "active" class,
+    to highlight the button that controls the panel */
+    
+    this.classList.toggle("active");
+
+    /* Toggle between hiding and showing the active panel */
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+    if (panel.style.maxHeight) {
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    }
+  });
+}
+
+
+
+</script>

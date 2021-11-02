@@ -6,8 +6,8 @@ console.log("Log: Colección usuario enlazada");
 
 //Esquema de la colección usuario
 const UsuarioSchema = new Schema({
-    tipo:{type:String, required:true},
-    identificacion: {type: String, required:true},
+    tipo:{type:String, required:true},//Tipo de documento: TI, CC, CE
+    identificacion: {type: String, required:true}, //Número de identificación
     nombre: {type: String, required:true},
     apellido: {type: String, required:true},
     cargo: {type: String, required:true},
@@ -19,34 +19,20 @@ const UsuarioSchema = new Schema({
     fecha_ingreso: {type: Date, required:true},
     numero_cuenta:{type: String, required:true},
     banco:{type:String, required:true},
-    tipo_cuenta: {type:String, required:true},
+    tipo_cuenta: {type:String, required:true}, //Cuenta de ahorro o corriente
     pension: {type:String, required:true},
-    foto_perfil:{type:String,required:true},
+    foto_perfil:{type:String,required:true}, //Nombre del archivo que servirá para luego buscarlo en su respectiva carpeta
     certificado:{type:String,required:true},
-    password:{type:String, required:true}
+    password:{type:String, required:true} // Password cifrado con bcrypt
     
-    //ADICIONES
-    //tipo de documento
-    //direccion
-    //datos de de emergencia
-    //profesion
-    //cuenta bancaria
-    //nombre de los bancos
-    //ahorro o corriente
-    //fondo de pensiones
-    //Educación; con fecha de vencimiento de los cursos y certificados.
-
 });
 
     UsuarioSchema.methods.encryptPassword = async (password) => {
         console.log("Log: Encriptando contraseña")
         const salt = await bcrypt.genSalt(10);
+        //Hash generado a partir de la contrasena
         const hash = await bcrypt.hash(password,salt);
 
-        //start debug
-        console.log("HASH GENERADO A PARTIR DE LA CONTRASEÑA")
-        console.log(hash);
-        // end debugs
         return hash;
     }
 
@@ -56,4 +42,5 @@ const UsuarioSchema = new Schema({
         const coincidencia = await bcrypt.compare(password, this.password);
         return coincidencia;
     }
+// Exportación del modelo de usuario con nombre Usuario
 module.exports = moongose.model('Usuario',UsuarioSchema);

@@ -1,132 +1,283 @@
-<form action="/vehiculos/add" method="POST" class="formulario-nuevo" enctype="multipart/form-data">
-    <h1 class="card-header">{{result.placa}}</h1>
-    <div class="card-body">
-        <div class="row">
-            <div class="form-group col-md-4">
-            <label for="exampleInputPassword1" class="form-label">Placa</label>
-            <input type="text" name="placa" class="form-control" value="{{result.placa}}">    
+<div class="tab">
+  <button class="tablinks active" onclick="openCity(event, 'datos-basicos')">Datos básicos</button>
+  <button class="tablinks" onclick="openCity(event, 'mas-datos')">Más datos</button>
+  <button class="tablinks" onclick="openCity(event, 'compra')">Compra</button>
+  <button class="tablinks" onclick="openCity(event, 'fotos')">Fotos</button>
+</div>
+<form action="/vehiculos/modificar" method="POST" class="formulario-nuevo" enctype="multipart/form-data">
+<div id="datos-basicos" class="tabcontent" style="display: block; border: 1px solid rgb(6, 6, 41)">
+        
+            <div class="card-body">
+                <div class="row">
+                    <div class="form-group col-md-4">
+                        <label for="exampleInputPassword1" class="form-label">Placa</label>
+                        <input type="text" name="placa" class="form-control" value="{{result.placa}}">
+                    </div>
+        
+        
+        
+        
+                    <!--  Adición dinamica de archivos . Proximas actualziaciones pendiente -->
+                    {{!-- <div>
+                        <button id="boton_agregar" class="form-control" style="background-color: #000000; color:white;">
+                            Añadir archivo
+                        </button>
+                    </div> --}}
+                    <div class="form-group col-md-4">
+                        <label for="exampleInputPassword1" class="form-label">Km actual</label>
+                        <input type="text" name="km" class="form-control" value="{{result.km}}">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="exampleInputPassword1" class="form-label">Marca</label>
+                        <input type="text" name="marca" class="form-control" value="{{result.marca}}">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="exampleInputPassword1" class="form-label">Linea</label>
+                        <input type="text" name="linea" class="form-control" value="{{result.linea}}">
+                    </div>
+        
+                    <div class="form-group col-md-4">
+                        <label for="exampleInputPassword1" class="form-label">Categoria</label>
+                        <select name="categoria" class="form-select" aria-label="Default select example">
+                            <option selected>{{result.categoria}}</option>
+                            <option value="campero">Campero</option>
+                            <option value="camioneta">Camioneta</option>
+                            <option value="camion_sencillo">Camion sencillo</option>
+                            <option value="moto">moto</option>
+                            <option value="grua_sc_4_8">Grúa sobre camión 4x8</option>
+                            <option value="excavadora">Excavadora</option>
+        
+        
+                        </select>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <!--eLIMINAR-->
+                        <label for="exampleInputPassword1" class="form-label">Centro de costos</label>
+                        <input type="text" name="centro_costos" class="form-control" value="{{result.centro_costos}}">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="exampleInputPassword1" class="form-label">Ciudad</label>
+                        <input type="text" name="ciudad" class="form-control" value="{{result.ciudad}}">
+                    </div>
+                    {{!-- <div class="form-group col-md-4">
+                        <label for="exampleInputPassword1" class="form-label">Conductor actual</label>
+                        <select name="conducto_actual" class="form-select" aria-label="Default select example">
+                            <option selected>Elija una opción</option>
+                            <option value="emp1">Conductor no asignado</option>
+                            <option value="emp1">Juan Esteban Sepulveda(1234567890)</option>
+                            <option value="emp2">Maria Alejandra Ballester(55673513)</option>
+                            <option value="emp3">Francisco José Silva(545674567)</option>
+                            <option value="emp4">Martha Federica Galviz(78376272386)</option>
+                            <option value="emp5">Pablo Eduardo Cañizares(46751234423)</option>
+        
+        
+                        </select>
+                    </div> --}}
+        
+        
+        
+        
+                    <a class="acordeon" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
+                        aria-controls="collapseExample">
+                        <h5>SOAT</h5><span class="material-icons md-24">expand_more</span>
+                    </a>
+                    <div class="form-group col-md-4">
+        
+                        <label for="exampleInputPassword1" class="form-label">Nombre aseguradora</label>
+                        <input type="text" name="soat_entidad" class="form-control" value="">
+                    </div>
+                    <div class="form-group col-md-4">
+        
+                        <label for="exampleInputPassword1" class="form-label">Fecha emisión</label>
+                        <input type="date" name="soat_fecha_emision" class="form-control" value="">
+                    </div>
+                    <div class="form-group col-md-4">
+        
+                        <label for="exampleInputPassword1" class="form-label">Fecha vencimiento</label>
+                        <input type="date" name="soat_fecha_vencimiento" class="form-control" value="">
+                    </div>
+                    <div class="form-group col-md-4">
+        
+                        <label for="exampleInputPassword1" class="form-label">Archivo</label>
+                        <a href="#">PDF</a>
+                        {{!-- <input type="file" name="soat" class="form-control"> --}}
+                    </div>
+        
+                    <a class="acordeon" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
+                        aria-controls="collapseExample">
+                        <h5>Gases</h5><span class="material-icons md-24">expand_more</span>
+                    </a>
+        
+        
+                    <div class="form-group col-md-4">
+        
+                        <label for="exampleInputPassword1" class="form-label">Lugar de realización</label>
+                        <input type="text" name="gases_entidad" class="form-control" value="">
+                    </div>
+                    <div class="form-group col-md-4">
+        
+                        <label for="exampleInputPassword1" class="form-label">Fecha de realización</label>
+                        <input type="date" name="gases_fecha_emision" class="form-control" value="">
+                    </div>
+                    <div class="form-group col-md-4">
+        
+                        <label for="exampleInputPassword1" class="form-label">Fecha vencimiento</label>
+                        <input type="date" name="gases_fecha_vencimiento" class="form-control" value="">
+                    </div>
+        
+                    <div class="form-group col-md-4">
+        
+                        <label for="exampleInputPassword1" class="form-label">Comprobante</label>
+                        <a href="#">PDF</a>
+                        {{!-- <input type="file" name="gases" class="form-control"> --}}
+                    </div>
+                </div>
+        
+                <br>
+                
             </div>
-            
-
         
         
-        {{!-- Adición dinamica de archivos . Proximas actualziaciones pendiente --}}
-        {{!-- <div>
-            <button id="boton_agregar"class="form-control" style="background-color: #000000; color:white;">
-                Añadir archivo
-            </button>
-        </div> --}}
-        <div class="form-group col-md-4">
-            <label for="exampleInputPassword1" class="form-label">Km actual</label>
-            <input type="text" name="km"  class="form-control" value="{{result.km}}">    
-        </div>
-        <div class="form-group col-md-4">
-            <label for="exampleInputPassword1" class="form-label">Marca</label>
-            <input type="text" name="marca"  class="form-control" value="{{result.marca}}">    
-        </div>
-        <div class="form-group col-md-4">
-            <label for="exampleInputPassword1" class="form-label">Linea</label>
-            <input type="text" name="linea"  class="form-control" value="{{result.linea}}">    
-        </div>
-       
-        <div class="form-group col-md-4">
-            <label for="exampleInputPassword1" class="form-label">Categoria</label>
-            <select name="categoria" class="form-select" aria-label="Default select example">
-                <option selected>{{result.categoria}}</option>
-                <option value="campero">Campero</option>
-                <option value="camioneta">Camioneta</option>
-                <option value="camion_sencillo">Camion sencillo</option>
-                <option value="moto">moto</option>
-                <option value="grua_sc_4_8">Grúa sobre camión 4x8</option>
-                <option value="excavadora">Excavadora</option>
-                
-                
-            </select>      
-        </div>
-        <div class="form-group col-md-4">
-            <label for="exampleInputPassword1" class="form-label">Centro de costos</label>
-            <input type="text" name="centro_costos"  class="form-control" value="{{result.centro_costos}}">    
-        </div>
-        <div class="form-group col-md-4">
-            <label for="exampleInputPassword1" class="form-label">Ciudad</label>
-            <input type="text" name="ciudad"  class="form-control" value="{{result.ciudad}}">    
-        </div>
-        {{!-- <div class="form-group col-md-4">
-            <label for="exampleInputPassword1" class="form-label">Conductor actual</label>
-            <select name="conducto_actual" class="form-select" aria-label="Default select example">
-                <option selected>Elija una opción</option>
-                <option value="emp1">Conductor no asignado</option>
-                <option value="emp1">Juan Esteban Sepulveda(1234567890)</option>
-                <option value="emp2">Maria Alejandra Ballester(55673513)</option>
-                <option value="emp3">Francisco José Silva(545674567)</option>
-                <option value="emp4">Martha Federica Galviz(78376272386)</option>
-                <option value="emp5">Pablo Eduardo Cañizares(46751234423)</option>
-               
-                
-            </select>  
-        </div> --}}
+</div>
+<div id="mas-datos" class="tabcontent">
 
-        
-            
+            <div class="card-body">
+                <div class="row">
+                    <div class="form-group col-md-4">
+                        <label for="exampleInputPassword1" class="form-label">Identificación auxiliar</label>
+                        <input type="text" name="id_auxiliar" class="form-control">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="exampleInputPassword1" class="form-label">Imei GPS</label>
+                        <input type="text" name="imei_gps" class="form-control">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="exampleInputPassword1" class="form-label">VIN</label>
+                        <input type="text" name="vin" class="form-control">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="exampleInputPassword1" class="form-label">Propietario</label>
+                        <input type="text" name="propietario" class="form-control">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="exampleInputPassword1" class="form-label">Motor</label>
+                        <input type="text" name="motor" class="form-control">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="exampleInputPassword1" class="form-label">Nro motor</label>
+                        <input type="text" name="numero_motor" class="form-control">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="exampleInputPassword1" class="form-label">Nro. Chasis</label>
+                        <input type="text" name="numero_chasis" class="form-control">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="exampleInputPassword1" class="form-label">Nro. Serie</label>
+                        <input type="text" name="numero_serie" class="form-control">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="exampleInputPassword1" class="form-label">Tipo carrocería</label>
+                        <input type="text" name="tipo_carroceria" class="form-control">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="exampleInputPassword1" class="form-label">Cant. sillas</label>
+                        <input type="text" name="cantidad_sillas" class="form-control">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="exampleInputPassword1" class="form-label">Toneladas carga</label>
+                        <input type="text" name="toneladas_carga" class="form-control">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="exampleInputPassword1" class="form-label">Cod. Fasecolda</label>
+                        <input type="text" name="cod_fasecolda" class="form-control">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="exampleInputPassword1" class="form-label">Tipo servicio</label>
+                        <input type="text" name="imei_gps" class="form-control">
+                    </div>
+                </div>
+            </div>
 
-        <a class="acordeon" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-            <h5>SOAT</h5><span class="material-icons md-24">expand_more</span>
-        </a>
-        <div class="form-group col-md-4">
-            
-                <label for="exampleInputPassword1" class="form-label">Nombre aseguradora</label>
-                <input type="text" name="soat_entidad" class="form-control" value="">    
-        </div>
-        <div class="form-group col-md-4">
-            
-                <label for="exampleInputPassword1" class="form-label">Fecha emisión</label>
-                <input type="date" name="soat_fecha_emision" class="form-control" value="">    
-        </div>
-        <div class="form-group col-md-4">
-            
-                <label for="exampleInputPassword1" class="form-label">Fecha vencimiento</label>
-                <input type="date" name="soat_fecha_vencimiento" class="form-control" value="">    
-        </div>
-        <div class="form-group col-md-4">
-                
-                <label for="exampleInputPassword1" class="form-label">Archivo</label>
-                <a href="#">PDF</a>
-                {{!-- <input type="file" name="soat" class="form-control">     --}}
-        </div>
-        
-        <a class="acordeon" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-            <h5>Gases</h5><span class="material-icons md-24">expand_more</span>
-        </a>
-        
 
-        <div class="form-group col-md-4">
-            
-                <label for="exampleInputPassword1" class="form-label">Lugar de realización</label>
-                <input type="text" name="gases_entidad" class="form-control" value="">    
-        </div>
-        <div class="form-group col-md-4">
-            
-                <label for="exampleInputPassword1" class="form-label">Fecha de realización</label>
-                <input type="date" name="gases_fecha_emision" class="form-control" value="">    
-        </div>
-        <div class="form-group col-md-4">
-            
-                <label for="exampleInputPassword1" class="form-label">Fecha vencimiento</label>
-                <input type="date" name="gases_fecha_vencimiento" class="form-control" value="">    
-        </div>
-   
-        <div class="form-group col-md-4">
-            
-            <label for="exampleInputPassword1" class="form-label">Comprobante</label>
-            <a href="#">PDF</a>
-            {{!-- <input type="file" name="gases" class="form-control">     --}}
-        </div>
-        </div>
-
-        <br>
-        <center>
-            <button type="submit"  class="btn btn-primary boton">Registrar vehiculo</button>
-        </center>
-    </div>
+</div>
+<div id="compra" class="tabcontent">
+           <div class="card-body">
+                <div class="row">
+                    <div class="form-group col-md-4">
+                        <label for="exampleInputPassword1" class="form-label">Fecha compra</label>
+                        <input type="date" name="id_auxiliar" class="form-control">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="exampleInputPassword1" class="form-label">Odómetro compra</label>
+                        <input type="text" name="odometro_compra" class="form-control">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="exampleInputPassword1" class="form-label">Precio compra</label>
+                        <input type="text" name="precio_compra" class="form-control">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="exampleInputPassword1" class="form-label">Precio accesorios</label>
+                        <input type="text" name="precio_accesorios" class="form-control">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="exampleInputPassword1" class="form-label">Vendedor / Agencia</label>
+                        <input type="text" name="precio_compra" class="form-control">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="exampleInputPassword1" class="form-label">Nro. Dec. Importanción</label>
+                        <input type="text" name="nro_dec_importacion" class="form-control">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="exampleInputPassword1" class="form-label">Fecha Dec. Importación</label>
+                        <input type="date" name="fecha_dec_importacion" class="form-control">
+                    </div>
+                </div>
+            </div>
     
+</div>
+<div id="fotos" class="tabcontent">
+    <form action="/vehiculo/nueva_imagen">
+        <label for="file-upload" class="custom-file-upload">
+            <span class="material-icons">
+                add_a_photo
+            </span>
+                Nueva imagen
+        </label>
+        <input id="file-upload" name="foto_vehiculo" type="file" />
+    
+    
+    </form>
+    {{#each fotos}}
+        <img src="uploads/fotos_vehiculos/{{nombre}}" style="height: 100px; width:100px">
+    {{/each}}
+    
+</div>
+<center>
+    <button type="submit" class="btn btn-primary boton">Modificar</button>
+</center>
 </form>
+
+<script>
+    function openCity(evt, tabName) {
+  // Declare all variables
+  var i, tabcontent, tablinks;
+
+  // Get all elements with class="tabcontent" and hide them
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+
+  // Get all elements with class="tablinks" and remove the class "active"
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+    tablinks[i].style = "border: none";
+  }
+    
+  // Show the current tab, and add an "active" class to the button that opened the tab
+  document.getElementById(tabName).style.display = "block";
+  evt.currentTarget.className += " active";
+  evt.currentTarget.style = "border: 1px solid rgb(6, 6, 41)";
+}
+</script>

@@ -1,31 +1,31 @@
 {{#each error}}
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-      <strong>
-        {{text}} 
-      </strong>
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <strong>
+        {{text}}
+    </strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
 {{/each}}
 {{#if mensaje}}
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-      <strong>
-        {{mensaje}} 
-      </strong>
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>
+        {{mensaje}}
+    </strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
 {{/if}}
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
-    $(document).ready(function(){
+    $(document).ready(function () {
         var contador = 0;
-        $("#boton_agregar").click(function(){
+        $("#boton_agregar").click(function () {
             contador++;
             console.log(contador);
             var elemento = ` <div class="row">
             <div class="form-group col-md-6">
                 <label for="example" class="form-label">Nombre archivo</label>
-                <input type="text" name="nombre_archivo_`+contador+`" class="form-control">
+                <input type="text" name="nombre_archivo_`+ contador + `" class="form-control">
             </div>
             {{!-- 
             <div class="form-group col-md-4">
@@ -53,129 +53,213 @@
 <form action="/vehiculos/add" method="POST" class="formulario-nuevo" enctype="multipart/form-data">
     <h1 class="card-header">Nuevo vehiculo</h1>
     <div class="card-body">
-        <div class="row">
+
+
+
+
+
+
+
+
+
+
+        <button type="button" class="accordion">Información básica<span
+                class="material-icons md-24">expand_more</span></button>
+        {{!-- Adición dinamica de archivos . Proximas actualziaciones pendiente --}}
+
+        <div class="row panel">
             <div class="form-group col-md-4">
-            <label for="exampleInputPassword1" class="form-label">Placa</label>
-            <input type="text" name="placa" class="form-control">    
+                <label for="exampleInputPassword1" class="form-label">Placa</label>
+                <input type="text" name="placa" class="form-control" value="{{placa}}" 
+                    style="background-color: rgb(5, 5, 51); color:rgb(96, 245, 96)">
             </div>
             
+            <div class="form-group col-md-4">
+                <label for="exampleInputPassword1" class="form-label">*Marca</label>
+                <input type="text" name="marca" class="form-control">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="exampleInputPassword1" class="form-label">*Linea</label>
+                <input type="text" name="linea" class="form-control">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="exampleInputPassword1" class="form-label">Modelo</label>
+                <input type="text" name="modelo" class="form-control">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="exampleInputPassword1" class="form-label">Color</label>
+                <input type="text" name="color" class="form-control">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="exampleInputPassword1" class="form-label">*Tipo vehiculo</label>
+                <select name="tipo_vehiculo" class="form-select" aria-label="Default select example">
+                    <option selected>Elija una opción</option>
+                    <option value="campero">Campero</option>
+                    <option value="camioneta">Camioneta</option>
+                    <option value="camion_sencillo">Camion sencillo</option>
+                    <option value="moto">moto</option>
+                    <option value="grua_sc_4_8">Grúa sobre camión 4x8</option>
+                    <option value="excavadora">Excavadora</option>
 
-        
-        
-        {{!-- Adición dinamica de archivos . Proximas actualziaciones pendiente --}}
-        {{!-- <div>
-            <button id="boton_agregar"class="form-control" style="background-color: #000000; color:white;">
-                Añadir archivo
-            </button>
-        </div> --}}
-        <div class="form-group col-md-4">
-            <label for="exampleInputPassword1" class="form-label">Km actual</label>
-            <input type="text" name="km"  class="form-control">    
-        </div>
-        <div class="form-group col-md-4">
-            <label for="exampleInputPassword1" class="form-label">Marca</label>
-            <input type="text" name="marca"  class="form-control">    
-        </div>
-        <div class="form-group col-md-4">
-            <label for="exampleInputPassword1" class="form-label">Linea</label>
-            <input type="text" name="linea"  class="form-control">    
-        </div>
-       
-        <div class="form-group col-md-4">
-            <label for="exampleInputPassword1" class="form-label">Categoria</label>
-            <select name="categoria" class="form-select" aria-label="Default select example">
-                <option selected>Elija una opción</option>
-                <option value="campero">Campero</option>
-                <option value="camioneta">Camioneta</option>
-                <option value="camion_sencillo">Camion sencillo</option>
-                <option value="moto">moto</option>
-                <option value="grua_sc_4_8">Grúa sobre camión 4x8</option>
-                <option value="excavadora">Excavadora</option>
-                
-                
-            </select>      
-        </div>
-        <div class="form-group col-md-4">
-            <label for="exampleInputPassword1" class="form-label">Centro de costos</label>
-            <input type="text" name="centro_costos"  class="form-control">    
-        </div>
-        <div class="form-group col-md-4">
-            <label for="exampleInputPassword1" class="form-label">Ciudad</label>
-            <input type="text" name="ciudad"  class="form-control">    
-        </div>
-        {{!-- <div class="form-group col-md-4">
-            <label for="exampleInputPassword1" class="form-label">Conductor actual</label>
-            <select name="conducto_actual" class="form-select" aria-label="Default select example">
-                <option selected>Elija una opción</option>
-                <option value="emp1">Conductor no asignado</option>
-                <option value="emp1">Juan Esteban Sepulveda(1234567890)</option>
-                <option value="emp2">Maria Alejandra Ballester(55673513)</option>
-                <option value="emp3">Francisco José Silva(545674567)</option>
-                <option value="emp4">Martha Federica Galviz(78376272386)</option>
-                <option value="emp5">Pablo Eduardo Cañizares(46751234423)</option>
-               
-                
-            </select>  
-        </div> --}}
 
-        
+                </select>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="exampleInputPassword1" class="form-label">*Tipo medición</label>
+                <select name="tipo_medicion" class="form-select" aria-label="Default select example">
+                    <option selected>Elija una opción</option>
+                    <option value="km">km</option>
+                    <option value="Horas">Horas</option>
+                    <option value="Ambos">Ambos</option>
+
+                </select>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="exampleInputPassword1" class="form-label">*Tipo Trabajo</label>
+                <select name="tipo_trabajo" class="form-select" aria-label="Default select example">
+                    <option selected>Elija una opción</option>
+                    <option value="Normal">Normal</option>
+                    <option value="Bajo">Bajo</option>
+                    <option value="Severo">Severo</option>
+
+                </select>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="exampleInputPassword1" class="form-label">Combustible principal</label>
+                <select name="combutible_principal" class="form-select" aria-label="Default select example">
+                    <option selected>Elija una opción</option>
+                    <option value="Corriente">Corriente</option>
+                    <option value="Extra">Extra</option>
+                    <option value="ACPM">ACPM</option>
+                    <option value="GNV">GNV</option>
+                    <option value="Urea">Urea</option>
+
+                </select>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="exampleInputPassword1" class="form-label">Combustible Secundario</label>
+                <select name="combutible_secundario" class="form-select" aria-label="Default select example">
+                    <option selected>Elija una opción</option>
+                    <option value="Corriente">Corriente</option>
+                    <option value="Extra">Extra</option>
+                    <option value="ACPM">ACPM</option>
+                    <option value="GNV">GNV</option>
+                    <option value="Urea">Urea</option>
+
+                </select>
+            </div>
             
+        </div>
 
-        <a class="acordeon" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-            <h5>SOAT</h5><span class="material-icons md-24">expand_more</span>
-        </a>
-        <div class="form-group col-md-4">
-            
+        <button type="button" class="accordion">SOAT<span
+                class="material-icons md-24">expand_more</span></button>
+        <div class="row panel">
+            <div class="form-group col-md-4">
+
                 <label for="exampleInputPassword1" class="form-label">Nombre aseguradora</label>
-                <input type="text" name="soat_entidad" class="form-control">    
-        </div>
-        <div class="form-group col-md-4">
-            
+                <input type="text" name="soat_entidad" class="form-control">
+            </div>
+            <div class="form-group col-md-4">
+
                 <label for="exampleInputPassword1" class="form-label">Fecha emisión</label>
-                <input type="date" name="soat_fecha_emision" class="form-control">    
-        </div>
-        <div class="form-group col-md-4">
-            
+                <input type="date" name="soat_fecha_emision" class="form-control">
+            </div>
+            <div class="form-group col-md-4">
+
                 <label for="exampleInputPassword1" class="form-label">Fecha vencimiento</label>
-                <input type="date" name="soat_fecha_vencimiento" class="form-control">    
-        </div>
-        <div class="form-group col-md-4">
-            
+                <input type="date" name="soat_fecha_vencimiento" class="form-control">
+            </div>
+            <div class="form-group col-md-4">
+
                 <label for="exampleInputPassword1" class="form-label">Archivo</label>
-                <input type="file" name="soat" class="form-control">    
+                <input type="file" name="soat" class="form-control">
+            </div>
         </div>
-        
-        <a class="acordeon" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-            <h5>Gases</h5><span class="material-icons md-24">expand_more</span>
-        </a>
-        
 
-        <div class="form-group col-md-4">
-            
+
+
+
+        <button type="button" class="accordion">Gases<span
+                class="material-icons md-24">expand_more</span></button>
+
+        <div class="row panel">
+            <div class="form-group col-md-4">
+
                 <label for="exampleInputPassword1" class="form-label">Lugar de realización</label>
-                <input type="text" name="gases_entidad" class="form-control">    
-        </div>
-        <div class="form-group col-md-4">
-            
+                <input type="text" name="gases_entidad" class="form-control">
+            </div>
+            <div class="form-group col-md-4">
+
                 <label for="exampleInputPassword1" class="form-label">Fecha de realización</label>
-                <input type="date" name="gases_fecha_emision" class="form-control">    
-        </div>
-        <div class="form-group col-md-4">
-            
+                <input type="date" name="gases_fecha_emision" class="form-control">
+            </div>
+            <div class="form-group col-md-4">
+
                 <label for="exampleInputPassword1" class="form-label">Fecha vencimiento</label>
-                <input type="date" name="gases_fecha_vencimiento" class="form-control">    
-        </div>
-   
-        <div class="form-group col-md-4">
-            <label for="exampleInputPassword1" class="form-label">Comprobante</label>
-            <input type="file" name="gases" class="form-control">    
-        </div>
+                <input type="date" name="gases_fecha_vencimiento" class="form-control">
+            </div>
+
+            <div class="form-group col-md-4">
+                <label for="exampleInputPassword1" class="form-label">Comprobante</label>
+                <input type="file" name="gases" class="form-control">
+            </div>
+
         </div>
 
-        <br>
+
+
+
+
+        <button type="button" class="accordion">Otros documentos<span
+                class="material-icons md-24">expand_more</span></button>
+        <div class="panel"></div>
         <center>
-            <button type="submit"  class="btn btn-primary boton">Registrar vehiculo</button>
+            <button type="submit" class="btn btn-primary boton">Registrar vehiculo</button>
         </center>
     </div>
-    
+
+
+
+
+    </div>
+
 </form>
+
+<script>
+    var acc = document.getElementsByClassName("accordion");
+
+
+
+
+
+
+
+
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+        console.log(i);
+        acc[i].addEventListener("click", function () {
+            /* Toggle between adding and removing the "active" class,
+            to highlight the button that controls the panel */
+
+            this.classList.toggle("active");
+
+            /* Toggle between hiding and showing the active panel */
+            var panel = this.nextElementSibling;
+            if (panel.style.display === "block") {
+                panel.style.display = "none";
+            } else {
+                panel.style.display = "block";
+            }
+            if (panel.style.maxHeight) {
+                panel.style.maxHeight = null;
+            } else {
+                panel.style.maxHeight = panel.scrollHeight + "px";
+            }
+        });
+    }
+
+
+
+</script>

@@ -5,17 +5,21 @@
             <label for="exampleInputPassword1" class="form-label">Identificación</label>
             <input type="text" name="identificacion" class="form-control">    
         </div>
-
-        <div class="mb-3"> 
+        <button type="button" class="accordion">Sección 1</button> 
+            <div class="mb-3 panel"> 
             <label for="exampleInputPassword1" class="form-label">Foto Cliente</label>
             <input type="file" name="foto_cliente" class="form-control">
-        </div>
-
+            </div>
         
-        <div class="mb-3"> 
+        <button type="button" class="accordion">Sección 2</button>
+        <div class="mb-3 panel"> 
             <label for="exampleInputPassword1" class="form-label">Certificado</label>
             <input type="file" name="certificado" class="form-control">
         </div>
+       
+
+        
+        
         {{!-- <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Nombre(s)</label>
             <input type="text" name="nombre"  class="form-control">    
@@ -63,6 +67,47 @@
         <center>
             <button type="submit"  class="btn btn-primary boton">Registrar cliente</button>
         </center>
+    
     </div>
     
 </form>
+<script>
+var acc = document.getElementsByClassName("accordion");
+
+
+
+
+
+
+
+
+var i;
+
+for (i = 0; i < acc.length; i++) {
+    console.log(i);
+  acc[i].addEventListener("click", function() {
+    /* Toggle between adding and removing the "active" class,
+    to highlight the button that controls the panel */
+    
+    this.classList.toggle("active");
+
+    /* Toggle between hiding and showing the active panel */
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+    if (panel.style.maxHeight) {
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    }
+  });
+}
+
+
+
+</script>
+
+

@@ -1,5 +1,12 @@
-
-<table  class="tabla" data-toggle="table"
+<div class="input-group rounded">
+  <input type="search" id="search"class="form-control rounded" placeholder="Buscar" aria-label="Search"
+  aria-describedby="search-addon" onkeyup="search()"/>
+  <span class="input-group-text border-0" id="search-addon">
+    <i class="fas fa-search"></i>
+  </span>
+</div>
+<br>
+<table  id="tabla_usuarios" class="tabla" data-toggle="table"
   data-url="data1.json"
   data-pagination="true"
   data-search="true">

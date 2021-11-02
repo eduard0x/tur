@@ -157,6 +157,10 @@ const storage = multer.diskStorage({
              cb(null,path.join(__dirname,'/public/uploads/certificados'))
             // cb(null,path.join('./src/public/uploads/soat'))
         }
+        else if(file.fieldname === "foto_vehiculo"){
+            cb(null,path.join(__dirname,'/public/uploads/fotos_vehiculos'))
+           // cb(null,path.join('./src/public/uploads/soat'))
+       }
     },
     filename: function(req,file,cb){
         console.log("FILENAME: "+file.originalname);
@@ -178,6 +182,9 @@ const storage = multer.diskStorage({
         }
         else if(file.fieldname === "certificado"){
             cb(null,file.fieldname+"_"+id+"_"+uuidv4()+"."+mimeTypes.extension(file.mimetype));
+        }
+        else if(file.fieldname === "foto_vehiculo"){
+            cb(null,file.fieldname+"_"+placa+"_"+uuidv4()+"."+mimeTypes.extension(file.mimetype));
         }
         // cb(null,file.originalname);
     }
@@ -213,7 +220,8 @@ app.use(
         {name:"soat"},
         {name:"gases"},
         {name:"foto_cliente"},
-        {name:"certificado"}
+        {name:"certificado"},
+        {name:"foto_vehiculo"}
     ]
         
     )
