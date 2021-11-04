@@ -10,7 +10,7 @@
 <table  class="tabla" data-toggle="table"
   data-url="data1.json"
   data-pagination="true"
-  data-search="true">
+  data-search="true" style="display: none;">
         <thead class="table-dark">
             <tr id="titulo-tabla">
                 <th scope="col" class="small_visible">
@@ -73,6 +73,21 @@
         
         {{/each}}
 
-        </tbody>
+                </tbody>
         
     </table>
+
+<div class="container">
+{{#each vehiculos_encontrados}}
+            
+            
+                <div class="card" onclick="window.location='/vehiculos/{{placa}}';">
+                    <img src="uploads/fotos_vehiculos/{{fotos.0.nombre}}">
+                    <h4>{{placa}}</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, excepturi unde?</p>
+                    <a href="#">Leer más</a>
+                </div>
+            
+{{/each}}
+
+</div>

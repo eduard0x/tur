@@ -13,20 +13,7 @@
                         <label for="exampleInputPassword1" class="form-label">Placa</label>
                         <input type="text" name="placa" class="form-control" value="{{result.placa}}">
                     </div>
-        
-        
-        
-        
-                    <!--  Adición dinamica de archivos . Proximas actualziaciones pendiente -->
-                    {{!-- <div>
-                        <button id="boton_agregar" class="form-control" style="background-color: #000000; color:white;">
-                            Añadir archivo
-                        </button>
-                    </div> --}}
-                    <div class="form-group col-md-4">
-                        <label for="exampleInputPassword1" class="form-label">Km actual</label>
-                        <input type="text" name="km" class="form-control" value="{{result.km}}">
-                    </div>
+                    
                     <div class="form-group col-md-4">
                         <label for="exampleInputPassword1" class="form-label">Marca</label>
                         <input type="text" name="marca" class="form-control" value="{{result.marca}}">
@@ -35,48 +22,32 @@
                         <label for="exampleInputPassword1" class="form-label">Linea</label>
                         <input type="text" name="linea" class="form-control" value="{{result.linea}}">
                     </div>
-        
                     <div class="form-group col-md-4">
-                        <label for="exampleInputPassword1" class="form-label">Categoria</label>
-                        <select name="categoria" class="form-select" aria-label="Default select example">
-                            <option selected>{{result.categoria}}</option>
-                            <option value="campero">Campero</option>
-                            <option value="camioneta">Camioneta</option>
-                            <option value="camion_sencillo">Camion sencillo</option>
-                            <option value="moto">moto</option>
-                            <option value="grua_sc_4_8">Grúa sobre camión 4x8</option>
-                            <option value="excavadora">Excavadora</option>
+                        <label for="exampleInputPassword1" class="form-label">Modelo</label>
+                        <input type="text" name="modelo" class="form-control" value="{{result.modelo}}">
+                    </div>
         
-        
-                        </select>
+                   <div class="form-group col-md-4">
+                        <label for="exampleInputPassword1" class="form-label">Color</label>
+                        <input type="text" name="color" class="form-control" value="{{result.color}}">
                     </div>
                     <div class="form-group col-md-4">
-                        <!--eLIMINAR-->
-                        <label for="exampleInputPassword1" class="form-label">Centro de costos</label>
-                        <input type="text" name="centro_costos" class="form-control" value="{{result.centro_costos}}">
+                        <label for="exampleInputPassword1" class="form-label">Tipo vehiculo</label>
+                        <input type="text" name="tipo_vehiculo" class="form-control" value="{{result.tipo_vehiculo}}">
                     </div>
                     <div class="form-group col-md-4">
-                        <label for="exampleInputPassword1" class="form-label">Ciudad</label>
-                        <input type="text" name="ciudad" class="form-control" value="{{result.ciudad}}">
+                        <label for="exampleInputPassword1" class="form-label">Tipo medicion</label>
+                        <input type="text" name="tipo_medicion" class="form-control" value="{{result.tipo_medicion}}">
                     </div>
-                    {{!-- <div class="form-group col-md-4">
-                        <label for="exampleInputPassword1" class="form-label">Conductor actual</label>
-                        <select name="conducto_actual" class="form-select" aria-label="Default select example">
-                            <option selected>Elija una opción</option>
-                            <option value="emp1">Conductor no asignado</option>
-                            <option value="emp1">Juan Esteban Sepulveda(1234567890)</option>
-                            <option value="emp2">Maria Alejandra Ballester(55673513)</option>
-                            <option value="emp3">Francisco José Silva(545674567)</option>
-                            <option value="emp4">Martha Federica Galviz(78376272386)</option>
-                            <option value="emp5">Pablo Eduardo Cañizares(46751234423)</option>
-        
-        
-                        </select>
-                    </div> --}}
-        
-        
-        
-        
+                    <div class="form-group col-md-4">
+                        <label for="exampleInputPassword1" class="form-label">Combustible principal</label>
+                        <input type="text" name="combustible_principal" class="form-control" value="{{result.combustible_principal}}">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="exampleInputPassword1" class="form-label">Combustible secundario</label>
+                        <input type="text" name="combustible_secundario" class="form-control" value="{{result.combustible_secundario}}">
+                    </div>
+                    
                     <a class="acordeon" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
                         aria-controls="collapseExample">
                         <h5>SOAT</h5><span class="material-icons md-24">expand_more</span>
@@ -84,17 +55,17 @@
                     <div class="form-group col-md-4">
         
                         <label for="exampleInputPassword1" class="form-label">Nombre aseguradora</label>
-                        <input type="text" name="soat_entidad" class="form-control" value="">
+                        <input type="text" name="soat_entidad" class="form-control" value="{{result.entidad_soat}}">
                     </div>
                     <div class="form-group col-md-4">
         
                         <label for="exampleInputPassword1" class="form-label">Fecha emisión</label>
-                        <input type="date" name="soat_fecha_emision" class="form-control" value="">
+                        <input type="date" name="soat_fecha_emision" class="form-control" value="{{result.fecha_emision_soat}}">
                     </div>
                     <div class="form-group col-md-4">
         
                         <label for="exampleInputPassword1" class="form-label">Fecha vencimiento</label>
-                        <input type="date" name="soat_fecha_vencimiento" class="form-control" value="">
+                        <input type="date" name="soat_fecha_vencimiento" class="form-control" value="{{result.fecha_vencimiento_soat}}">
                     </div>
                     <div class="form-group col-md-4">
         
@@ -102,7 +73,7 @@
                         <a href="#">PDF</a>
                         {{!-- <input type="file" name="soat" class="form-control"> --}}
                     </div>
-        
+                    
                     <a class="acordeon" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
                         aria-controls="collapseExample">
                         <h5>Gases</h5><span class="material-icons md-24">expand_more</span>
@@ -112,17 +83,17 @@
                     <div class="form-group col-md-4">
         
                         <label for="exampleInputPassword1" class="form-label">Lugar de realización</label>
-                        <input type="text" name="gases_entidad" class="form-control" value="">
+                        <input type="text" name="gases_entidad" class="form-control" value="{{result.entidad_gases}}">
                     </div>
                     <div class="form-group col-md-4">
         
                         <label for="exampleInputPassword1" class="form-label">Fecha de realización</label>
-                        <input type="date" name="gases_fecha_emision" class="form-control" value="">
+                        <input type="date" name="gases_fecha_emision" class="form-control" value="{{result.fecha_emision_gases}}">
                     </div>
                     <div class="form-group col-md-4">
         
                         <label for="exampleInputPassword1" class="form-label">Fecha vencimiento</label>
-                        <input type="date" name="gases_fecha_vencimiento" class="form-control" value="">
+                        <input type="date" name="gases_fecha_vencimiento" class="form-control" value="{{result.fecha_vencimiento_gases}}">
                     </div>
         
                     <div class="form-group col-md-4">
@@ -131,8 +102,9 @@
                         <a href="#">PDF</a>
                         {{!-- <input type="file" name="gases" class="form-control"> --}}
                     </div>
+                    
                 </div>
-        
+
                 <br>
                 
             </div>
@@ -236,24 +208,31 @@
     
 </div>
 <div id="fotos" class="tabcontent">
-    <form action="/vehiculo/nueva_imagen">
-        <label for="file-upload" class="custom-file-upload">
+        <div>
+            <label for="file-upload" class="custom-file-upload">
             <span class="material-icons">
                 add_a_photo
             </span>
                 Nueva imagen
-        </label>
-        <input id="file-upload" name="foto_vehiculo" type="file" />
+            </label>
+            <input id="file-upload" name="foto_vehiculo" type="file" />
+
+            <script>
+                var nombre = document.getElementById("file-upload").files[0].filename;
+                console.log(nombre);
+
+            </script>
+        </div>    
+        
     
     
-    </form>
-    {{#each fotos}}
-        <img src="uploads/fotos_vehiculos/{{nombre}}" style="height: 100px; width:100px">
+    {{#each result.fotos}}
+        <img src="/uploads/fotos_vehiculos/{{nombre}}">
     {{/each}}
     
 </div>
 <center>
-    <button type="submit" class="btn btn-primary boton">Modificar</button>
+    <button type="submit" class="btn btn-primary boton" >Modificar</button>
 </center>
 </form>
 
@@ -276,7 +255,7 @@
   }
     
   // Show the current tab, and add an "active" class to the button that opened the tab
-  document.getElementById(tabName).style.display = "block";
+  document.getElementById(tabName).style.display = "flex";
   evt.currentTarget.className += " active";
   evt.currentTarget.style = "border: 1px solid rgb(6, 6, 41)";
 }

@@ -55,12 +55,10 @@ passport.serializeUser((user, done) => {
  * Busco el usuario con el id para deserializarlo y utilizar sus datos
  */
 passport.deserializeUser((id, done) => {
-  console.log("Log: deserialize User");
+  
   usuario
     .findById(id, (err, user) => {
       done(err, user);
-      console.log("Log: user: " + user);
-      console.log("Log: error: " + err);
     })
     .lean();
 });
