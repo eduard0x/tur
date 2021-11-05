@@ -5,6 +5,14 @@
     margin-right: auto;">{{titulo_tabla}}</h1>
     <br>
 {{/if}}
+<div class="input-group rounded">
+  <input type="search" id="search"class="form-control rounded" placeholder="Buscar" aria-label="Search"
+  aria-describedby="search-addon" onkeyup="buscar_vehiculo()"/>
+  <span class="input-group-text border-0" id="search-addon">
+    <i class="fas fa-search"></i>
+  </span>
+</div>
+<br>
 
 
 <table  class="tabla" data-toggle="table"
@@ -77,17 +85,54 @@
         
     </table>
 
-<div class="container">
+<div class="container" id="container_vehiculos">
 {{#each vehiculos_encontrados}}
             
             
-                <div class="card" onclick="window.location='/vehiculos/{{placa}}';">
+                <div class="card_vehiculo">
                     <img src="uploads/fotos_vehiculos/{{fotos.0.nombre}}">
                     <h4>{{placa}}</h4>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, excepturi unde?</p>
-                    <a href="#">Leer más</a>
+                    <a  title="Dar un vistazo" onclick="window.location='/vehiculos/{{placa}}';"> 
+                        <span class="material-icons">
+                            info
+                        </span>
+                    </a> 
+                    <a  title="Modificar" onclick="window.location='/vehiculos/{{placa}}';"> 
+                        <span class="material-icons">
+                            edit
+                        </span>
+                    </a> 
+                    <a  title="Eliminar" onclick="confirmar('{{placa}}')"> 
+                        <span class="material-icons">
+                            delete
+                        </span>
+
+                    </a> 
+                    
                 </div>
             
 {{/each}}
 
 </div>
+<script>
+    function confirmar(placa){
+        Swal.fire({
+                    
+                    title: 'Eliminar vehiculo',
+                    text: '¿Quieres eliminar el vehiculo?',
+                    icon: 'warning',
+                    confirmButtonText: 'Si',
+                    denyButtonText: 'No',
+                    showDenyButton:true
+                    
+                    
+                }).then((result)=>{
+                  if(result.isConfirmed){
+                    console.log("eliminar");
+                    window.location.href= `/vehiculos/eliminar/${placa}`;
+                  }
+                })
+        
+    }
+</script>

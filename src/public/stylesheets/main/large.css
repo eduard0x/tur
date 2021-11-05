@@ -137,3 +137,9 @@ td, th{
     margin-left: 100px;
     margin-right: 100px;
 }
+
+.tabla{
+    width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+}

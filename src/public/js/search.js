@@ -32,3 +32,29 @@ function search() {
     }
   }
 }
+
+function buscar_vehiculo(){
+  const container = document.getElementById("container_vehiculos");
+  const searchText = document.getElementById("search").value.toLowerCase();
+
+  const tarjetas = document.getElementsByClassName("card_vehiculo");
+
+  
+  for(let i=0;i<tarjetas.length;i++){
+    var found = false;  
+    const placa = tarjetas[i].getElementsByTagName("h4")[0].textContent.toLowerCase();
+    console.log(placa);
+      if(searchText.length == 0 || placa.indexOf(searchText) > -1 ){
+        found = true;
+      }
+
+      if(found){
+        tarjetas[i].style.display = "";
+      }else{
+        tarjetas[i].style.display = "none";
+      }
+
+    }
+  
+
+}

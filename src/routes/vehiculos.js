@@ -245,7 +245,27 @@ function formatearInformacion(placa, callback) {
           entidad_gases,
           path_soat,
           path_gases,
-          fotos,
+          id_auxiliar:result.id_auxiliar,
+          imei_gps:result.imei_gps,
+          vin:result.vin,
+          propietario:result.propietario,
+          motor:result.motor,
+          numero_motor:result.numero_motor,
+          numero_chasis:result.numero_chasis,
+          numero_serie:result.numero_serie,
+          tipo_carroceria:result.tipo_carroceria,
+          cantidad_sillas:result.cantidad_sillas,
+          toneladas_carga:result.toneladas_carga,
+          cod_fasecolda:result.cod_fasecolda,
+          tipo_servicio:result.tipo_servicio,
+          fecha_compra:result.fecha_compra,
+          odometro_compra:result.odometro_compra,
+          precio_compra:result.precio_compra,
+          precio_accesorios:result.precio_accesorios,
+          vendedor_agencia:result.vendedor_agencia,
+          nro_dec_importacion:result.nro_dec_importacion,
+          fecha_dec_importacion:result.fecha_dec_importacion,
+          fotos
         };
         console.log("Log:formateando");
         console.log(result);
@@ -286,6 +306,26 @@ router.post("/vehiculos/modificar", isAuthenticated, (req, res) => {
     gases_entidad,
     gases_fecha_emision,
     gases_fecha_vencimiento,
+    id_auxiliar,
+    imei_gps,
+    vin,
+    propietario,
+    motor,
+    numero_motor,
+    numero_chasis,
+    numero_serie,
+    tipo_carroceria,
+    cantidad_sillas,
+    toneladas_carga,
+    cod_fasecolda,
+    tipo_servicio,
+    fecha_compra,
+    odometro_compra,
+    precio_compra,
+    precio_accesorios,
+    vendedor_agencia,
+    nro_dec_importacion,
+    fecha_dec_importacion,
   } = req.body;
 
   
@@ -312,12 +352,16 @@ router.post("/vehiculos/modificar", isAuthenticated, (req, res) => {
 
   encontrarVehiculo(placa,function(result){
     var fotos = result.fotos;
-    var nombre_foto = req.files.foto_vehiculo[0].filename;
-    console.log("nombre_foto");
-    console.log(nombre_foto);
-    var nueva_foto = { nombre: nombre_foto };
-  
-    fotos.push(nueva_foto);
+    if(!(req.files.foto_vehiculo == undefined)){
+        var nombre_foto = req.files.foto_vehiculo[0].filename;
+        console.log("nombre_foto");
+        console.log(nombre_foto);
+        var nueva_foto = { nombre: nombre_foto };
+
+        fotos.push(nueva_foto);
+    }
+    
+    
 
     var query = { placa };
 
@@ -332,6 +376,26 @@ router.post("/vehiculos/modificar", isAuthenticated, (req, res) => {
         combustible_principal,
         combustible_secundario,
         archivos,
+        id_auxiliar,
+        imei_gps,
+        vin,
+        propietario,
+        motor,
+        numero_motor,
+        numero_chasis,
+        numero_serie,
+        tipo_carroceria,
+        cantidad_sillas,
+        toneladas_carga,
+        cod_fasecolda,
+        tipo_servicio,
+        fecha_compra,
+        odometro_compra,
+        precio_compra,
+        precio_accesorios,
+        vendedor_agencia,
+        nro_dec_importacion,
+        fecha_dec_importacion,
         fotos
     };
 
@@ -369,5 +433,16 @@ router.get("/vehiculos/:placa", isAuthenticated, async(req, res) => {
   });
   
 });
+
+router.get("/vehiculos/eliminar/:placa",isAuthenticated, (req, res)=>{
+    console.log("Log: GET /vehiculos/eliminar/:placa");
+
+    const placa_vehiculo = req.params.placa;
+    const filtro = {placa:placa_vehiculo};
+
+    vehiculo.findOneAndDelete(filtro,(err, result)=>{
+        res.redirect('/vehiculos');
+    })
+})
 
 module.exports = router;
