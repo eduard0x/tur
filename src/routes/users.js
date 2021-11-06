@@ -271,59 +271,6 @@ router.post(
   })
 );
 
-// router.post('/usuarios/iniciar',async (req,res)=>{
-//     console.log("POST /usuarios/iniciar");
-//     const {correo, password} = req.body;
-//     var errors = [];
-//     if(correo.length == 0){
-//         console.log("bad correo");
-//         errors.push({text:"Campo de correo vacio"})
-//     }
-//     if(password.length == 0){
-//         console.log("bad password");
-//         errors.push({text:"Campo de password vacio"})
-//     }
-
-//     if(errors.length>0){
-//         res.render('usuario/iniciar',{errors});
-//     }else{
-//         const usuario_coincidencia = await usuario.findOne({correo:correo});
-//     if(usuario_coincidencia){
-//             console.log("Log: Hay un usuario con el correo ingresado.")
-//             const coincidencia = await usuario_coincidencia.match(password);
-//             console.log(coincidencia);
-//             if(coincidencia){
-//                 console.log("Log: Contraseña correcta");
-//                 console.log('Log: Usuario loggeado'+coincidencia);
-//                 res.render('home');
-//             }else{
-//                 console.log("Log: Contraseña invalida");
-//                 const error = {text:'Contraseña invalida'}
-//             res.render('usuario/iniciar',{correo,password,error});
-//             }
-//     }else{
-//             console.log("Log: Correo no encontrado");
-//             const error = {text:'El correo no se encuentra registrado'}
-//             res.render('usuario/iniciar',{correo,password,error});
-//         }
-
-//     }
-
-// })
-
-// router.post('/usuarios/buscar',(req,res)=>{
-//     const {busqueda} = req.body;
-//     console.log(busqueda);
-//     usuario.findOne({'telefono':busqueda}, function (err, usuario){
-//     if(err) return err;
-
-//     res.render('usuario/perfil-usuario',{
-
-//     })
-//     const nombre = usuario.nombre;
-//     console.log(nombre);
-//     })
-// })
 
 //GET /usuarios/:id
 router.get("/usuarios/:id", isAuthenticated, (req, res) => {

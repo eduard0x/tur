@@ -1,253 +1,259 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <title>TUR Colombia</title>
-    <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-  />
-   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
     <!-- CSS only -->
     <!--For table style purposes-->
-    
+
     <!--For general style purposes-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    {{!-- <link rel="stylesheet" href="/stylesheets/dark.css"> --}}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <!--Iconos de google icons-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!--Estilos-->
     <link rel="stylesheet" href="/stylesheets/main/small.css">
     <link rel="stylesheet" href="/stylesheets/main/medium.css" media="(min-width:550px)">
     <link rel="stylesheet" href="/stylesheets/main/large.css" media="(min-width:950px)">
-    
 
-    
-    
-    
+    <!--Logotipo de la empresa-->
     <link rel="shortcut icon" href="/images/lacoste.png">
 
     <!--Alertas-->
-
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
+<!--Barra de navegación-->
+<nav class="navbar">
+    <a class="navbar-brand" href="/home">
+        <img src="/images/lacoste.png" class="d-inline-block align-top logo" alt="">
 
- 
-       
-        
-        
-        
-        <nav class="navbar">
-            <a class="navbar-brand" href="/home">
-                <img src="/images/lacoste.png" width="30" height="30" class="d-inline-block align-top logo" alt="">
-                
-            </a>
-            <div class="botones-header" id="menu_large">
-                
-                <div class="dropdown dropdown-1">
-                <button class="btn btn-default  dropbtn btn-icon">  
-                    
-                <span class="material-icons md-24">group_work</span> 
-                <span>
-                    Empleados
-                </span>
-                
-                
-                </button>
-                <div class="dropdown-content dropdown-content-1 ">
-                    
-                    
-                        <a href="/usuarios/nuevo"> Nuevo empleado </a>
-                    
-                        <a href="/usuarios"> Ver empleados </a>
-                        <a href="#"> Información general </a>
-                    </form>
-                    
-                   
-                </div>
-                </div>
+    </a>
+    <!--Menu large: Mostrado para pantallas grandes con un ancho minimo de 950px-->
+    <div class="botones-header" id="menu_large">
 
-                <div class="dropdown dropdown-2">
-                <button class="btn btn-default  dropbtn btn-icon"> 
-                     <span class="material-icons md-24">people</span>
-                    <span>Clientes</span>
-                    
-                </button>
-                <div class="dropdown-content dropdown-content-2 ">
-                    <a href="/clientes/nuevo"> Nuevo cliente </a>
-                    <a href="/clientes"> Ver clientes </a>
-                    <a href="#"> Información general </a>
-                </div>
-                </div>
-                <div class="dropdown dropdown-3">
-                <button class="btn btn-default  dropbtn btn-icon">
-                    
-                    <span class="material-icons md-24">commute</span> 
-                    <span>
-                        Vehiculos
-                    </span></button>
-                <div class="dropdown-content dropdown-content-3">
-                    <a href="/vehiculos/verificar"> Nuevo vehiculo </a>
-                    <a href="/vehiculos"> Ver vehiculos </a>
-                    <a href="#"> Información general </a>
-                </div>
-                </div>
-                <div class="dropdown dropdown-4">
-                <button class="btn btn-default  dropbtn btn-icon">
-                    <span class="material-icons md-24">local_shipping</span> 
-                    <span>Proveedores</span>
-                </button>
-                <div class="dropdown-content dropdown-content-4">
-                    <a href="#"> Nuevo proveedor </a>
-                    <a href="#"> Ver proveedores </a>
-                    <a href="#"> Información general </a>
-                </div>
-                </div>
+        <div class="dropdown dropdown-1">
 
-                <div class="dropdown dropdown-4 ">
-                <button class="btn btn-default  dropbtn btn-icon boton-perfil">
-                    {{!-- <span class="material-icons md-24">person</span> --}}
-                    <span >
-                        <img class="rounded-circle"id="foto_perfil" src="/uploads/foto_perfil/{{user.foto_perfil}}" alt="">
-                    </span>
-                    <span>{{user.nombre}}</span>
-                    <span class="material-icons md-24">expand_more</span> 
-                </button>
-                <div class="dropdown-content dropdown-content-4">
-                    <a href="/perfil"> Ver perfil </a>
-                    <a href="/logout" class="a-icon"> 
-                        
-                        <span class="material-icons md-24">
-                        logout
-                        </span>
-                        <span>Salir</span>
-                    </a>
-                    
-                </div>
-                </div>
-                <!--Responsive-->
-                {{!-- <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-                    <span class="material-icons">menu</span>
-                </a> --}}
-                
-                <!--Responsive-->
-            </div>
-            <div id="menu_small">
-                <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-                    <span class="material-icons">menu</span>
-                </a>
-            </div>
-            
-        </nav>
-        <div id="container-small" class="container-no-visible">
-            <div id="options-small" >
-            
-            <a href="/perfil">
-                <span class="material-icons md-24">person</span> 
-                <span>Mi perfil</span>
-            
-            </a>
-            <a href="javascript:void(0);" id="empleados-small" onclick="mostrar('empleados-small')">
-                <span class="material-icons md-24">group_work</span> 
+            <button class="btn btn-default  dropbtn btn-icon">
+                <span class="material-icons md-24">group_work</span>
                 <span>Empleados</span>
-                </a>
-            <div id="opciones-empleados-small" class="opciones" style="display: none;">
-                <a href="/usuarios/nuevo">Nuevo empleado</a>
-                <a href="/usuarios">Lista de empleados</a>
-                
+            </button>
+
+            <div class="dropdown-content dropdown-content-1 ">
+                <a href="/usuarios/nuevo"> Nuevo empleado </a>
+                <a href="/usuarios"> Ver empleados </a>
+                <a href="#"> Información general </a>
+                </form>
             </div>
-            <a href="javascript:void(0);" id="clientes-small" onclick="mostrar('clientes-small')">
-                <span class="material-icons md-24">people</span> 
+
+        </div>
+
+        <div class="dropdown dropdown-2">
+
+            <button class="btn btn-default  dropbtn btn-icon">
+                <span class="material-icons md-24">people</span>
                 <span>Clientes</span>
-                </a>
-            <div id="opciones-clientes-small" class="opciones" style="display: none;">
-                <a href="/clientes/nuevo">Nuevo cliente</a>
-                <a href="/clientes">Lista de clientes</a>
-                
+            </button>
+
+            <div class="dropdown-content dropdown-content-2 ">
+                <a href="/clientes/nuevo"> Nuevo cliente </a>
+                <a href="/clientes"> Ver clientes </a>
+                <a href="#"> Información general </a>
             </div>
-            <a href="javascript:void(0);" id="vehiculos-small" onclick="mostrar('vehiculos-small')">
-                <span class="material-icons md-24">commute</span> 
+
+        </div>
+        <div class="dropdown dropdown-3">
+
+            <button class="btn btn-default  dropbtn btn-icon">
+
+                <span class="material-icons md-24">commute</span>
                 <span>Vehiculos</span>
-                </a>
-            <div id="opciones-vehiculos-small" class="opciones" style="display: none;">
-                <a href="/vehiculos/verificar">Nuevo vehiculo</a>
-                <a href="/vehiculos">Lista de vehiculos</a>
-                
+
+            </button>
+
+            <div class="dropdown-content dropdown-content-3">
+                <a href="/vehiculos/verificar"> Nuevo vehiculo </a>
+                <a href="/vehiculos"> Ver vehiculos </a>
+                <a href="#"> Información general </a>
             </div>
-            <a href="javascript:void(0);" id="proveedores-small" onclick="mostrar('proveedores-small')">
-                <span class="material-icons md-24">local_shipping</span> 
-                <span>Proveedores</span> 
-                </a>
-            <div id="opciones-proveedores-small" class="opciones" style="display: none;">
-                <a href="/proveedores/nuevo">Nuevo proveedor</a>
-                <a href="/proveedores">Lista de proveedores</a>
-                
+
+        </div>
+        <div class="dropdown dropdown-4">
+
+            <button class="btn btn-default  dropbtn btn-icon">
+                <span class="material-icons md-24">local_shipping</span>
+                <span>Proveedores</span>
+            </button>
+
+            <div class="dropdown-content dropdown-content-4">
+                <a href="#"> Nuevo proveedor </a>
+                <a href="#"> Ver proveedores </a>
+                <a href="#"> Información general </a>
             </div>
-            <a href="/logout">
+
+        </div>
+
+        <div class="dropdown dropdown-4 ">
+
+            <button class="btn btn-default  dropbtn btn-icon boton-perfil">    
+                <span>
+                    <img class="rounded-circle" id="foto_perfil" src="/uploads/foto_perfil/{{user.foto_perfil}}" alt="">
+                </span>
+                <span>{{user.nombre}}</span>
+                <span class="material-icons md-24">expand_more</span>
+            </button>
+
+            <div class="dropdown-content dropdown-content-4">
+                <a href="/perfil"> Ver perfil </a>
+                <a href="/logout" class="a-icon">
+                    <span class="material-icons md-24">logout</span>
+                    <span>Salir</span>
+                </a>
+            </div>
+
+        </div>
+        <!--Responsive-->
+        {{!-- <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+            <span class="material-icons">menu</span>
+        </a> --}}
+
+        <!--Responsive-->
+    </div>
+
+    <!--Menu small: Mostrado cuando la pantalla sea pequeña inferior a 550px-->
+    <div id="menu_small">
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+            <span class="material-icons">menu</span>
+        </a>
+    </div>
+
+</nav>
+<div id="container-small" class="container-no-visible">
+    <div id="options-small">
+
+        
+        <a href="/perfil">
+            <span class="material-icons md-24">person</span>
+            <span>Mi perfil</span>
+        </a>
+
+        
+        <a href="javascript:void(0);" id="empleados-small" onclick="mostrar('empleados-small')">
+            <span class="material-icons md-24">group_work</span>
+            <span>Empleados</span>
+        </a>
+        <div id="opciones-empleados-small" class="opciones" style="display: none;">
+            <a href="/usuarios/nuevo">Nuevo empleado</a>
+            <a href="/usuarios">Lista de empleados</a>
+        </div>
+
+        
+        <a href="javascript:void(0);" id="clientes-small" onclick="mostrar('clientes-small')">
+            <span class="material-icons md-24">people</span>
+            <span>Clientes</span>
+        </a>
+        <div id="opciones-clientes-small" class="opciones" style="display: none;">
+            <a href="/clientes/nuevo">Nuevo cliente</a>
+            <a href="/clientes">Lista de clientes</a>
+        </div>
+
+        
+        <a href="javascript:void(0);" id="vehiculos-small" onclick="mostrar('vehiculos-small')">
+            <span class="material-icons md-24">commute</span>
+            <span>Vehiculos</span>
+        </a>
+        <div id="opciones-vehiculos-small" class="opciones" style="display: none;">
+            <a href="/vehiculos/verificar">Nuevo vehiculo</a>
+            <a href="/vehiculos">Lista de vehiculos</a>
+        </div>
+
+        
+        <a href="javascript:void(0);" id="proveedores-small" onclick="mostrar('proveedores-small')">
+            <span class="material-icons md-24">local_shipping</span>
+            <span>Proveedores</span>
+        </a>
+        <div id="opciones-proveedores-small" class="opciones" style="display: none;">
+            <a href="/proveedores/nuevo">Nuevo proveedor</a>
+            <a href="/proveedores">Lista de proveedores</a>
+        </div>
+
+
+        <a href="/logout">
             <span class="material-icons md-24">
-                        logout
-                        </span>
+                logout
+            </span>
             Salir</a>
 
-        </div>
-        <div></div>
-        </div>
-        
-        <div class="bg"></div>
-        <div class="bg bg2"></div>
-        <div class="bg bg3"></div>
-        <div class="content">
-            <br>
-            <main class="main-container">
-                    
-                    {{{body}}}
-            </main>
-        </div>
-        
-            
-       
-     
-        
- 
-    
-    <!-- JavaScript Bundle with Popper -->
+    </div>
+    <div></div>
+</div>
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+<div class="content">
+    <br>
+    <main class="main-container">
+
+        {{{body}}}
+    </main>
+</div>
+
+
+
+
+
+
+
+<!-- JavaScript Bundle with Popper -->
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
 
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <!--burguer menu-->
 <script>
-                
-          
-                    
-                    function myFunction() {
-                        var display = document.getElementById('container-small');
-                        if(display.className === "container-visible"){
-                            display.className = "container-no-visible";
-                        }else{
-                            display.className = "container-visible";
-                        }
-                        
-                        
-                    }
 
-                    function mostrar(grupo){
-                        if(document.getElementById("opciones-"+grupo).style.display=="none")
-                        {
-                            document.getElementById("opciones-"+grupo).style.display="inline-block";
-                        }
-                        else
-                        {
-                            document.getElementById("opciones-"+grupo).style.display="none";
-                        }
-                        
 
-                    }
-                </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" integrity="sha256-qM7QTJSlvtPSxVRjVWNM2OfTAz/3k5ovHOKmKXuYMO4=" crossorigin="anonymous"></script>
+
+    function myFunction() {
+        var display = document.getElementById('container-small');
+        if (display.className === "container-visible") {
+            display.className = "container-no-visible";
+        } else {
+            display.className = "container-visible";
+        }
+
+
+    }
+
+    function mostrar(grupo) {
+        if (document.getElementById("opciones-" + grupo).style.display == "none") {
+            document.getElementById("opciones-" + grupo).style.display = "inline-block";
+        }
+        else {
+            document.getElementById("opciones-" + grupo).style.display = "none";
+        }
+
+
+    }
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js"
+    integrity="sha256-qM7QTJSlvtPSxVRjVWNM2OfTAz/3k5ovHOKmKXuYMO4=" crossorigin="anonymous"></script>
 <script src="js/search.js"></script>
 <script src="js/acordeon.js"></script>
-<body> 
+
+<body>
 </body>
+
 </html>

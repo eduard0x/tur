@@ -48,7 +48,8 @@ router.get("/vehiculos/vencidos", isAuthenticated, (req, res) => {
             //Las fechas se setean para que no incluyan los minutos, segundos y milisegundos.
             const fecha = new Date(fecha_vencimiento).setHours(0, 0, 0, 0);
             const hoy = new Date(Date.now()).setHours(0, 0, 0, 0);
-
+            //Si al menos un archivo del vehiculo es vencido pasa a la lista de vencidos
+            //Si ya hay un archivo vencido del vehiculo, no es necesidad de chequear los otros archivos lol
             if (hoy >= fecha && estaVencido == false) {
               vehiculos_encontrados.push(v);
               console.log("Hay un papel vencido");
@@ -56,23 +57,27 @@ router.get("/vehiculos/vencidos", isAuthenticated, (req, res) => {
             }
           });
         });
-
+        //Renderizar la pagina vehiculos enviando como parametros la lista de vehiculos y el titulo de la tabla
         res.render("vehiculos", { vehiculos_encontrados, titulo_tabla });
       }
     })
     .lean();
 });
 
+//GET /vehiculos/nuevo : Este metodo necesita ser implementado después de verificar la existencia
+//de la placa. en GET /vehiculos/verificar
 router.get("/vehiculos/nuevo", isAuthenticated, (req, res) => {
   console.log(req.body);
   res.render("vehiculo/nuevo-vehiculo");
 });
 
+//GET /vehiculos/verificar
 router.get("/vehiculos/verificar", isAuthenticated, (req, res) => {
   console.log(req.body);
   res.render("vehiculo/verificacion");
 });
 
+//POST /vehiculos/verificar
 router.post("/vehiculos/verificar", isAuthenticated, async (req, res) => {
   //placa que se desea verificar
   const placa = req.body.placa;
@@ -80,6 +85,10 @@ router.post("/vehiculos/verificar", isAuthenticated, async (req, res) => {
   //Retorna true si existe un vehiculo registrado con la placa ingresada.
   const existencia = await vehiculo.exists({ placa: placa });
 
+  //Si existe vuelve a la pagina de verificación con un mensaje manifestando que
+  //existe una placa ya registrada.
+  //Si no existe va la pagina que contiene el formulario nuevo-vehiculo
+  //Se adjunta la placa para llenar el campo por defecto.
   if (existencia) {
     res.render("vehiculo/verificacion", { existencia });
   } else {
@@ -87,10 +96,12 @@ router.post("/vehiculos/verificar", isAuthenticated, async (req, res) => {
   }
 });
 
+//GET /vehiculos/add
 router.post("/vehiculos/add", isAuthenticated, async (req, res) => {
   console.log(req.files);
-
-  const {
+    //Obteniendo los valores enviados desde el formulario de nuevo-vehiculo
+    //Estos valores son iniciales, los datos de los vehiculos son muchos más.
+    const {
     placa,
     marca,
     linea,
@@ -110,25 +121,24 @@ router.post("/vehiculos/add", isAuthenticated, async (req, res) => {
   } = req.body;
 
   var error = [];
-
+  //La placa es obligatoria
   if (placa.length > 0) {
     error.push({ text: "Debe ingresar la placa" });
   }
 
+  //Envia error si dejamos el campo placa vacio.
   if (error.length == 0) {
     res.render("vehiculo/nuevo-vehiculo", {
       error,
       placa,
     });
   } else {
-    const soat_prueba = req.files.soat[0].filename;
-    const gases_prueba = req.files.soat[0].filename;
-    console.log(placa);
-    console.log(soat_prueba);
-    console.log(gases_prueba);
-
+    //Obteniendo el nombre del archivo soat y 
+   
+    //Almacen de los archivos del vehiculo
     var archivos = [];
-    var path = "";
+   ;
+   //soat organizado
     const soat = {
       nombre: "soat",
       nombre_entidad: soat_entidad,
@@ -137,6 +147,7 @@ router.post("/vehiculos/add", isAuthenticated, async (req, res) => {
       path: req.files.soat[0].filename,
     };
 
+    //gases organizado
     const gases = {
       nombre: "gases",
       nombre_entidad: gases_entidad,
@@ -144,9 +155,12 @@ router.post("/vehiculos/add", isAuthenticated, async (req, res) => {
       fecha_vencimiento: gases_fecha_vencimiento,
       path: req.files.gases[0].filename,
     };
+
+    //Agregando los archivos soat y gases a la lista de archivos del vehiculo
     archivos.push(soat);
     archivos.push(gases);
 
+    //Estableciendo el vehiculo que será agregado a la BD Mongo
     const nuevo_vehiculo = new vehiculo({
       placa,
       marca,
@@ -161,12 +175,17 @@ router.post("/vehiculos/add", isAuthenticated, async (req, res) => {
       archivos,
     });
 
+    //Agregando el vehiculo a la BD Mongo
     await nuevo_vehiculo.save();
     const mensaje = "Vehiculo agregado con exito";
+    //Ir a la pagina del formulario del nuevo vehiculo con el mensaje de exito
     res.render("vehiculo/nuevo-vehiculo", { mensaje });
   }
 });
-
+//Permite organizar toda la información respecto al vehiculo para
+//mostrarla en el perfil del vehiculo
+//Arg: placa - Placa del vehiculo del que deseamos obtener la información.
+//Arg: callback - Función que será ejecutada al obtener la información organizada.
 function formatearInformacion(placa, callback) {
   vehiculo
     .findOne({ placa }, function (err, result) {
@@ -175,6 +194,9 @@ function formatearInformacion(placa, callback) {
       } else {
         console.log(result);
 
+        /**
+         * Fechas por defecto si no encontramos información de los archivos soat y gases
+         */
         var fecha_emision_soat = "2021/01/01";
         var fecha_vencimiento_soat = "2021/01/01";
         var fecha_vencimiento_gases = "2021/01/01";
@@ -202,8 +224,11 @@ function formatearInformacion(placa, callback) {
             path_gases = path;
           }
         }
+
+        //Obtención de los archivos presentes en la información del vehiculo
         var archivos = result.archivos;
 
+        //Organización del archivo soat
         const soat = {
           nombre: "soat",
           nombre_entidad: entidad_soat,
@@ -211,6 +236,8 @@ function formatearInformacion(placa, callback) {
           fecha_vencimiento: fecha_vencimiento_soat,
           path: path_soat,
         };
+
+        //Organización del archivo gases
         const gases = {
           nombre: "gases",
           nombre_entidad: entidad_gases,
@@ -218,6 +245,8 @@ function formatearInformacion(placa, callback) {
           fecha_vencimiento: fecha_vencimiento_gases,
           path: path_gases,
         };
+
+        //Agregación de los archivos soat y gases a la lista de archivos.
         archivos.push(soat);
         archivos.push(gases);
 
@@ -225,7 +254,8 @@ function formatearInformacion(placa, callback) {
          * Fotos
          */
         var fotos = result.fotos;
-
+        
+        //Información del vehiculo organizada
         var result = {
           placa,
           marca: result.marca,
@@ -267,13 +297,18 @@ function formatearInformacion(placa, callback) {
           fecha_dec_importacion:result.fecha_dec_importacion,
           fotos
         };
-        console.log("Log:formateando");
-        console.log(result);
+        
+        //Pasando la información del vehiculo a la función.
         callback(result);
       }
     })
     .lean();
 }
+
+/**
+ * Encuentra el vehiculo al que corresponde una placa y pasa
+ * la información del vehiculo al callback
+ * */ 
 function encontrarVehiculo(placa,callback) {
   vehiculo
     .findOne({ placa }, (err, result) => {
@@ -287,6 +322,12 @@ function encontrarVehiculo(placa,callback) {
     })
     .lean();
 }
+
+//POST /vehiculos/modificar
+/**
+ * Recibe la información modificada del vehiculo y la actualiza en la base de datos.
+ * Cuando está actualizado, vuelve al perfil mostrando la información actulizada.
+ */
 router.post("/vehiculos/modificar", isAuthenticated, (req, res) => {
   console.log("Log: POST /vehiculos/modificar");
   const {
@@ -328,10 +369,14 @@ router.post("/vehiculos/modificar", isAuthenticated, (req, res) => {
     fecha_dec_importacion,
   } = req.body;
 
-  
+    //Falta que se pueda añadir a archivos los archivos existentes
+    //Igual que con las fotos: Se debe definir un algoritmo para esto.
   var archivos = [];
-
+  
+  //El path es vacio temporalmente hasta habilitar la opción de actualizar los archivos.
   var path = ""
+  
+  //Soat ordenado para modificar
   const soat = {
     nombre: "soat",
     nombre_entidad: soat_entidad,
@@ -340,6 +385,7 @@ router.post("/vehiculos/modificar", isAuthenticated, (req, res) => {
     path
   };
 
+  //Gases ordenado para modificar
   const gases = {
     nombre: "gases",
     nombre_entidad: gases_entidad,
@@ -347,9 +393,12 @@ router.post("/vehiculos/modificar", isAuthenticated, (req, res) => {
     fecha_vencimiento: gases_fecha_vencimiento,
     path
   };
+
+  //Añadir soat y gases a los archivos del vehiculo
   archivos.push(soat);
   archivos.push(gases);
 
+  //Encontrar vehiculo por su placa y actualizar la lista de fotos
   encontrarVehiculo(placa,function(result){
     var fotos = result.fotos;
     if(!(req.files.foto_vehiculo == undefined)){
@@ -362,9 +411,10 @@ router.post("/vehiculos/modificar", isAuthenticated, (req, res) => {
     }
     
     
-
+    //Filtro: Carros que tengan esa plata.
     var query = { placa };
 
+    //Update: la información actualizada de los vehiculos.
     var update = {
         marca,
         linea,
@@ -399,34 +449,33 @@ router.post("/vehiculos/modificar", isAuthenticated, (req, res) => {
         fotos
     };
 
-    vehiculo.updateOne(query,update);
+    
+    //Actualización
+    //Upsert true: Los campos inexistentes serán creados en el documento.
     vehiculo.findOneAndUpdate(query,update,{upsert: true},function(err,doc){
         if (err) return res.send(500,{error:err});
         console.log("Vehiculo actualizado");
-
+        //Organizar la información para mostrarla en el perfil (ya actualizada)
         formatearInformacion(placa,function(result){
             res.render("vehiculo/perfil-vehiculo", { result });
         }); 
     });
-    
-    
+        
 });
 
-  
-
-
-  
-  
-
-  
 });
 
+//GET /vehiculos/:placa
+/**
+ * Retorna la información del usuario por su placa.
+ */
 router.get("/vehiculos/:placa", isAuthenticated, async(req, res) => {
   console.log("Log: GET /vehiculos/placa");
   const placa_vehiculo = req.params.placa;
 
   const result = formatearInformacion(placa_vehiculo,(result)=>{
     console.log("inicio");
+    //result: contiene la información lista para mostrar en el perfil del vehiculo
     console.log(result);
     console.log("fin");
     res.render("vehiculo/perfil-vehiculo", { result });
@@ -434,6 +483,11 @@ router.get("/vehiculos/:placa", isAuthenticated, async(req, res) => {
   
 });
 
+//GET /vehiculos/eliminar/:placa
+/**
+ * Eliminar el vehiculo de acuerdo a una determinada placa.
+ * Cuando es eliminado vuelve a la pagina de los vehiculos, sin el vehiculo que obviamente ya no existe.
+ */
 router.get("/vehiculos/eliminar/:placa",isAuthenticated, (req, res)=>{
     console.log("Log: GET /vehiculos/eliminar/:placa");
 
@@ -445,4 +499,5 @@ router.get("/vehiculos/eliminar/:placa",isAuthenticated, (req, res)=>{
     })
 })
 
+//Exporta el router para ser usado por index.js
 module.exports = router;
