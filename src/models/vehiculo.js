@@ -15,11 +15,13 @@ const VehiculoSchema = new Schema({
   combustible_secundario: { type: String },
   archivos: [
     {
-      nombre: { type: String },
+      poliza:{type:String},
+      seguro: { type: String },
       nombre_entidad: { type: String },
       fecha_emision: { type: String },
       fecha_vencimiento: { type: String },
-      path: { type: String }, //nombre del archivo que se utilizará para luego encontrarlo en su respectiva carpeta
+      valor:{type:String},
+      nombre_archivo: { type: String }, //nombre del archivo que se utilizará para luego encontrarlo en su respectiva carpeta
     },
   ],
   id_auxiliar:{type:String},

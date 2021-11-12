@@ -1,0 +1,47 @@
+<form action="/vehiculos/documento/agregar" method="POST" class="formulario-nuevo"enctype="multipart/form-data">
+    <h1 class="card-header">Nuevo documento</h1>
+    <div class="card-body">
+
+        
+
+        <div class="row">
+            <div class="form-group col-md-4" style="display: none;">
+                <label for="exampleInputPassword1" class="form-label">*Seguro</label>
+                <input type="documento_seguro" type="text" class="form-control" value="{{placa}}">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="exampleInputPassword1" class="form-label">*Seguro</label>
+                <input type="documento_seguro" type="text" class="form-control">
+            </div>
+            
+            <div class="form-group col-md-4">
+                <label for="exampleInputPassword1" class="form-label">Número poliza.</label>
+                <input name="documento_poliza" type="text" class="form-control">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="exampleInputPassword1" class="form-label">Entidad</label>
+                <input name="documento_entidad" type="text" class="form-control">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="exampleInputPassword1" class="form-label">Desde</label>
+                <input name="documento_desde" type="date" class="form-control">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="exampleInputPassword1" class="form-label">Hasta</label>
+                <input name="documento_hasta" type="date" class="form-control">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="exampleInputPassword1" class="form-label">Valor $</label>
+                <input name="documento_valor" type="text" class="form-control">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="exampleInputPassword1" class="form-label">Archivo</label>
+                <input name="seguro" type="file" class="form-control">
+            </div>
+                <button type="submit">OK</button>
+            <div>
+
+            </div>
+        </div>
+    </div>
+</form>

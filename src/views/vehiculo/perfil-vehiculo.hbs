@@ -3,6 +3,7 @@
   <button class="tablinks" onclick="openCity(event, 'mas-datos')">Más datos</button>
   <button class="tablinks" onclick="openCity(event, 'compra')">Compra</button>
   <button class="tablinks" onclick="openCity(event, 'fotos')">Fotos</button>
+  <button class="tablinks" onclick="openCity(event, 'documentos')">Documentos</button>
 </div>
 <form action="/vehiculos/modificar" method="POST" class="formulario-nuevo" enctype="multipart/form-data">
 <div id="datos-basicos" class="tabcontent" style="display: block; border: 1px solid rgb(6, 6, 41)">
@@ -231,12 +232,58 @@
     {{/each}}
     
 </div>
+
 <center>
-    <button type="submit" class="btn btn-primary boton" >Modificar</button>
+    <button type="submit" class="btn btn-primary boton" >
+        <span class="material-icons"> edit </span>
+        <span>Modificar</span> 
+        
+        </button>
 </center>
 </form>
+<div id="documentos" class="tabcontent">
+    <h1>Documentos</h1>
+    <button type="button" onclick="nuevoDocumento('{{result.placa}}')">
+        Nuevo documento
+    </button>
 
+    <div>
+        Archivos (soat,gases y otros documentos)
+    </div>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        Poliza
+                    </th>
+                    
+                </tr>
+                
+            </thead>
+            <tbody>
+                {{#each result.archivos}}
+                <tr>
+                    <td>
+                        {{poliza}}
+                    </td>
+                    
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+    
+
+</div>
 <script>
+    //Movernos a la pagina de nuevo documento
+    function nuevoDocumento(placa){
+        
+        window.location.href = `/vehiculos/${placa}/documento`;
+        
+    }
+
     function openCity(evt, tabName) {
   // Declare all variables
   var i, tabcontent, tablinks;
@@ -259,4 +306,9 @@
   evt.currentTarget.className += " active";
   evt.currentTarget.style = "border: 1px solid rgb(6, 6, 41)";
 }
+
+
+    
+
+         
 </script>

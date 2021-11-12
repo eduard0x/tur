@@ -63,11 +63,11 @@
 
 
 
-        <button type="button" class="accordion">Información básica<span
+       <!-- <button type="button" class="accordion">Información básica<span
                 class="material-icons md-24">expand_more</span></button>
         {{!-- Adición dinamica de archivos . Proximas actualziaciones pendiente --}}
-
-        <div class="row panel">
+-->
+        <div class="row">
             <div class="form-group col-md-4">
                 <label for="exampleInputPassword1" class="form-label">Placa</label>
                 <input type="text" name="placa" class="form-control" value="{{placa}}" 
@@ -151,68 +151,6 @@
             
         </div>
 
-        <button type="button" class="accordion">SOAT<span
-                class="material-icons md-24">expand_more</span></button>
-        <div class="row panel">
-            <div class="form-group col-md-4">
-
-                <label for="exampleInputPassword1" class="form-label">Nombre aseguradora</label>
-                <input type="text" name="soat_entidad" class="form-control">
-            </div>
-            <div class="form-group col-md-4">
-
-                <label for="exampleInputPassword1" class="form-label">Fecha emisión</label>
-                <input type="date" name="soat_fecha_emision" class="form-control">
-            </div>
-            <div class="form-group col-md-4">
-
-                <label for="exampleInputPassword1" class="form-label">Fecha vencimiento</label>
-                <input type="date" name="soat_fecha_vencimiento" class="form-control">
-            </div>
-            <div class="form-group col-md-4">
-
-                <label for="exampleInputPassword1" class="form-label">Archivo</label>
-                <input type="file" name="soat" class="form-control">
-            </div>
-        </div>
-
-
-
-
-        <button type="button" class="accordion">Gases<span
-                class="material-icons md-24">expand_more</span></button>
-
-        <div class="row panel">
-            <div class="form-group col-md-4">
-
-                <label for="exampleInputPassword1" class="form-label">Lugar de realización</label>
-                <input type="text" name="gases_entidad" class="form-control">
-            </div>
-            <div class="form-group col-md-4">
-
-                <label for="exampleInputPassword1" class="form-label">Fecha de realización</label>
-                <input type="date" name="gases_fecha_emision" class="form-control">
-            </div>
-            <div class="form-group col-md-4">
-
-                <label for="exampleInputPassword1" class="form-label">Fecha vencimiento</label>
-                <input type="date" name="gases_fecha_vencimiento" class="form-control">
-            </div>
-
-            <div class="form-group col-md-4">
-                <label for="exampleInputPassword1" class="form-label">Comprobante</label>
-                <input type="file" name="gases" class="form-control">
-            </div>
-
-        </div>
-
-
-
-
-
-        <button type="button" class="accordion">Otros documentos<span
-                class="material-icons md-24">expand_more</span></button>
-        <div class="panel"></div>
         <center>
             <button type="submit" class="btn btn-primary boton">Registrar vehiculo</button>
         </center>

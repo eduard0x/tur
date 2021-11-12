@@ -473,6 +473,14 @@ acordeones
     
 }
 
+#documentos{
+    display: flex;
+    flex-direction: column;
+}
+
+#documentos table{
+    width: 100%;
+}
 /*
 
     ****        ****

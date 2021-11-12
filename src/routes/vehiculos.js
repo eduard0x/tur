@@ -113,11 +113,11 @@ router.post("/vehiculos/add", isAuthenticated, async (req, res) => {
     tipo_trabajo,
     combustible_principal,
     combustible_secundario,
-    soat_entidad,
-    soat_fecha_emision,
-    soat_fecha_vencimiento,
-    gases_fecha_emision,
-    gases_fecha_vencimiento,
+    // soat_entidad,
+    // soat_fecha_emision,
+    // soat_fecha_vencimiento,
+    // gases_fecha_emision,
+    // gases_fecha_vencimiento,
   } = req.body;
 
   var error = [];
@@ -136,29 +136,29 @@ router.post("/vehiculos/add", isAuthenticated, async (req, res) => {
     //Obteniendo el nombre del archivo soat y 
    
     //Almacen de los archivos del vehiculo
-    var archivos = [];
-   ;
-   //soat organizado
-    const soat = {
-      nombre: "soat",
-      nombre_entidad: soat_entidad,
-      fecha_emision: soat_fecha_emision,
-      fecha_vencimiento: soat_fecha_vencimiento,
-      path: req.files.soat[0].filename,
-    };
+  //   var archivos = [];
+  //  ;
+  //  //soat organizado
+  //   const soat = {
+  //     nombre: "soat",
+  //     nombre_entidad: soat_entidad,
+  //     fecha_emision: soat_fecha_emision,
+  //     fecha_vencimiento: soat_fecha_vencimiento,
+  //     path: req.files.soat[0].filename,
+  //   };
 
-    //gases organizado
-    const gases = {
-      nombre: "gases",
-      nombre_entidad: gases_entidad,
-      fecha_emision: gases_fecha_emision,
-      fecha_vencimiento: gases_fecha_vencimiento,
-      path: req.files.gases[0].filename,
+  //   //gases organizado
+  //   const gases = {
+  //     nombre: "gases",
+  //     nombre_entidad: gases_entidad,
+  //     fecha_emision: gases_fecha_emision,
+  //     fecha_vencimiento: gases_fecha_vencimiento,
+  //     path: req.files.gases[0].filename,
     };
 
     //Agregando los archivos soat y gases a la lista de archivos del vehiculo
-    archivos.push(soat);
-    archivos.push(gases);
+    // archivos.push(soat);
+    // archivos.push(gases);
 
     //Estableciendo el vehiculo que será agregado a la BD Mongo
     const nuevo_vehiculo = new vehiculo({
@@ -172,7 +172,7 @@ router.post("/vehiculos/add", isAuthenticated, async (req, res) => {
       tipo_trabajo,
       combustible_principal,
       combustible_secundario,
-      archivos,
+      // archivos,
     });
 
     //Agregando el vehiculo a la BD Mongo
@@ -181,7 +181,7 @@ router.post("/vehiculos/add", isAuthenticated, async (req, res) => {
     //Ir a la pagina del formulario del nuevo vehiculo con el mensaje de exito
     res.render("vehiculo/nuevo-vehiculo", { mensaje });
   }
-});
+);
 //Permite organizar toda la información respecto al vehiculo para
 //mostrarla en el perfil del vehiculo
 //Arg: placa - Placa del vehiculo del que deseamos obtener la información.
@@ -295,7 +295,8 @@ function formatearInformacion(placa, callback) {
           vendedor_agencia:result.vendedor_agencia,
           nro_dec_importacion:result.nro_dec_importacion,
           fecha_dec_importacion:result.fecha_dec_importacion,
-          fotos
+          fotos,
+          archivos:result.archivos
         };
         
         //Pasando la información del vehiculo a la función.
@@ -465,6 +466,8 @@ router.post("/vehiculos/modificar", isAuthenticated, (req, res) => {
 
 });
 
+
+
 //GET /vehiculos/:placa
 /**
  * Retorna la información del usuario por su placa.
@@ -482,6 +485,56 @@ router.get("/vehiculos/:placa", isAuthenticated, async(req, res) => {
   });
   
 });
+
+//GET /vehiculos/nuevo-documento
+
+router.get('/vehiculos/:placa/documento',isAuthenticated, (req,res)=>{
+  const placa = req.params.placa;
+  res.render("documento",{placa});
+});
+
+//get /vehiculos/:placa/documento/agregar
+
+router.post('/vehiculos/documento/agregar',isAuthenticated,(req,res)=>{
+  
+  const {
+    placa,
+    documento_seguro,
+    documento_poliza,
+    documento_entidad,
+    documento_desde,
+    documento_hasta,
+    documento_valor
+  } = req.body;
+
+  const nuevo_documento = {
+    poliza:documento_poliza,
+    seguro: documento_seguro,
+    nombre_entidad:documento_entidad,
+    fecha_emision:documento_desde,
+    fecha_vencimiento:documento_hasta,
+    valor:documento_valor,
+    nombre_archivo: req.files.seguro[0].filename
+
+  }
+
+  vehiculo.findOne(placa,(err,result)=>{
+    const env = result.archivos.concat(nuevo_documento)
+    if(result.archivos == null ){
+      
+      vehiculo.findOneAndUpdate(placa,nuevo_documento)
+      console.log("Undefined: nuevo_documento")
+    }
+    else{
+      result.archivos.push(nuevo_documento);
+      result.save()
+      console.log("push_nuevo_documento")
+      const x = result.archivos.concat(nuevo_documento);
+      res.send(x);
+    }
+  })
+
+})
 
 //GET /vehiculos/eliminar/:placa
 /**

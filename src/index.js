@@ -157,6 +157,10 @@ const storage = multer.diskStorage({
              cb(null,path.join(__dirname,'/public/uploads/certificados'))
             // cb(null,path.join('./src/public/uploads/soat'))
         }
+        else if(file.fieldname === "seguro"){
+            cb(null,path.join(__dirname,'/public/uploads/seguros'))
+           // cb(null,path.join('./src/public/uploads/soat'))
+       }
         else if(file.fieldname === "foto_vehiculo"){
             cb(null,path.join(__dirname,'/public/uploads/fotos_vehiculos'))
            // cb(null,path.join('./src/public/uploads/soat'))
@@ -171,17 +175,14 @@ const storage = multer.diskStorage({
         if(file.fieldname === "foto_perfil"){
             cb(null,file.fieldname+"_"+id+"_"+uuidv4()+"."+mimeTypes.extension(file.mimetype));
         }
-        else if(file.fieldname === "soat"){
-            cb(null,file.fieldname+"_"+placa+"_"+uuidv4()+"."+mimeTypes.extension(file.mimetype));
-        }
-        else if(file.fieldname === "gases"){
-            cb(null,file.fieldname+"_"+placa+"_"+uuidv4()+"."+mimeTypes.extension(file.mimetype));
-        }
         else if(file.fieldname === "foto_cliente"){
             cb(null,file.fieldname+"_"+id+"_"+uuidv4()+"."+mimeTypes.extension(file.mimetype));
         }
         else if(file.fieldname === "certificado"){
             cb(null,file.fieldname+"_"+id+"_"+uuidv4()+"."+mimeTypes.extension(file.mimetype));
+        }
+        else if(file.fieldname === "seguro"){
+            cb(null,file.fieldname+"_"+uuidv4()+"."+mimeTypes.extension(file.mimetype));
         }
         else if(file.fieldname === "foto_vehiculo"){
             cb(null,file.fieldname+"_"+placa+"_"+uuidv4()+"."+mimeTypes.extension(file.mimetype));
@@ -217,11 +218,9 @@ app.use(
         }
     ).fields([
         {name:"foto_perfil"},
-        {name:"soat"},
-        {name:"gases"},
         {name:"foto_cliente"},
         {name:"certificado"},
-        {name:"foto_vehiculo"}
+        {name:"seguro"}
     ]
         
     )
